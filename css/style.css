@@ -1,0 +1,42 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 100px;
+    padding-left: 100px;
+    gap:20%;
+    
+    
+}
+header img {
+    position: relative;
+    width: 80px;
+    margin-right: 20px; 
+    top:50%;
+    transform: translateY(-50%);
+}
+header ul{
+    display: flex;
+    width: 300px;
+    list-style-type: none;
+    justify-content: space-between;
+    padding: 0;
+    gap:60px;
+    
+
+}
+header ul li{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.navigation a{
+    text-decoration: none;
+}
+.navigation{
+    width: 100%;
+}
+.navigation i {
+    font-size: 11px;
+    height: 11px;
+}

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../brief2"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501
+	}
+}

@@ -1,44 +1,126 @@
-header{
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    width: 100vw;
+    height: 100vh;
+}
+
+header {
     display: flex;
     justify-content: space-between;
     padding-right: 100px;
     padding-left: 100px;
-    gap:20%;
-    
-    
+    gap: 20%;
+    align-items: center;
+
+
 }
+
 header img {
     position: relative;
     width: 80px;
-    margin-right: 20px; 
-    top:50%;
-    transform: translateY(-50%);
+    margin-right: 20px;
+
+
 }
-header ul{
+
+header ul {
     display: flex;
     width: 300px;
     list-style-type: none;
     justify-content: space-between;
     padding: 0;
-    gap:60px;
-    
+    gap: 60px;
+
 
 }
-header ul li{
+
+header ul li {
     display: flex;
     align-items: center;
     gap: 5px;
- 
+
 }
 
-header .navigation a{
+header .navigation a {
     text-decoration: none;
     color: #2d2d2d;
+    font-family: "Poppins", sans-serif;
+
 }
-header .navigation{
+
+header .navigation {
     width: 100%;
 }
+
 header .navigation i {
     font-size: 11px;
     height: 11px;
+}
+
+
+
+
+
+
+
+
+
+.home-section {
+    background: rgb(247, 148, 7);
+    background: linear-gradient(90deg, rgba(247, 148, 7, 1) 0%, rgba(255, 103, 2, 1) 46%);
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+    height: 100vh;
+
+}
+
+.home-section .hero {
+
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.home-section .hero div {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.home-section .hero-left {
+    font-family: "Poppins", sans-serif;
+    padding-left: 100px;
+
+
+}
+
+.home-section .hero-left button {
+    width: 120px;
+    height: 40px;
+    background-color: #2d2d2d;
+    color: white;
+    font-size: 18px;
+    margin-top: 25px;
+}
+
+.home-section .hero-left p {
+    padding-top: 25px;
+    width: 300px;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.home-section .hero-left h1{
+    line-height: 33px;
 }

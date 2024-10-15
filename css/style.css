@@ -28,15 +28,17 @@ header ul li{
     display: flex;
     align-items: center;
     gap: 5px;
+ 
 }
 
-.navigation a{
+header .navigation a{
     text-decoration: none;
+    color: #2d2d2d;
 }
-.navigation{
+header .navigation{
     width: 100%;
 }
-.navigation i {
+header .navigation i {
     font-size: 11px;
     height: 11px;
 }

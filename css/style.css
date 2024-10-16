@@ -121,6 +121,69 @@ header .navigation i {
     line-height: 18px;
 }
 
-.home-section .hero-left h1{
+.home-section .hero-left h1 {
     line-height: 33px;
 }
+
+
+
+
+.menu {
+    display: flex;
+    background-color: #F9AF46
+}
+
+
+.menu .list ul {
+    list-style-type: none;
+
+}
+
+.menu .list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F9AF46;
+    height: 100vh;
+    width:50%;
+
+}
+
+
+.menu .icons-home .icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #F9AF46;
+    height: 55vh;
+    width:100vh;
+    margin-left: 20px;
+
+}
+
+
+.menu .icons-home .icon ul li {
+    list-style-type: none;
+    margin: 10px 0;
+    
+}
+
+
+.menu .icons-home  .at-symbol .at{
+    list-style-type: none;
+     
+    
+
+}
+.menu .icons-home  .at-symbol {
+   
+   margin-left: 20px;
+   background-color: #F9AF46;
+   height: 42vh;
+  display: flex;
+  align-items: flex-end;
+   
+}
+.menu .list ul li{font-family: "Poppins", sans-serif;
+font-size: 18px;}
+

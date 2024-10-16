@@ -211,3 +211,130 @@ footer li i {
 }
 
 
+
+.home-section .hero-left h1 {
+    line-height: 33px;
+}
+/*contact section*/
+.content{
+    margin-top: 150px;
+    margin-left: 100px;
+    font-family: "Poppins", sans-serif;
+}
+.contact-section{
+    background: rgb(247, 148, 7);
+    background: linear-gradient(90deg, rgba(247, 148, 7, 1) 0%, rgba(255, 103, 2, 1) 46%);
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+.formulaire{
+    margin-top: 50px;
+    background-color: transparent;
+    font-family: "Poppins", sans-serif;
+}
+.formulaire input{
+    margin-bottom: 50px;
+    background-color: transparent;
+    border:none;
+    border-bottom: 2px white solid;
+    width: 350px;
+    height: 40px;
+}
+.formulaire textarea{
+    background-color: transparent;
+}
+.formulaire textarea{
+    border:none;
+    border-bottom: 2px white solid;
+    width: 350px;
+    height: 40px;
+}
+.custom-icon{
+    color: rgb(255, 255, 255); 
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 100px;
+    padding-left: 100px;
+    gap: 10%;
+}
+.separator{
+    display: flex;
+    align-items: center;
+    width: 2px; 
+    background-color: white;
+    height: 60%; 
+    margin: 0 20px;
+    
+}
+
+
+
+
+
+
+
+
+.menu {
+    display: flex;
+    background-color: #F9AF46
+}
+
+
+.menu .list ul {
+    list-style-type: none;
+
+}
+
+.menu .list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F9AF46;
+    height: 100vh;
+    width:50%;
+
+}
+
+
+.menu .icons-home .icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #F9AF46;
+    height: 55vh;
+    width:100vh;
+    margin-left: 20px;
+
+}
+
+
+.menu .icons-home .icon ul li {
+    list-style-type: none;
+    margin: 10px 0;
+    
+}
+
+
+.menu .icons-home  .at-symbol .at{
+    list-style-type: none;
+     
+    
+
+}
+.menu .icons-home  .at-symbol {
+   
+   margin-left: 20px;
+   background-color: #F9AF46;
+   height: 42vh;
+  display: flex;
+  align-items: flex-end;
+   
+}
+.menu .list ul li{font-family: "Poppins", sans-serif;
+font-size: 18px;}
+

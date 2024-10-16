@@ -229,28 +229,65 @@ footer li i {
     width: 100vw;
     height: 100vh;
 }
-.formulaire{
-    margin-top: 50px;
+
+.contact-section .formulaire div {
+    border-bottom: white 2px solid;
+    height: 30px;
+    width: 90%;
+
+}
+.contact-section .formulaire div * {
+    display: inline;
+}
+
+.contact-section form {
+    margin-top: 20px;
     background-color: transparent;
     font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    height: 300px;
 }
+.formulaire textarea,
+.formulaire label,
 .formulaire input{
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    color:#111;
+}
+
+.formulaire input{
+    position:relative;
+    top:-28px;
     margin-bottom: 50px;
     background-color: transparent;
     border:none;
-    border-bottom: 2px white solid;
-    width: 350px;
-    height: 40px;
+    width: 250px;
+    height: 30px;
+    color: white;
+    padding: 0 28px;
+    padding-left: 90px;
+    outline: none; 
+    font-size: 16px;
+}
+
+ .form-message {
+    flex-grow: 1;
 }
 .formulaire textarea{
+    border:none;   
+    height: 130px;  
+    width: 100%;       
+    padding-top: 10px;                            
     background-color: transparent;
+    outline: none; 
+    color:white;
+    display: block;
+    
 }
-.formulaire textarea{
-    border:none;
-    border-bottom: 2px white solid;
-    width: 350px;
-    height: 40px;
-}
+
+
 .custom-icon{
     color: rgb(255, 255, 255); 
 }
@@ -260,23 +297,25 @@ footer li i {
     justify-content: space-between;
     padding-right: 100px;
     padding-left: 100px;
-    gap: 10%;
 }
-.separator{
-    display: flex;
-    align-items: center;
-    width: 2px; 
-    background-color: white;
-    height: 60%; 
-    margin: 0 20px;
-    
+.content h1{
+    line-height: 30px;
+}
+.contact-section button{
+    width: 120px;
+    height: 40px;
+    background-color:transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    margin-top: 25px;
+    margin-left: 100px;
+    text-align: left;
 }
 
-
-
-
-
-
+.contact-section button i {
+    font-size: 18px;
+}
 
 
 .menu {

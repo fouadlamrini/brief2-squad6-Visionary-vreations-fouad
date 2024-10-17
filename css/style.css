@@ -239,20 +239,6 @@ footer li i {
 
 /*contact section*/
 .content {
-<<<<<<< Updated upstream
-    margin-top: 150px;
-    margin-left: 100px;
-    font-family: "Poppins", sans-serif;
-}
-
-.contact-section {
-    background: rgb(247, 148, 7);
-    background: linear-gradient(90deg, rgba(247, 148, 7, 1) 0%, rgba(255, 103, 2, 1) 46%);
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-=======
   margin-top: 150px;
   margin-left: 100px;
   font-family: "Poppins", sans-serif;
@@ -268,7 +254,6 @@ footer li i {
   flex-direction: column;
   width: 100vw;
   height: 100vh;
->>>>>>> Stashed changes
 }
 
 
@@ -301,7 +286,6 @@ footer li i {
   color: #111;
 }
 
-<<<<<<< Updated upstream
 
 .formulaire input {
     margin-bottom: 50px;
@@ -339,21 +323,6 @@ footer li i {
     padding-left: 90px;
     outline: none; 
     font-size: 16px;
-=======
-.formulaire input {
-  position: relative;
-  top: -28px;
-  margin-bottom: 50px;
-  background-color: transparent;
-  border: none;
-  width: 250px;
-  height: 30px;
-  color: white;
-  padding: 0 28px;
-  padding-left: 90px;
-  outline: none;
-  font-size: 16px;
->>>>>>> Stashed changes
 }
 
 .form-message {
@@ -377,7 +346,6 @@ footer li i {
 }
 
 .container {
-<<<<<<< Updated upstream
     display: flex;
     justify-content: space-between;
     padding-right: 100px;
@@ -408,26 +376,6 @@ footer li i {
     margin-left: 100px;
     text-align: left;
 
-=======
-  display: flex;
-  justify-content: space-between;
-  padding-right: 100px;
-  padding-left: 100px;
-}
-.content h1 {
-  line-height: 30px;
-}
-.contact-section button {
-  width: 120px;
-  height: 40px;
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-size: 18px;
-  margin-top: 25px;
-  margin-left: 100px;
-  text-align: left;
->>>>>>> Stashed changes
 }
 
 .contact-section button i {
@@ -444,7 +392,6 @@ footer li i {
 }
 
 .menu .list {
-<<<<<<< Updated upstream
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -452,18 +399,9 @@ footer li i {
     height: 100vh;
     width: 50%;
 
-=======
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #f9af46;
-  height: 100vh;
-  width: 50%;
->>>>>>> Stashed changes
 }
 
 .menu .icons-home .icon {
-<<<<<<< Updated upstream
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -472,19 +410,9 @@ footer li i {
     width: 100vh;
     margin-left: 20px;
 
-=======
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  background-color: #f9af46;
-  height: 55vh;
-  width: 100vh;
-  margin-left: 20px;
->>>>>>> Stashed changes
 }
 
 .menu .icons-home .icon ul li {
-<<<<<<< Updated upstream
     list-style-type: none;
     margin: 10px 0;
 
@@ -675,23 +603,3 @@ margin-left: 35%;
 }
 .services-section .services-cards  h3{text-align: center;}
 
-=======
-  list-style-type: none;
-  margin: 10px 0;
-}
-
-.menu .icons-home .at-symbol .at {
-  list-style-type: none;
-}
-.menu .icons-home .at-symbol {
-  margin-left: 20px;
-  background-color: #f9af46;
-  height: 42vh;
-  display: flex;
-  align-items: flex-end;
-}
-.menu .list ul li {
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-}
->>>>>>> Stashed changes

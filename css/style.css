@@ -455,23 +455,26 @@ font-size: 18px;}
 
 .img-box img{
   width: 100%;
-  height: auto; 
+  height: 200px;
 }
 
 .more-button{
   position: absolute; 
-  bottom: 40px; 
-  left: 10px; }
+  bottom: 15px; 
+  right: 10px;
+  border: 1px solid transparent; }
 
 .more-button button{
   background: transparent; 
   border: 2px solid white; 
   color:white;
-  border-radius: 5px; 
+  border-radius: 20px; 
   padding: 10px 20px; 
   cursor: pointer;
   margin-left: 450px;
   margin-top:200px;
+  margin: 0;
+  width: 100px;
   transition: background-color 0.3s;
 }
 

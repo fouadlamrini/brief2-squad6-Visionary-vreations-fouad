@@ -1,4 +1,5 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -295,7 +296,7 @@ footer li i {
     color: white;
     padding: 0 28px;
     padding-left: 90px;
-    outline: none; 
+    outline: none;
     font-size: 16px;
 }
 
@@ -303,15 +304,15 @@ footer li i {
     flex-grow: 1;
 }
 .formulaire textarea{
-    border:none;   
-    height: 130px;  
-    width: 100%;       
-    padding-top: 10px;                            
+    border:none;
+    height: 130px;
+    width: 100%;
+    padding-top: 10px;
     background-color: transparent;
-    outline: none; 
+    outline: none;
     color:white;
     display: block;
-    
+
 }
 
 
@@ -396,7 +397,7 @@ footer li i {
 }
 
 .services-section .services-cards .card {
-    
+
     width: 30%;
     height: 200px;
     margin-top: 10px;
@@ -405,7 +406,7 @@ footer li i {
 .services-section .services-cards .design .design-icon {
     width: 80%;
     height: 20%;
-    
+
     margin-top: 10px;
     margin-left: 50px;
 }
@@ -417,7 +418,7 @@ margin-left: 35%;
 .services-section .services-cards .design .design-text {
     width: 90%;
     height: 70%;
-    
+
     margin-left: 30px;
     margin-top: 20px;
 }
@@ -425,7 +426,7 @@ margin-left: 35%;
 .services-section .services-cards .development .development-icon {
     width: 80%;
     height: 20%;
-   
+
     margin-top: 10px;
     margin-left: 50px;
 }
@@ -436,7 +437,7 @@ margin-left: 35%;
 .services-section .services-cards .development .development-text {
     width: 90%;
     height: 70%;
-   
+
     margin-left: 30px;
     margin-top: 20px;
 }
@@ -444,7 +445,7 @@ margin-left: 35%;
 .services-section .services-cards .seo .seo-icon {
     width: 80%;
     height: 20%;
-   
+
     margin-top: 10px;
     margin-left: 50px;
 }
@@ -454,7 +455,7 @@ margin-left: 35%;
 .services-section .services-cards .seo .seo-text {
     width: 90%;
     height: 70%;
-    
+
     margin-left: 30px;
     margin-top: 20px;
 }
@@ -462,7 +463,7 @@ margin-left: 35%;
 .services-section .services-cards .marketing .marketing-icon {
     width: 80%;
     height: 20%;
-   
+
     margin-top: 10px;
     margin-left: 50px;
 }
@@ -472,7 +473,7 @@ margin-left: 35%;
 .services-section .services-cards .marketing .marketing-text {
     width: 90%;
     height: 70%;
-   
+
     margin-left: 30px;
     margin-top: 20px;
 }
@@ -480,7 +481,7 @@ margin-left: 35%;
 .services-section .services-cards .app-development .app-development-icon {
     width: 80%;
     height: 20%;
-   
+
     margin-top: 10px;
     margin-left: 50px;
 }
@@ -490,7 +491,7 @@ margin-left: 35%;
 .services-section .services-cards .app-development .app-development-text {
     width: 90%;
     height: 70%;
-    
+
     margin-left: 30px;
     margin-top: 20px;
 }
@@ -498,7 +499,7 @@ margin-left: 35%;
 .services-section .services-cards .error-fixing .error-fixing-icon {
     width: 80%;
     height: 20%;
-    
+
     margin-top: 10px;
     margin-left: 50px;
 }
@@ -508,8 +509,75 @@ margin-left: 35%;
 .services-section .services-cards .error-fixing .error-fixing-text {
     width: 90%;
     height: 70%;
-    
+
     margin-left: 30px;
     margin-top: 20px;
 }
 .services-section .services-cards  h3{text-align: center;}
+
+
+.works-section {
+
+  background: rgb(247, 148, 7);
+  display: flex;
+  flex-direction: column;
+  min-width: 100vw;
+  min-height: 100vh;
+  gap: 40px;
+}
+
+
+.works-section .titre {
+    padding-left: 100px;
+  font-family: "Poppins", sans-serif;
+}
+.works-section .titre h1 {
+    font-size: 48px;
+    line-height:48px;
+}
+
+.works-section .titre p {
+    line-height: 14px;
+    font-size: 14px;
+    color: white;
+}
+.works-section .con{
+    height: 100%;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+
+}
+
+
+.works-section .con-group {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: 1fr 1fr;
+    aspect-ratio: 1 / 1;
+    min-width: 300px;
+    flex: 1 1;
+}
+
+.works-section .con-group .wide-card {
+    background: red;
+    width: 100%;
+    height: 30%;
+    border-radius: 20px;
+}
+
+.works-section .con-group .card-group {
+    display: flex;
+    gap: 50px;
+    height: 60%;
+    padding-top: 50px;
+
+}
+.works-section .con-group .card-group .card {
+    background: white;
+    width: 50%;
+    height: 100%;
+    border-radius: 20px;
+}

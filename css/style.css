@@ -215,13 +215,15 @@ footer li i {
 .home-section .hero-left h1 {
     line-height: 33px;
 }
+
 /*contact section*/
-.content{
+.content {
     margin-top: 150px;
     margin-left: 100px;
     font-family: "Poppins", sans-serif;
 }
-.contact-section{
+
+.contact-section {
     background: rgb(247, 148, 7);
     background: linear-gradient(90deg, rgba(247, 148, 7, 1) 0%, rgba(255, 103, 2, 1) 46%);
     display: flex;
@@ -230,6 +232,10 @@ footer li i {
     height: 100vh;
 }
 
+
+.formulaire {
+    margin-top: 50px;
+}
 .contact-section .formulaire div {
     border-bottom: white 2px solid;
     height: 30px;
@@ -257,6 +263,30 @@ footer li i {
     color:#111;
 }
 
+
+.formulaire input {
+    margin-bottom: 50px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px white solid;
+    width: 350px;
+    height: 40px;
+}
+
+.formulaire textarea {
+    background-color: transparent;
+}
+
+.formulaire textarea {
+    border: none;
+    border-bottom: 2px white solid;
+    width: 350px;
+    height: 40px;
+}
+
+.custom-icon {
+    color: rgb(255, 255, 255);
+}
 .formulaire input{
     position:relative;
     top:-28px;
@@ -292,11 +322,22 @@ footer li i {
     color: rgb(255, 255, 255); 
 }
 
-.container{
+.container {
     display: flex;
     justify-content: space-between;
     padding-right: 100px;
     padding-left: 100px;
+}
+
+
+.separator {
+    display: flex;
+    align-items: center;
+    width: 2px;
+    background-color: white;
+    height: 60%;
+    margin: 0 20px;
+
 }
 .content h1{
     line-height: 30px;
@@ -311,6 +352,7 @@ footer li i {
     margin-top: 25px;
     margin-left: 100px;
     text-align: left;
+
 }
 
 .contact-section button i {
@@ -335,7 +377,7 @@ footer li i {
     justify-content: center;
     background-color: #F9AF46;
     height: 100vh;
-    width:50%;
+    width: 50%;
 
 }
 
@@ -346,7 +388,7 @@ footer li i {
     justify-content: flex-end;
     background-color: #F9AF46;
     height: 55vh;
-    width:100vh;
+    width: 100vh;
     margin-left: 20px;
 
 }
@@ -355,25 +397,191 @@ footer li i {
 .menu .icons-home .icon ul li {
     list-style-type: none;
     margin: 10px 0;
-    
+
 }
 
 
-.menu .icons-home  .at-symbol .at{
+.menu .icons-home .at-symbol .at {
     list-style-type: none;
-     
-    
+
+
 
 }
-.menu .icons-home  .at-symbol {
-   
-   margin-left: 20px;
-   background-color: #F9AF46;
-   height: 42vh;
-  display: flex;
-  align-items: flex-end;
-   
+
+.menu .icons-home .at-symbol {
+
+    margin-left: 20px;
+    background-color: #F9AF46;
+    height: 42vh;
+    display: flex;
+    align-items: flex-end;
+
 }
-.menu .list ul li{font-family: "Poppins", sans-serif;
-font-size: 18px;}
+
+.menu .list ul li {
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+}
+
+
+
+
+.services-section {
+    background: rgb(247, 148, 7);
+    background: linear-gradient(90deg, rgba(247, 148, 7, 1) 0%, rgba(255, 103, 2, 1) 46%);
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+
+}
+
+.services-section .text {
+
+    width: 208vh;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+
+.services-section .text h2 {
+    font-family: "Poppins", sans-serif;
+    padding-left: 100px;
+}
+
+.services-section .text p {
+    font-size: 20px;
+    padding-left: 100px;
+}
+
+.services-section .services-cards {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    height: 60%;
+    gap: 0px 30px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.services-section .services-cards .card {
+    
+    width: 30%;
+    height: 200px;
+    margin-top: 10px;
+}
+
+.services-section .services-cards .design .design-icon {
+    width: 80%;
+    height: 20%;
+    
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+.services-section .services-cards .design .design-icon .image1{width: 45px;
+height: 45px;
+margin-left: 35%;
+}
+.services-section .services-cards .design .design-text {
+    width: 90%;
+    height: 70%;
+    
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.services-section .services-cards .development .development-icon {
+    width: 80%;
+    height: 20%;
+   
+    margin-top: 10px;
+    margin-left: 50px;
+}
+.services-section .services-cards .development .development-icon .image2{width: 45px;
+    height: 45px;
+    margin-left: 35%;}
+
+.services-section .services-cards .development .development-text {
+    width: 90%;
+    height: 70%;
+   
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.services-section .services-cards .seo .seo-icon {
+    width: 80%;
+    height: 20%;
+   
+    margin-top: 10px;
+    margin-left: 50px;
+}
+.services-section .services-cards .seo .seo-icon .image3{width: 45px;
+    height: 45px;
+    margin-left: 35%;}
+.services-section .services-cards .seo .seo-text {
+    width: 90%;
+    height: 70%;
+    
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.services-section .services-cards .marketing .marketing-icon {
+    width: 80%;
+    height: 20%;
+   
+    margin-top: 10px;
+    margin-left: 50px;
+}
+.services-section .services-cards .marketing .marketing-icon .image4{width: 45px;
+    height: 45px;
+    margin-left: 35%;}
+.services-section .services-cards .marketing .marketing-text {
+    width: 90%;
+    height: 70%;
+   
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.services-section .services-cards .app-development .app-development-icon {
+    width: 80%;
+    height: 20%;
+   
+    margin-top: 10px;
+    margin-left: 50px;
+}
+.services-section .services-cards .app-development .app-development-icon .image5{width: 45px;
+    height: 45px;
+    margin-left: 35%;}
+.services-section .services-cards .app-development .app-development-text {
+    width: 90%;
+    height: 70%;
+    
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.services-section .services-cards .error-fixing .error-fixing-icon {
+    width: 80%;
+    height: 20%;
+    
+    margin-top: 10px;
+    margin-left: 50px;
+}
+.services-section .services-cards .error-fixing .error-fixing-icon .image6{width: 45px;
+    height: 45px;
+    margin-left: 35%;}
+.services-section .services-cards .error-fixing .error-fixing-text {
+    width: 90%;
+    height: 70%;
+    
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.services-section .services-cards  h3{text-align: center;}
 

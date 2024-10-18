@@ -478,6 +478,10 @@ justify-content: center;
   .navigation.show{
       display: flex;
   }
+
+  .works-section .con-group .card-group .card {
+    width: 100%;
+  }
 }
 
 @media screen and (min-width:850px){

@@ -313,7 +313,7 @@ footer li i {
 .contact-section .container form textarea{
   background: none;
   border: none;
-  outline: none; 
+  outline: none;
   margin-left: 20px;
   color: white;
   width: 100%;
@@ -333,7 +333,7 @@ footer li i {
 .contact-section .container form label{
   margin-left: 10px;
 }
- 
+
 .contact-section .container button{
   background-color: transparent;
   border: none;
@@ -341,7 +341,7 @@ footer li i {
   font-size: 2em;
 }
 
- 
+
 .services-section {
     background: rgb(247, 148, 7);
     background: linear-gradient(90deg, rgba(247, 148, 7, 1) 0%, rgba(255, 103, 2, 1) 46%);
@@ -451,10 +451,56 @@ footer li i {
 }
 
 .works-section .con-group .wide-card {
-    background: red;
     width: 100%;
     height: 30%;
     border-radius: 20px;
+}
+
+
+.con-group .card,
+.con-group .wide-card {
+
+    overflow: hidden;
+}
+.con-group .card-image {
+    height: 100%;
+}
+.con-group .card-image img {
+    width: 100%;
+}
+
+.con-group .wide-card div:not(.card-image) ,
+.con-group .card div:not(.card-image){
+    width: 100%;
+    height: 100%;
+    background: rgb(2,0,36);
+    background: linear-gradient(180deg, rgba(2,0,36,0) 0%, rgba(0,0,0,.4) 100%);
+    position: relative;
+    top: -100%;
+}
+.con-group  button {
+    cursor: pointer;
+    position: relative;
+    top: calc(-100% - 10px);
+    border: none;
+    left: calc(100% - 15px);
+    width: 80px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    transform: translateX(-100%) translateY(-150%);
+    font-size: 13px;
+    color: white;
+    background: none;
+    border: 2px solid white;
+    border-radius: 50px;
+}
+.con-group  button i {
+    font-size: 11px;
+    position: relative;
+    top: 1px;
 }
 
 .works-section .con-group .card-group {
@@ -532,9 +578,6 @@ justify-content: center;
       display: flex;
   }
 
-  .works-section .con-group .card-group .card {
-    width: 100%;
-  }
 
   .home-section .hero {
     justify-content: center;
@@ -556,8 +599,17 @@ justify-content: center;
     line-height: 30px;
     width: 80%;
   }
-  
- } 
+
+  .works-section .con {
+      padding: 20px;
+      justify-content: center;
+  }
+  .works-section .con .con-group {
+      aspect-ratio: unset;
+      min-height: 400px;
+  }
+
+ }
 @media screen and (min-width:850px){
   .navigation{
     display: flex;

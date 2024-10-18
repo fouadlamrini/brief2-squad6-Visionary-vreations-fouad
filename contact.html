@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,28 +16,32 @@
 
     <body>
       <div class="contact-section">
-         <header>
+      <header>
         <a class="image" href="index.html">
           <img src="images/icon.png" alt="icon" />
         </a>
         <div class="navigation">
           <ul>
-            <li class="nav-item ">
-              <a class="nav-link" href="index.html">Home</a>
+            <li class="nav-item">
+              <a class="nav-link " href="index.html">Home</a>
               <i class="bi bi-arrow-up-right"></i>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="works.html">Works</a>
               <i class="bi bi-arrow-up-right"></i>
             </li>
+
             <li class="nav-item">
               <a class="nav-link" href="services.html">Services</a>
               <i class="bi bi-arrow-up-right"></i>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="">Contact</a>
+              <a class="nav-link active" href="#">Contact</a>
             </li>
           </ul>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <i class="bi bi-list"></i>
         </div>
       </header>
         <div class="content">
@@ -45,7 +49,6 @@
                 Touch</h1>
         </div>
         <div class="container">
-          <div class="formulaire">
             <form>
               <div >
               <i class="bi bi-arrow-right custom-icon"></i>
@@ -62,15 +65,84 @@
                 <label for="message">Message:</label><br>
                 <textarea type="text" id="message" required ></textarea>
               </div>
+              <div class="bouton">
+                  <button>SEND <i class="bi bi-arrow-up-right custom-icon"></i></button>
+              </div>
             </form>
-          </div> 
-          <div class="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d6567.379284880418!2d-2.9254948333483757!3d35.18136404969574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sma!4v1729025615960!5m2!1sen!2sma" style="border:0; width: 100%; height: 100%; min-width: 600px ;border-radius: 3%;"loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="bouton">
-          <button>SEND <i class="bi bi-arrow-up-right custom-icon"></i></button>
+            <div class="separator">
+            </div>
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d6567.379284880418!2d-2.9254948333483757!3d35.18136404969574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sma!4v1729025615960!5m2!1sen!2sma" loading="lazy"></iframe>
+            </div>
         </div>
       </div>
+    <footer>
+      <div class="left-footer">
+        <div class="foot-top">
+          <img src="images/logo-onBlack.png" alt="" />
+        </div>
+        <div class="foot-content">
+          <p>where we turn your vision to creation</p>
+        </div>
+      </div>
+      <div class="midle-left-footer">
+        <div class="foot-top">
+          <p>navigation</p>
+        </div>
+        <div class="foot-content">
+          <ul>
+            <li>
+              <a href="#">Home</a>
+              <i class="bi bi-arrow-up-right"></i>
+            </li>
+            <li>
+              <a href="#">Works</a>
+              <i class="bi bi-arrow-up-right"></i>
+            </li>
+            <li>
+              <a href="#">Services</a>
+              <i class="bi bi-arrow-up-right"></i>
+            </li>
+            <li>
+              <a href="#">Contact</a> <i class="bi bi-arrow-up-right"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="midle-right-footer">
+        <div class="foot-top">
+          <p>info</p>
+        </div>
+        <div class="foot-content">
+          <ul>
+            <li>+44 455 487 44</li>
+            <li>Nador, MA.</li>
+            <li>vision@creation.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="right-footer">
+        <div class="foot-top">
+          <p>social</p>
+        </div>
+        <div class="foot-content">
+          <ul>
+            <li>
+              <a href="#">facebook.com</a>
+              <i class="bi bi-arrow-up-right"></i>
+            </li>
+            <li>
+              <a href="#">instagram.com</a>
+              <i class="bi bi-arrow-up-right"></i>
+            </li>
+            <li>
+              <a href="#">linkedin.com</a>
+              <i class="bi bi-arrow-up-right"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <script src="js/nav.js"></script>
     </body>
 </html>

@@ -271,7 +271,7 @@ footer li i {
 .contact-section .container form,
 .contact-section .container .map {
     width: 40%;
-    min-width: 300px;
+    min-width: 400px;
     padding: 20px;
     border-radius: 20px;
 }
@@ -285,12 +285,63 @@ footer li i {
 
 
 .contact-section .container form {
-    background: white;
+
     display: flex;
     flex-direction: column;
     border-radius: 20px;
     height: 100%;
+    padding: 20px;
+    gap:40px;
 }
+.contact-section .container form div {
+  padding-bottom: 5px;
+  height: 100%;
+}
+.contact-section .container form div i {
+  transform: translateY(-3px);
+}
+.contact-section .container form div:not(.form-message){
+  display: flex;
+  align-items: center;
+}
+
+.contact-section .container form div:not(.bouton){
+  border-bottom: 1px solid white;
+}
+
+.contact-section .container form input,
+.contact-section .container form textarea{
+  background: none;
+  border: none;
+  outline: none; 
+  margin-left: 20px;
+  color: white;
+  width: 100%;
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 4px;
+  padding: 10px 5px;
+}
+
+.contact-section .container form textarea {
+  height: 180px;
+  width: calc(100% - 20px);
+}
+
+.custom-icon{
+  color:white;
+}
+.contact-section .container form label{
+  margin-left: 10px;
+}
+ 
+.contact-section .container button{
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 2em;
+}
+
+ 
 .services-section {
     background: rgb(247, 148, 7);
     background: linear-gradient(90deg, rgba(247, 148, 7, 1) 0%, rgba(255, 103, 2, 1) 46%);
@@ -299,7 +350,9 @@ footer li i {
     min-height: 100vh;
 
 }
-
+.services-section.content .bouton{
+  background: transparent;
+}
 
 
 .services-section .text {
@@ -486,4 +539,5 @@ justify-content: center;
   }
 
 }
+
 

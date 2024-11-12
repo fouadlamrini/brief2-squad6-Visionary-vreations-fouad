@@ -13,8 +13,6 @@
 	<title>Document</title>
 </head>
 <body class="bg-gray-100">
-
-    <!-- Sidebar -->
     <div class="flex min-h-screen">
         <aside class="w-64 bg-[#143095] text-white">
             <div class="p-4 text-lg font-semibold text-center">Admin Dashboard</div>
@@ -50,7 +48,80 @@
             </nav>
         </aside>
 
+        <div class="flex-1">
+            <div class="classement flex flex-wrap gap-6 p-4">
+                <!-- Niveau A1 -->
+                <div class="level bg-white shadow-lg rounded-lg p-4 w-60" data-level="A1">
+                    <h1 class="text-xl font-semibold text-gray-800 mb-4">Level A1</h1>
+                    <button class="bg-blue-500 text-white font-medium py-2 px-4 rounded mb-2 w-full" data-category="Vocabulaire">Vocabulaire</button>
+                    <button class="bg-green-500 text-white font-medium py-2 px-4 rounded mb-2 w-full" data-category="Grammaire">Grammaire</button>
+                    <button class="bg-purple-500 text-white font-medium py-2 px-4 rounded w-full" data-category="Compréhension">Compréhension</button>
+                </div>
+            
+                <!-- Niveau A2 -->
+                <div class="level bg-white shadow-lg rounded-lg p-4 w-60" data-level="A2">
+                    <h1 class="text-xl font-semibold text-gray-800 mb-4">Level A2</h1>
+                    <button class="bg-blue-500 text-white font-medium py-2 px-4 rounded mb-2 w-full" data-category="Vocabulaire">Vocabulaire</button>
+                    <button class="bg-green-500 text-white font-medium py-2 px-4 rounded mb-2 w-full" data-category="Grammaire">Grammaire</button>
+                    <button class="bg-purple-500 text-white font-medium py-2 px-4 rounded w-full" data-category="Compréhension">Compréhension</button>
+                </div>
+            
+                <!-- Niveau B1 -->
+                <div class="level bg-white shadow-lg rounded-lg p-4 w-60" data-level="B1">
+                    <h1 class="text-xl font-semibold text-gray-800 mb-4">Level B1</h1>
+                    <button class="bg-blue-500 text-white font-medium py-2 px-4 rounded mb-2 w-full" data-category="Vocabulaire">Vocabulaire</button>
+                    <button class="bg-green-500 text-white font-medium py-2 px-4 rounded mb-2 w-full" data-category="Grammaire">Grammaire</button>
+                    <button class="bg-purple-500 text-white font-medium py-2 px-4 rounded w-full" data-category="Compréhension">Compréhension</button>
+                </div>
+                <!-- Niveau B2 -->
+                <div class="level bg-white shadow-lg rounded-lg p-4 w-60" data-level="B2">
+                    <h1 class="text-xl font-semibold text-gray-800 mb-4">Level B2</h1>
+                    <button class="bg-blue-500 text-white font-medium py-2 px-4 rounded mb-2 w-full" data-category="Vocabulaire">Vocabulaire</button>
+                    <button class="bg-green-500 text-white font-medium py-2 px-4 rounded mb-2 w-full" data-category="Grammaire">Grammaire</button>
+                    <button class="bg-purple-500 text-white font-medium py-2 px-4 rounded w-full" data-category="Compréhension">Compréhension</button>
+                </div>
+            
+            <div class="level bg-white shadow-lg rounded-lg p-4 w-60" data-level="C1">
+                <h1 class="text-xl font-semibold text-gray-800 mb-4">Level C1</h1>
+                <button class="bg-blue-500 text-white font-medium py-2 px-4 rounded mb-2 w-full" data-category="Vocabulaire">Vocabulaire</button>
+                <button class="bg-green-500 text-white font-medium py-2 px-4 rounded mb-2 w-full" data-category="Grammaire">Grammaire</button>
+                <button class="bg-purple-500 text-white font-medium py-2 px-4 rounded w-full" data-category="Compréhension">Compréhension</button>
+            </div>
+            
+            <div class="level bg-white shadow-lg rounded-lg p-4 w-60" data-level="C2">
+                <h1 class="text-xl font-semibold text-gray-800 mb-4">Level C2</h1>
+                <button class="bg-blue-500 text-white font-medium py-2 px-4 rounded mb-2 w-full" data-category="Vocabulaire">Vocabulaire</button>
+                <button class="bg-green-500 text-white font-medium py-2 px-4 rounded mb-2 w-full" data-category="Grammaire">Grammaire</button>
+                <button class="bg-purple-500 text-white font-medium py-2 px-4 rounded w-full" data-category="Compréhension">Compréhension</button>
+            </div>
+            
+            
+            </div>
+            
+        
+            <div class="mt-6 flex gap-4">
+                <select id="level-filter" class="border border-gray-300 rounded-lg py-2 px-3 text-gray-700">
+                    <option value="all">Tous les niveaux</option>
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                    <option value="B1">B1</option>
+                    <option value="B2">B2</option>
+                    <option value="C1">C1</option>
+                    <option value="C2">C2</option>
+                </select>
+            
+                <select id="category-filter" class="border border-gray-300 rounded-lg py-2 px-3 text-gray-700">
+                    <option value="all">Toutes les catégories</option>
+                    <option value="Vocabulaire">Vocabulaire</option>
+                    <option value="Grammaire">Grammaire</option>
+                    <option value="Compréhension">Compréhension</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
     <!-- Material Icons for icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/script.js"></script>
 </body>
 </html>

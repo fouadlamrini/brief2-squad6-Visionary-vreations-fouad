@@ -1,0 +1,83 @@
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 200px;
+	height: 100px;
+	background: grey;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+label:after {
+	content: '';
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 90px;
+	height: 90px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+
+
+input:checked + label:after {
+	left: calc(100% - 4px);
+	transform: translateX(-100%);
+}
+
+---------
+
+/* Base styles for light mode */
+body.light-mode {
+    background-color: #ffffff; /* Light background */
+    color: #000000; /* Dark text */
+}
+
+.header {
+    background-color: #f0f0f0; /* Light header background */
+}
+
+/* Styles for dark mode */
+body.dark-mode {
+    background-color: #151414; /* Dark background */
+    color: #ffffff; /* Light text */
+}
+
+.header {
+    background-color: #000000; /* Dark header background */
+}
+
+.toggle-label {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 40px; /* Adjust as needed */
+    height: 20px; /* Adjust as needed */
+    background-color: #D49286; /* Default background color */
+    border-radius: 20px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Style for the switch when checked */
+input[type="checkbox"]:checked + .toggle-label {
+    background-color: #000000; /* Color when toggled */
+}
+
+/* Style for the toggle switch */
+input[type="checkbox"]:checked + .toggle-label::after {
+    transform: translateX(20px); /* Move the toggle switch */
+}
+
+/* Optional: Add a transition effect for the text color change */
+body {
+    transition: background-color 0.3s, color 0.3s;
+}

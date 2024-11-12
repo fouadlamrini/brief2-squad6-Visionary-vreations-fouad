@@ -473,7 +473,87 @@ function ResultRapport() {
 // }
 
 
+  //------timer
 
+let timerInterval;
+
+function startTimer(i) {
+    let timeLeft = 20; // Set the time for each question
+    const countdown = document.getElementsByClassName("countdown");
+
+    function updateTimer() {
+        const minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+        const seconds = String(timeLeft % 60).padStart(2, '0');
+        for(let i = 0; i < countdown.length; i++){
+            countdown[i].value = `${minutes}:${seconds}`;
+        }
+        
+        timeLeft--; 
+
+        if (timeLeft < 0) {
+            clearInterval(timerInterval); 
+            for(let i = 0; i < countdown.length; i++){
+                countdown[i].value = "00:00";
+            }
+            ButtonNextQuestion(i, true); // Call the function to handle time up
+        }
+    }
+    
+    clearInterval(timerInterval); 
+    updateTimer();
+    timerInterval = setInterval(updateTimer, 1000);
+}
+
+function displayQuestion() {
+    const submitAnswer = document.getElementsByClassName('Submit');
+    for (let j = 0; j < submitAnswer.length; j++) {
+        submitAnswer[j].disabled = true;
+        submitAnswer[j].classList.add("cursor-not-allowed");
+    }
+    const buttons = document.getElementsByClassName('answer-button');
+    for (let j = 0; j < buttons.length; j++) {
+        buttons[j].disabled = false;
+        buttons[j].classList.remove("cursor-not-allowed");
+    }
+
+    const question = document.getElementsByClassName("Questions");
+    
+    if (c < questionsObjet.length) {
+        Array.from(question).forEach((question) => {
+            question.classList.add("hidden");
+        });
+        question[c].classList.remove("hidden");
+        startTimer(c);  // Start the timer for the current question
+        c++;
+    } else {
+        c = 0;
+        Array.from(question).forEach((question) => {
+            question.classList.add("hidden");
+        });
+        
+        const scoreSection = document.getElementById("scoreSection");
+        scoreSection.classList.remove("hidden");
+        const scoreTitle = document.getElementById("scoreResult");
+
+        const score = localStorage.getItem("score");
+        scoreTitle.innerHTML = `${score}`;
+        seeResult();
+    }
+}
+
+
+// darck mode
+
+document.getElementById("switch").addEventListener("change", function() {
+    const body = document.getElementById("body");
+    if (this.checked) {
+        body.classList.remove("light-mode");
+        body.classList.add("dark-mode");
+    } else {
+        body.classList.remove("dark-mode");
+        body.classList.add("light-mode");
+    }
+});
 
 
 

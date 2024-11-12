@@ -1,5 +1,5 @@
 
-document.getElementById("switch").addEventListener("change", theme);
+// document.getElementById("switch").addEventListener("change", theme);
 
 function theme(){
     const label = document.querySelector('label[for="switch"]');
@@ -544,17 +544,49 @@ function displayQuestion() {
 
 // darck mode
 
-document.getElementById("switch").addEventListener("change", function() {
-    const body = document.getElementById("body");
-    if (this.checked) {
-        body.classList.remove("light-mode");
-        body.classList.add("dark-mode");
-    } else {
-        body.classList.remove("dark-mode");
-        body.classList.add("light-mode");
-    }
-});
+// document.getElementById("switch").addEventListener("change", function() {
+//     const body = document.getElementById("body");
+//     if (this.checked) {
+//         body.classList.remove("light-mode");
+//         body.classList.add("dark-mode");
+//     } else {
+//         body.classList.remove("dark-mode");
+//         body.classList.add("light-mode");
+//     }
+// });
 
+
+// filtrage par level et categorie: fouad
+
+
+document.getElementById("level-filter").addEventListener("change", filterContent);
+document.getElementById("category-filter").addEventListener("change", filterContent);
+
+function filterContent() {
+    const selectedLevel = document.getElementById("level-filter").value;
+    const selectedCategory = document.getElementById("category-filter").value;
+    const levels = document.querySelectorAll(" .level");
+
+    levels.forEach(level => {
+        const levelMatch = selectedLevel === "all" || level.getAttribute("data-level") === selectedLevel;
+        
+       
+        if (levelMatch && (selectedCategory === "all" || level.querySelector(`button[data-category="${selectedCategory}"]`))) {
+            level.style.display = "block";  
+
+            
+            level.querySelectorAll("button").forEach(button => {
+                if (selectedCategory === "all" || button.getAttribute("data-category") === selectedCategory) {
+                    button.style.display = "block";  
+                } else {
+                    button.style.display = "none";  
+                }
+            });
+        } else {
+            level.style.display = "none";  
+        }
+    });
+}
 
 
 

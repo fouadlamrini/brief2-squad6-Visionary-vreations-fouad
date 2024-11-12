@@ -563,6 +563,49 @@ document.getElementById("switch").addEventListener("change", function() {
 
 
 
+//--------------------brahim -----------------------------------
+//-----------------Utilisateur : Création de Compte--------------------------
+function userName(){
+    const userName = document.getElementById('userName');
+    if(userName.value !== ""){
+        // Créer l'objet utilisateur avec ID random
+        const user = {
+            id: Math.floor(Math.random() * 1000000),
+            name: userName.value,
+            date: new Date().toLocaleDateString()
+        }
+        
+        // Sauvegarder l'objet dans localStorage
+        localStorage.setItem(`user_${user.id}`, JSON.stringify(user));
+        
+        // Afficher la section utilisateur
+        const homeSection = document.getElementById('homeSection');
+        homeSection.classList.add("hidden");
+        const userSection = document.getElementById("userSection");
+        userSection.classList.remove("hidden");
+        
+        // Vérifier si c'est un ancien utilisateur
+        oldData = localStorage.getItem("userName");
+        const oldscore = document.getElementById("oldscore");
+        if(oldData === userName.value){
+            oldscore.classList.remove("hidden");
+            const spanName = document.getElementById("theUserName");
+            spanName.innerHTML = userName.value;
+        } else {
+            oldscore.classList.add("hidden");
+        }
+        
+        localStorage.setItem("userName", userName.value);
+    } else {
+        alert("Enter your Name");
+    }
+}
+
+
+
+
+
+
 
 
 

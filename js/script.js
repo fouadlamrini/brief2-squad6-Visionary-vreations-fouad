@@ -1,5 +1,5 @@
 
-document.getElementById("switch").addEventListener("change", theme);
+// document.getElementById("switch").addEventListener("change", theme);
 
 function theme(){
     const label = document.querySelector('label[for="switch"]');
@@ -544,16 +544,96 @@ function displayQuestion() {
 
 // darck mode
 
-document.getElementById("switch").addEventListener("change", function() {
-    const body = document.getElementById("body");
-    if (this.checked) {
-        body.classList.remove("light-mode");
-        body.classList.add("dark-mode");
+// document.getElementById("switch").addEventListener("change", function() {
+//     const body = document.getElementById("body");
+//     if (this.checked) {
+//         body.classList.remove("light-mode");
+//         body.classList.add("dark-mode");
+//     } else {
+//         body.classList.remove("dark-mode");
+//         body.classList.add("light-mode");
+//     }
+// });
+
+
+// filtrage par level et categorie: fouad
+
+
+document.getElementById("level-filter").addEventListener("change", filterContent);
+document.getElementById("category-filter").addEventListener("change", filterContent);
+
+function filterContent() {
+    const selectedLevel = document.getElementById("level-filter").value;
+    const selectedCategory = document.getElementById("category-filter").value;
+    const levels = document.querySelectorAll(" .level");
+
+    levels.forEach(level => {
+        const levelMatch = selectedLevel === "all" || level.getAttribute("data-level") === selectedLevel;
+        
+       
+        if (levelMatch && (selectedCategory === "all" || level.querySelector(`button[data-category="${selectedCategory}"]`))) {
+            level.style.display = "block";  
+
+            
+            level.querySelectorAll("button").forEach(button => {
+                if (selectedCategory === "all" || button.getAttribute("data-category") === selectedCategory) {
+                    button.style.display = "block";  
+                } else {
+                    button.style.display = "none";  
+                }
+            });
+        } else {
+            level.style.display = "none";  
+        }
+    });
+}
+
+
+
+
+
+
+
+
+//--------------------brahim -----------------------------------
+//-----------------Utilisateur : Création de Compte--------------------------
+function userName(){
+    const userName = document.getElementById('userName');
+    if(userName.value !== ""){
+        // Créer l'objet utilisateur avec ID random
+        const user = {
+            id: Math.floor(Math.random() * 1000000),
+            name: userName.value,
+            date: new Date().toLocaleDateString()
+        }
+        
+        // Sauvegarder l'objet dans localStorage
+        localStorage.setItem(`user_${user.id}`, JSON.stringify(user));
+        
+        // Afficher la section utilisateur
+        const homeSection = document.getElementById('homeSection');
+        homeSection.classList.add("hidden");
+        const userSection = document.getElementById("userSection");
+        userSection.classList.remove("hidden");
+        
+        // Vérifier si c'est un ancien utilisateur
+        oldData = localStorage.getItem("userName");
+        const oldscore = document.getElementById("oldscore");
+        if(oldData === userName.value){
+            oldscore.classList.remove("hidden");
+            const spanName = document.getElementById("theUserName");
+            spanName.innerHTML = userName.value;
+        } else {
+            oldscore.classList.add("hidden");
+        }
+        
+        localStorage.setItem("userName", userName.value);
     } else {
-        body.classList.remove("dark-mode");
-        body.classList.add("light-mode");
+        alert("Enter your Name");
     }
-});
+}
+
+
 
 
 

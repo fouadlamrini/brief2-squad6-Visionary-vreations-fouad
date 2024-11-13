@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="tailwinsScript/script.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+	
+	
+
+	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+	<title>Document</title>
+</head>
+<body class="bg-gray-100">
+    <div class="flex min-h-screen">
+        <aside class="w-64 bg-[#143095] text-white">
+            <div class="p-4 text-lg font-semibold text-center">Admin Dashboard</div>
+            <nav class="mt-5">
+                <ul>
+                    <li>
+                        <li>
+                            <a href="admin.html" class="flex items-center p-4 hover:bg-gray-700">
+                                <span class="material-icons">dashboard</span>
+                                <span class="ml-2">Dashboard</span>
+                            </a>
+                        </li>
+                    </li>
+                    <li>
+                        <a href="Résultats.html" class="flex items-center p-4 hover:bg-gray-700">
+                            <span class="material-icons">people</span>
+                            <span class="ml-2">Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="edite.html" class="flex items-center p-4 hover:bg-gray-700">
+                            <span class="material-icons">settings</span>
+                            <span class="ml-2">Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center p-4 hover:bg-gray-700">
+                            <span class="material-icons">logout</span>
+                            <span class="ml-2">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+            <!-- Question Management Interface in the Level Card -->
+        <div class="level bg-white shadow-lg rounded-lg p-4 w-60" data-level="A1">
+            <h1 class="text-xl font-semibold text-gray-800 mb-4">Level A1</h1>
+            <button class="bg-blue-500 text-white font-medium py-2 px-4 rounded mb-2 w-full" onclick="openQuestionForm('A1')">Add Question</button>
+            <button class="bg-gray-500 text-white font-medium py-2 px-4 rounded mb-2 w-full" onclick="editQuestion('A1')">Edit Question</button>
+            <button class="bg-red-500 text-white font-medium py-2 px-4 rounded w-full" onclick="deleteQuestion('A1')">Delete Question</button>
+        </div>
+
+        <!-- Modal for Adding/Editing Questions -->
+        <div id="questionModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
+            <div class="bg-white rounded-lg p-6 w-96">
+                <h2 id="modalTitle" class="text-lg font-semibold mb-4">Add/Edit Question</h2>
+                <form id="questionForm">
+                    <div class="mb-4">
+                        <textarea id="question" class="border border-gray-300 rounded-lg w-full px-3 py-2 text-gray-700"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <select id="category" class="border border-gray-300 rounded-lg w-full px-3 py-2 text-gray-700">
+                            <option value="Vocabulaire">Vocabulaire</option>
+                            <option value="Grammaire">Grammaire</option>
+                            <option value="Compréhension">Compréhension</option>
+                        </select>
+                    </div>
+                    <div class="flex justify-end space-x-2">
+                        <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded" onclick="closeModal()">Cancel</button>
+                        <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded" onclick="saveQuestion()">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        
+ 
+        </div>
+
+
+        <script>
+            let currentLevel = '';
+
+function openQuestionForm(level) {
+    currentLevel = level;
+    document.getElementById('modalTitle').textContent = `Add Question for ${level}`;
+    document.getElementById('questionForm').reset();
+    document.getElementById('questionModal').classList.remove('hidden');
+}
+
+function editQuestion(level) {
+    currentLevel = level;
+    document.getElementById('modalTitle').textContent = `Edit Question for ${level}`;
+    // Populate the form with existing question details if needed
+    document.getElementById('questionModal').classList.remove('hidden');
+}
+
+function deleteQuestion(level) {
+    if (confirm(`Are you sure you want to delete a question from level ${level}?`)) {
+        // Logic to delete the question (e.g., remove from a data array or database)
+        alert(`Question for ${level} has been deleted.`);
+    }
+}
+
+function saveQuestion() {
+    const question = document.getElementById('question').value;
+    const category = document.getElementById('category').value;
+
+    if (question) {
+        // Logic to save the question for the current level (e.g., add to a data array or database)
+        alert(`Question saved for ${currentLevel} - ${category}`);
+        closeModal();
+    } else {
+        alert('Please enter a question.');
+    }
+}
+
+function closeModal() {
+    document.getElementById('questionModal').classList.add('hidden');
+}
+
+        </script>
+
+    <!-- Material Icons for icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/script.js"></script>
+</body>
+</html>

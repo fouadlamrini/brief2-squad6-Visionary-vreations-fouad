@@ -396,28 +396,51 @@ function seeResult(){
 
 
 function userName(){
+    const adminUsername = "admin@DFI.com";
+    const adminPassword = "admin123";
     const userName = document.getElementById('userName');
-    if(userName.value !== ""){
+    const password = document.getElementById("password").value;
+    if (userName.value !== "") {
         const homeSection = document.getElementById('homeSection');
         homeSection.classList.add("hidden");
         const userSection = document.getElementById("userSection");
         userSection.classList.remove("hidden");
-        oldData = localStorage.getItem("userName");
+        const oldData = localStorage.getItem("userName");
         const oldscore = document.getElementById("oldscore");
-        if(oldData === userName.value ){
+
+        if (userName.value === adminUsername && password === adminPassword) {
+            window.location.href = "admin.html";
+        } else if (oldData === userName.value) {
             oldscore.classList.remove("hidden");
             const spanName = document.getElementById("theUserName");
             spanName.innerHTML = userName.value;
-        }
-        else{
+        } else {
             oldscore.classList.add("hidden");
-            
         }
+
         localStorage.setItem("userName", userName.value);
-    }
-    else{
+    } else {
         alert("Enter your Name");
     }
+}
+
+function ResultRapport() {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF();
+    let pdfContent = "";
+
+   
+   
+
+    for (let i = 0; i < questionsObjet.length; i++) {
+        const userAnswer = localStorage.getItem(`question${i}`);
+        const content = localStorage.getItem(`Question_Content${i}`);
+        const correctAnswer = localStorage.getItem(`Corret_Answer${i}`);
+        pdfContent += `${i + 1}. ${content}\nVotre réponse : ${userAnswer}\nRéponse correcte : ${correctAnswer}\n\n`;
+    }
+
+    pdf.text(pdfContent, 10, 10);
+    pdf.save("Rapport_Quiz.pdf");
 }
 
 
@@ -609,43 +632,6 @@ function logout() {
 
 
 
-//--------------------brahim -----------------------------------
-//-----------------Utilisateur : Création de Compte--------------------------
-function userName(){
-    const userName = document.getElementById('userName');
-    if(userName.value !== ""){
-        // Créer l'objet utilisateur avec ID random
-        const user = {
-            id: Math.floor(Math.random() * 1000000),
-            name: userName.value,
-            date: new Date().toLocaleDateString()
-        }
-        
-        // Sauvegarder l'objet dans localStorage
-        localStorage.setItem(`user_${user.id}`, JSON.stringify(user));
-        
-        // Afficher la section utilisateur
-        const homeSection = document.getElementById('homeSection');
-        homeSection.classList.add("hidden");
-        const userSection = document.getElementById("userSection");
-        userSection.classList.remove("hidden");
-        
-        // Vérifier si c'est un ancien utilisateur
-        oldData = localStorage.getItem("userName");
-        const oldscore = document.getElementById("oldscore");
-        if(oldData === userName.value){
-            oldscore.classList.remove("hidden");
-            const spanName = document.getElementById("theUserName");
-            spanName.innerHTML = userName.value;
-        } else {
-            oldscore.classList.add("hidden");
-        }
-        
-        localStorage.setItem("userName", userName.value);
-    } else {
-        alert("Enter your Name");
-    }
-}
 
 
 

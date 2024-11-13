@@ -590,6 +590,20 @@ function filterContent() {
 
 
 
+// script.js
+
+function logout() {
+    // Clear user session data (if applicable)
+    // For example, if you are using localStorage to store user info:
+    localStorage.removeItem('user'); // Adjust the key as necessary
+
+    // Optionally, you can also clear cookies or session storage if used
+    // sessionStorage.clear(); // Uncomment if you want to clear session storage
+
+    // Redirect to the login page or home page after logout
+    window.location.href = 'login.html'; // Change 'login.html' to your login page URL
+}
+
 
 
 

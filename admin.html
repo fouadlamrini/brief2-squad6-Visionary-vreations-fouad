@@ -20,7 +20,7 @@
                 <ul>
                     <li>
                         <li>
-                            <a href="admin.html" class="flex items-center p-4 hover:bg-gray-700">
+                            <a href="admin.html" class="flex items-center p-4  bg-gray-700 hover:bg-gray-700">
                                 <span class="material-icons">dashboard</span>
                                 <span class="ml-2">Dashboard</span>
                             </a>
@@ -39,7 +39,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center p-4 hover:bg-gray-700">
+                        <a href="#" class="flex items-center p-4 hover:bg-gray-700" onclick="logout()">
                             <span class="material-icons">logout</span>
                             <span class="ml-2">Logout</span>
                         </a>
@@ -130,5 +130,12 @@
     <!-- Material Icons for icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="js/script.js"></script>
+    <script>
+        function logout() {
+            console.log("Logout function called"); // This will log to the console
+            localStorage.removeItem('user'); // Adjust the key as necessary
+            window.location.href = 'index.html'; // Change 'login.html' to your login page URL
+        }
+    </script>
 </body>
 </html>

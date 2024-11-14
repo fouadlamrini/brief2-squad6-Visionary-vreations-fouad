@@ -25,7 +25,7 @@
                         </li>
                     </li>
                     <li>
-                        <a href="Résultats.html" class="flex items-center p-4 hover:bg-gray-700">
+                        <a href="Résultats.html" class="flex items-center p-4 bg-gray-700 hover:bg-gray-700">
                             <span class="material-icons">people</span>
                             <span class="ml-2">Users</span>
                         </a>
@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center p-4 hover:bg-gray-700">
+                        <a href="#" class="flex items-center p-4 hover:bg-gray-700" onclick="logout()">
                             <span class="material-icons">logout</span>
                             <span class="ml-2">Logout</span>
                         </a>
@@ -74,10 +74,10 @@
                 <table class="min-w-full bg-white shadow-md rounded">
                     <thead>
                         <tr>
-                            <th class="py-2 px-4 bg-blue-200">Nom d'utilisateur</th>
-                            <th class="py-2 px-4 bg-blue-200">Niveau</th>
-                            <th class="py-2 px-4 bg-blue-200">Score</th>
-                            <th class="py-2 px-4 bg-blue-200">Date de Test</th>
+                            <th class="py-2 px-4 bg-gray-700">Nom d'utilisateur</th>
+                            <th class="py-2 px-4 bg-gray-700">Niveau</th>
+                            <th class="py-2 px-4 bg-gray-700">Score</th>
+                            <th class="py-2 px-4 bg-gray-700">Date de Test</th>
                         </tr>
                     </thead>
                     <tbody id="scoreTable">
@@ -91,7 +91,7 @@
 
     <script>
 
-        
+   
         // Open and close preview modal
         function openPreview() {
             document.getElementById('previewModal').classList.remove('hidden');
@@ -102,9 +102,9 @@
 
         // Sample data for user scores
         const scores = [
-            { name: 'Alice', level: 'A1', score: 85, date: '2023-11-01' },
-            { name: 'Bob', level: 'B1', score: 92, date: '2023-10-15' },
-            { name: 'Charlie', level: 'C2', score: 78, date: '2023-11-05' }
+            { name: 'Rayan ', level: 'A1', score: 85, date: '2023-11-01' },
+            { name: 'Brahim', level: 'B1', score: 92, date: '2023-10-15' },
+            { name: 'Omar', level: 'C2', score: 78, date: '2023-11-05' }
         ];
 
         // Function to render score table based on filters
@@ -141,12 +141,18 @@
 
         // Initial render
         renderScores();
-
-        
+ 
     </script>
 
   <!-- Material Icons for icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="js/script.js"></script>
+  <script>
+    function logout() {
+        console.log("Logout function called"); // This will log to the console
+        localStorage.removeItem('user'); // Adjust the key as necessary
+        window.location.href = 'index.html'; // Change 'login.html' to your login page URL
+    }
+</script>
 </body>
 </html>

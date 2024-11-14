@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="tailwinsScript/script.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Statistiques</title>
+</head>
+<body class="bg-gray-100">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-[#143095] text-white">
+            <div class="p-4 text-lg font-semibold text-center">Admin Dashboard</div>
+            <nav class="mt-5">
+                <ul>
+                    <li>
+                        <a href="admin.html" class="flex items-center p-4 hover:bg-gray-700">
+                            <span class="material-icons">dashboard</span>
+                            <span class="ml-2">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="statistique.html" class="flex items-center p-4 hover:bg-gray-700">
+                            <span class="material-icons">analytics</span>
+                            <span class="ml-2">Statistiques</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="edite.html" class="flex items-center p-4 hover:bg-gray-700">
+                            <span class="material-icons">settings</span>
+                            <span class="ml-2">Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html" class="flex items-center p-4 hover:bg-gray-700">
+                            <span class="material-icons">logout</span>
+                            <span class="ml-2">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8">
+            <h1 class="text-2xl font-bold mb-6">Statistiques des Utilisateurs</h1>
+            
+            <!-- Filtres -->
+            <div class="mb-6 flex gap-4">
+                <select id="userFilter" class="border p-2 rounded">
+                    <option value="all">Tous les utilisateurs</option>
+                </select>
+                <select id="levelFilter" class="border p-2 rounded">
+                    <option value="all">Tous les niveaux</option>
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                    <option value="B1">B1</option>
+                    <option value="B2">B2</option>
+                    <option value="C1">C1</option>
+                    <option value="C2">C2</option>
+                </select>
+            </div>
+
+            <!-- Tableau des statistiques -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b-2">
+                            <th class="p-2 text-left">Utilisateur</th>
+                            <th class="p-2 text-left">Niveau</th>
+                            <th class="p-2 text-left">Score</th>
+                            <th class="p-2 text-left">attempt</th>
+                            <th class="p-2 text-left">Progression</th>
+                        </tr>
+                    </thead>
+                    <tbody id="statsTableBody">
+                        <!-- Les données seront insérées ici via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/statistique.js"></script>
+</body>
+</html>

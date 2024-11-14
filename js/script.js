@@ -61,68 +61,610 @@ function theme(){
 // =============================================
 // =============================================
 
-const questionsObjet = [
-    { 
-        question: "Quel mot complète la phrase suivante : 'Il est important de ____ pour rester en bonne santé.'", 
-        title: "Grammaire et Lexique",
-        options: ["manger", "jouer", "dormir", "courir"], 
-        answer: "dormir" 
+const quizQuestions = [
+    // Niveau A1
+    {
+      level: "A1",
+      categories: {
+        grammaire: [
+          { 
+            question: "Complétez la phrase : 'Je _____ un livre.'",
+            options: ["lis", "lire", "lira", "lu"],
+            answer: "lis"
+          },
+          { 
+            question: "Complétez la phrase : 'Il _____ beaucoup de devoirs.'",
+            options: ["a", "est", "ont", "sont"],
+            answer: "a"
+          },
+          { 
+            question: "Complétez la phrase : 'Nous _____ à l'école.'",
+            options: ["allons", "allée", "aller", "irons"],
+            answer: "allons"
+          },
+          { 
+            question: "Complétez la phrase : 'Tu _____ un animal.'",
+            options: ["as", "a", "es", "ont"],
+            answer: "as"
+          },
+          { 
+            question: "Complétez la phrase : 'Elle _____ un livre.'",
+            options: ["lit", "lire", "lit", "lis"],
+            answer: "lit"
+          },
+          { 
+            question: "Complétez la phrase : 'Nous _____ du pain.'",
+            options: ["mangeons", "mange", "manger", "mangent"],
+            answer: "mangeons"
+          },
+          { 
+            question: "Complétez la phrase : 'Je _____ au parc.'",
+            options: ["vais", "va", "aller", "allé"],
+            answer: "vais"
+          },
+          { 
+            question: "Complétez la phrase : 'Ils _____ dans une grande maison.'",
+            options: ["vivent", "vivent", "vivre", "vivraient"],
+            answer: "vivent"
+          },
+          { 
+            question: "Complétez la phrase : 'Elle _____ dans le jardin.'",
+            options: ["court", "court", "courir", "cours"],
+            answer: "court"
+          },
+          { 
+            question: "Complétez la phrase : 'Nous ______ des jeux.'",
+            options: ["jouons", "joue", "jouer", "jouerons"],
+            answer: "jouons"
+          }
+        ],
+        vocabulaire: [
+          { 
+            question: "Quel est le contraire de 'grand' ?",
+            options: ["petit", "large", "beau", "haut"],
+            answer: "petit"
+          },
+          { 
+            question: "Que signifie 'chien' ?",
+            options: ["Un animal", "Un fruit", "Une couleur", "Un vêtement"],
+            answer: "Un animal"
+          },
+          { 
+            question: "Quel est l'intrus dans cette liste ?",
+            options: ["voiture", "bicyclette", "moto", "pomme"],
+            answer: "pomme"
+          },
+          { 
+            question: "Que signifie 'soleil' ?",
+            options: ["Un fruit", "Un animal", "Un astre", "Un objet"],
+            answer: "Un astre"
+          },
+          { 
+            question: "Quel est le contraire de 'sombre' ?",
+            options: ["Clair", "Vif", "Solide", "Lumineux"],
+            answer: "Lumineux"
+          },
+          { 
+            question: "Que signifie 'chaud' ?",
+            options: ["Froid", "Épais", "Température élevée", "Lourd"],
+            answer: "Température élevée"
+          },
+          { 
+            question: "Quel est l'intrus ?",
+            options: ["table", "chaise", "livre", "pomme"],
+            answer: "pomme"
+          },
+          { 
+            question: "Quel est le contraire de 'bas' ?",
+            options: ["haut", "grand", "lourd", "court"],
+            answer: "haut"
+          },
+          { 
+            question: "Complétez : Un _____ a des poils.",
+            options: ["chien", "arbre", "soleil", "fleur"],
+            answer: "chien"
+          },
+          { 
+            question: "Quel est l'élément essentiel pour la photosynthèse ?",
+            options: ["Soleil", "Lune", "Air", "Feu"],
+            answer: "Soleil"
+          }
+        ],
+        comprehension: [
+          { 
+            question: "Qu'est-ce que l'on fait après le déjeuner ?",
+            options: ["Manger", "Dormir", "Se lever", "Travailler"],
+            answer: "Se lever"
+          },
+          { 
+            question: "Que fait-on dans une école ?",
+            options: ["Chanter", "Apprendre", "Cuisiner", "Nager"],
+            answer: "Apprendre"
+          },
+          { 
+            question: "Si tu veux boire de l'eau, que fais-tu ?",
+            options: ["Manger", "Marcher", "Boire", "Écrire"],
+            answer: "Boire"
+          },
+          { 
+            question: "Que met-on sur la tête quand il pleut ?",
+            options: ["Chapeau", "Parapluie", "Lunettes", "Sac"],
+            answer: "Parapluie"
+          },
+          { 
+            question: "Que faut-il faire pour cuisiner ?",
+            options: ["Lire", "Mélanger", "Chanter", "Marcher"],
+            answer: "Mélanger"
+          },
+          { 
+            question: "Que fait-on quand on est fatigué ?",
+            options: ["Dormir", "S'amuser", "Cuisiner", "Marcher"],
+            answer: "Dormir"
+          },
+          { 
+            question: "Si tu veux lire un livre, tu _____",
+            options: ["Chantes", "Vas à l'école", "Lis", "Écris"],
+            answer: "Lis"
+          },
+          { 
+            question: "Que fais-tu quand il pleut ?",
+            options: ["Nager", "Courir", "Prendre un parapluie", "Manger"],
+            answer: "Prendre un parapluie"
+          },
+          { 
+            question: "Quand il fait chaud, on porte des _____",
+            options: ["Manteaux", "Tongs", "Gants", "Bottes"],
+            answer: "Tongs"
+          },
+          { 
+            question: "Que fais-tu avec un livre ?",
+            options: ["Lire", "Dormir", "Manger", "Faire du sport"],
+            answer: "Lire"
+          }
+        ]
+      }
     },
-    { 
-        question: "Choisissez le synonyme de 'joyeux'.", 
-        title: "Lexique",
-        options: ["triste", "content", "furieux", "jaloux"], 
-        answer: "content" 
+    // Niveau A2
+    {
+      level: "A2",
+      categories: {
+        grammaire: [
+          { 
+            question: "Complétez la phrase : 'Ils _____ des vacances.'",
+            options: ["prennent", "prendre", "pris", "prend"],
+            answer: "prennent"
+          },
+          { 
+            question: "Complétez la phrase : 'Nous _____ la musique classique.'",
+            options: ["aimons", "aimer", "aime", "aimé"],
+            answer: "aimons"
+          },
+          { 
+            question: "Complétez : 'Elles _____ du shopping chaque samedi.'",
+            options: ["font", "fait", "faire", "fera"],
+            answer: "font"
+          },
+          { 
+            question: "Complétez la phrase : 'Je _____ en France l'année dernière.'",
+            options: ["suis allé", "allais", "ira", "vas"],
+            answer: "suis allé"
+          },
+          { 
+            question: "Complétez la phrase : 'Il _____ beau aujourd'hui.'",
+            options: ["fait", "fais", "faisons", "faisait"],
+            answer: "fait"
+          }
+        ],
+        vocabulaire: [
+          { 
+            question: "Que signifie 'hiver' ?",
+            options: ["Une saison", "Un mois", "Une couleur", "Un légume"],
+            answer: "Une saison"
+          },
+          { 
+            question: "Quel est l'intrus ?",
+            options: ["lundi", "mai", "mars", "dimanche"],
+            answer: "mai"
+          },
+          { 
+            question: "Quel est le contraire de 'riche' ?",
+            options: ["pauvre", "heureux", "jeune", "petit"],
+            answer: "pauvre"
+          },
+          { 
+            question: "Quel est l'intrus dans cette liste ?",
+            options: ["chien", "chat", "fleur", "oiseau"],
+            answer: "fleur"
+          },
+          { 
+            question: "Que signifie 'nager' ?",
+            options: ["Voler", "Marcher", "Sauter", "Se déplacer dans l'eau"],
+            answer: "Se déplacer dans l'eau"
+          }
+        ],
+        comprehension: [
+          { 
+            question: "Que fait-on dans un restaurant ?",
+            options: ["Dormir", "Manger", "Nager", "Courir"],
+            answer: "Manger"
+          },
+          { 
+            question: "Que fait-on avec un téléphone ?",
+            options: ["Écouter de la musique", "Dormir", "Lire un livre", "Jouer au football"],
+            answer: "Écouter de la musique"
+          },
+          { 
+            question: "Qu'est-ce qu'on achète dans une boulangerie ?",
+            options: ["Pain", "Vêtements", "Journaux", "Jouets"],
+            answer: "Pain"
+          },
+          { 
+            question: "Que porte-t-on pour protéger ses pieds ?",
+            options: ["Chaussures", "Chapeau", "Lunettes", "Écharpe"],
+            answer: "Chaussures"
+          },
+          { 
+            question: "Que fait-on en été ?",
+            options: ["Aller à la plage", "Porter un manteau", "Allumer le chauffage", "Manger une soupe chaude"],
+            answer: "Aller à la plage"
+          }
+        ]
+      }
     },
-    { 
-        question: "Complétez avec la bonne préposition : 'Je vais ____ école en voiture.'", 
-        title: "Grammaire",
-        options: ["au", "à l'", "à la", "dans l'"], 
-        answer: "à l'" 
+  
+    // Niveau B1
+    {
+      level: "B1",
+      categories: {
+        grammaire: [
+          { 
+            question: "Complétez : 'Si j'avais le temps, je _____ en vacances.'",
+            options: ["partirais", "partirai", "partais", "partir"],
+            answer: "partirais"
+          },
+          { 
+            question: "Complétez : 'Ils _____ arriver à l'heure.'",
+            options: ["doivent", "devraient", "devra", "pourraient"],
+            answer: "devraient"
+          },
+          { 
+            question: "Complétez : 'Il est important que tu _____.'",
+            options: ["viennes", "viens", "venir", "vienne"],
+            answer: "viennes"
+          },
+          { 
+            question: "Complétez : 'Nous _____ d'acheter une nouvelle voiture.'",
+            options: ["avons décidé", "avons decide", "décide", "décidions"],
+            answer: "avons décidé"
+          },
+          { 
+            question: "Complétez : 'Elle _____ qu'il viendrait.'",
+            options: ["croyait", "croit", "crois", "croira"],
+            answer: "croyait"
+          }
+        ],
+        vocabulaire: [
+          { 
+            question: "Que signifie 'épuisé' ?",
+            options: ["Très fatigué", "Très content", "Très énervé", "Très surpris"],
+            answer: "Très fatigué"
+          },
+          { 
+            question: "Quel est le synonyme de 'rapide' ?",
+            options: ["Lent", "Vif", "Doux", "Mou"],
+            answer: "Vif"
+          },
+          { 
+            question: "Quel est le contraire de 'début' ?",
+            options: ["Fin", "Milieu", "Commencement", "Ouverture"],
+            answer: "Fin"
+          },
+          { 
+            question: "Quel est l'intrus ?",
+            options: ["poisson", "cheval", "chien", "maison"],
+            answer: "maison"
+          },
+          { 
+            question: "Quel est le synonyme de 'habiter' ?",
+            options: ["Vivre", "Construire", "Parler", "Dessiner"],
+            answer: "Vivre"
+          }
+        ],
+        comprehension: [
+          { 
+            question: "Que fait-on dans une bibliothèque ?",
+            options: ["Lire", "Nager", "Courir", "Manger"],
+            answer: "Lire"
+          },
+          { 
+            question: "Qu'est-ce que la météo annonce ?",
+            options: ["Le temps qu'il fera", "Les émissions TV", "Les résultats sportifs", "Les films à l'affiche"],
+            answer: "Le temps qu'il fera"
+          },
+          { 
+            question: "Où peut-on trouver des œuvres d'art ?",
+            options: ["Au musée", "À la banque", "À la boulangerie", "Au gymnase"],
+            answer: "Au musée"
+          },
+          { 
+            question: "Que fait-on dans un hôpital ?",
+            options: ["Se faire soigner", "Faire ses courses", "Apprendre", "Jouer"],
+            answer: "Se faire soigner"
+          },
+          { 
+            question: "Qu'est-ce que l'on met dans une valise ?",
+            options: ["Des vêtements", "De l'eau", "Des meubles", "De la nourriture"],
+            answer: "Des vêtements"
+          }
+        ]
+      }
     },
-    { 
-        question: "Quel mot est l’intrus ?", 
-        title: "Vocabulaire",
-        options: ["pomme", "orange", "raisin", "chaise"], 
-        answer: "chaise" 
+  
+    // Niveau B2
+    {
+      level: "B2",
+      categories: {
+        grammaire: [
+          { 
+            question: "Complétez : 'Je doute qu'il _____ venir.'",
+            options: ["puisse", "peut", "pouvez", "pouvait"],
+            answer: "puisse"
+          },
+          { 
+            question: "Complétez : 'Nous _____ que c'était une bonne idée.'",
+            options: ["avons pensé", "pensons", "pense", "pensaient"],
+            answer: "avons pensé"
+          },
+          { 
+            question: "Complétez : 'Ils _____ réussir sans aide.'",
+            options: ["pourraient", "peuvent", "pourront", "pouvez"],
+            answer: "pourraient"
+          },
+          { 
+            question: "Complétez : 'Si tu _____ plus tôt, tu serais arrivé à temps.'",
+            options: ["étais parti", "partirais", "partiras", "pars"],
+            answer: "étais parti"
+          },
+          { 
+            question: "Complétez : 'Elle _____ être la meilleure de sa classe.'",
+            options: ["pourrait", "peut", "pouvait", "pourrez"],
+            answer: "pourrait"
+          }
+        ],
+        vocabulaire: [
+          { 
+            question: "Que signifie 'intempérie' ?",
+            options: ["Mauvais temps", "Bon temps", "Température", "Humidité"],
+            answer: "Mauvais temps"
+          },
+          { 
+            question: "Quel est le synonyme de 'compétence' ?",
+            options: ["Habileté", "Amitié", "Richesse", "Paix"],
+            answer: "Habileté"
+          },
+          { 
+            question: "Quel est le contraire de 'complet' ?",
+            options: ["Incomplet", "Parfait", "Entier", "Total"],
+            answer: "Incomplet"
+          },
+          { 
+            question: "Quel est le synonyme de 'difficile' ?",
+            options: ["Compliqué", "Facile", "Simple", "Pratique"],
+            answer: "Compliqué"
+          },
+          { 
+            question: "Quel est l'intrus ?",
+            options: ["orange", "pomme", "école", "banane"],
+            answer: "école"
+          }
+        ],
+        comprehension: [
+          { 
+            question: "Quel est le rôle d'un avocat ?",
+            options: ["Défendre les clients", "Cuisiner", "Enseigner", "Soigner les patients"],
+            answer: "Défendre les clients"
+          },
+          { 
+            question: "Que fait-on dans un avion ?",
+            options: ["Voyager", "Nager", "Manger", "Dormir"],
+            answer: "Voyager"
+          },
+          { 
+            question: "Où peut-on consulter un médecin ?",
+            options: ["À l'hôpital", "À l'école", "Au cinéma", "Au restaurant"],
+            answer: "À l'hôpital"
+          },
+          { 
+            question: "Que signifie 'écologique' ?",
+            options: ["Respectueux de l'environnement", "Cher", "Nouveau", "Facile"],
+            answer: "Respectueux de l'environnement"
+          },
+          { 
+            question: "Qu'est-ce qu'on fait pour économiser de l'énergie ?",
+            options: ["Éteindre les lumières", "Allumer toutes les lumières", "Prendre la voiture", "Laisser les appareils en marche"],
+            answer: "Éteindre les lumières"
+          }
+        ]
+      }
     },
-    { 
-        question: "Comment conjuguer correctement le verbe dans la phrase : 'Nous ____ au cinéma hier soir.'", 
-        title: "Conjugaison",
-        options: ["allons", "irions", "sommes allés", "irons"], 
-        answer: "sommes allés" 
+  
+    // Niveau C1
+    {
+      level: "C1",
+      categories: {
+        grammaire: [
+          { 
+            question: "Complétez : 'Il est possible qu'il _____ déjà parti.'",
+            options: ["soit", "sera", "est", "était"],
+            answer: "soit"
+          },
+          { 
+            question: "Complétez : 'Bien qu'elle _____, elle a refusé de céder.'",
+            options: ["ait compris", "comprenait", "comprendre", "compris"],
+            answer: "ait compris"
+          },
+          { 
+            question: "Complétez : 'Si seulement nous _____ plus tôt de ce problème.'",
+            options: ["avions su", "savons", "sachions", "savions"],
+            answer: "avions su"
+          },
+          { 
+            question: "Complétez : 'Je doute que cette solution _____ efficace à long terme.'",
+            options: ["soit", "est", "serait", "était"],
+            answer: "soit"
+          },
+          { 
+            question: "Complétez : 'Quoiqu'il _____ tard, il a continué à travailler.'",
+            options: ["fût", "est", "sera", "était"],
+            answer: "fût"
+          }
+        ],
+        vocabulaire: [
+          { 
+            question: "Que signifie 'pragmatique' ?",
+            options: ["Réfléchi et réaliste", "Optimiste", "Compliqué", "Ignorant"],
+            answer: "Réfléchi et réaliste"
+          },
+          { 
+            question: "Quel est le synonyme de 'pertinent' ?",
+            options: ["Adéquat", "Lent", "Rapide", "Irrationnel"],
+            answer: "Adéquat"
+          },
+          { 
+            question: "Quel est le contraire de 'rationnel' ?",
+            options: ["Irrationnel", "Pratique", "Évident", "Efficace"],
+            answer: "Irrationnel"
+          },
+          { 
+            question: "Quel est le synonyme de 'avide' ?",
+            options: ["Cupide", "Content", "Léger", "Patient"],
+            answer: "Cupide"
+          },
+          { 
+            question: "Quel est l'intrus ?",
+            options: ["loquace", "bavard", "muet", "parleur"],
+            answer: "muet"
+          }
+        ],
+        comprehension: [
+          { 
+            question: "Quel est l'objectif principal d'une thèse universitaire ?",
+            options: ["Présenter des recherches approfondies", "Faire de la publicité", "Raconter une histoire", "Divertir le lecteur"],
+            answer: "Présenter des recherches approfondies"
+          },
+          { 
+            question: "Quel est l'impact des énergies renouvelables sur l'environnement ?",
+            options: ["Réduire les émissions de gaz à effet de serre", "Augmenter la pollution", "Ralentir l'économie", "Aggraver le changement climatique"],
+            answer: "Réduire les émissions de gaz à effet de serre"
+          },
+          { 
+            question: "Pourquoi le recyclage est-il important ?",
+            options: ["Il aide à conserver les ressources naturelles", "Il coûte très cher", "Il est dangereux", "Il prend beaucoup de place"],
+            answer: "Il aide à conserver les ressources naturelles"
+          },
+          { 
+            question: "Que signifie 'altruisme' ?",
+            options: ["S'intéresser au bien-être des autres", "Penser d'abord à soi-même", "Accumuler des richesses", "Éviter les contacts sociaux"],
+            answer: "S'intéresser au bien-être des autres"
+          },
+          { 
+            question: "Pourquoi les opinions sont-elles importantes dans un débat ?",
+            options: ["Elles enrichissent les perspectives", "Elles empêchent de conclure", "Elles déroutent les participants", "Elles bloquent le dialogue"],
+            answer: "Elles enrichissent les perspectives"
+          }
+        ]
+      }
     },
-    { 
-        question: "Quelle est la bonne orthographe ?", 
-        title: "Orthographe",
-        options: ["apparament", "apparemment", "aparrement", "apperemment"], 
-        answer: "apparemment" 
-    },
-    { 
-        question: "Quel pronom convient dans cette phrase : '____ avons fini notre travail.'", 
-        title: "Grammaire",
-        options: ["Vous", "Ils", "Nous", "Elles"], 
-        answer: "Nous" 
-    },
-    { 
-        question: "Complétez avec le mot qui convient : 'Elle a acheté un cadeau ____ son frère.'", 
-        title: "Grammaire",
-        options: ["pour", "à", "avec", "chez"], 
-        answer: "pour" 
-    },
-    { 
-        question: "Quel est l’antonyme de 'clair' ?", 
-        title: "Lexique",
-        options: ["léger", "sombre", "lumineux", "chaud"], 
-        answer: "sombre" 
-    },
-    { 
-        question: "Complétez avec le verbe correct : 'Les enfants ____ dans le parc tous les jours.'", 
-        title: "Conjugaison",
-        options: ["joue", "jouons", "jouent", "jouer"], 
-        answer: "jouent" 
+  
+    // Niveau C2
+    {
+      level: "C2",
+      categories: {
+        grammaire: [
+          { 
+            question: "Complétez : 'Il affirme que, tout bien considéré, il _____ accepter les conditions proposées.'",
+            options: ["pourrait", "peut", "pouvait", "avait pu"],
+            answer: "pourrait"
+          },
+          { 
+            question: "Complétez : 'Il eut fallu que nous _____ avant de procéder.'",
+            options: ["en discutions", "en discutons", "en avons discuté", "discutions"],
+            answer: "en discutions"
+          },
+          { 
+            question: "Complétez : 'À supposer qu’il _____ là, que feriez-vous ?'",
+            options: ["fût", "sera", "est", "soit"],
+            answer: "fût"
+          },
+          { 
+            question: "Complétez : 'Eût-il eu connaissance de ces faits, il n’_____ pas accepté.'",
+            options: ["aurait", "aura", "avait", "a"],
+            answer: "aurait"
+          },
+          { 
+            question: "Complétez : 'Elle aurait préféré qu'il _____ plus tôt.'",
+            options: ["partît", "partait", "partirait", "est parti"],
+            answer: "partît"
+          }
+        ],
+        vocabulaire: [
+          { 
+            question: "Que signifie 'contingent' dans le contexte d’une analyse ?",
+            options: ["Dépendant des circonstances", "Évident", "Indépendant", "Immuable"],
+            answer: "Dépendant des circonstances"
+          },
+          { 
+            question: "Quel est le synonyme de 'omniscient' ?",
+            options: ["Tout-puissant", "Ignorant", "Perspicace", "Savant"],
+            answer: "Savant"
+          },
+          { 
+            question: "Que signifie 'périssable' ?",
+            options: ["Qui se détériore", "Qui est éternel", "Qui est flexible", "Qui est artificiel"],
+            answer: "Qui se détériore"
+          },
+          { 
+            question: "Quel est le synonyme de 'disparate' ?",
+            options: ["Hétérogène", "Similaire", "Stable", "Constamment"],
+            answer: "Hétérogène"
+          },
+          { 
+            question: "Que signifie 'incisif' ?",
+            options: ["Pénétrant", "Léger", "Confus", "Silencieux"],
+            answer: "Pénétrant"
+          }
+        ],
+        comprehension: [
+          { 
+            question: "Pourquoi la méthodologie est-elle cruciale dans une étude scientifique ?",
+            options: ["Elle garantit la validité des résultats", "Elle accélère le travail", "Elle réduit les coûts", "Elle simplifie la compréhension"],
+            answer: "Elle garantit la validité des résultats"
+          },
+          { 
+            question: "Quel rôle jouent les biais dans une analyse critique ?",
+            options: ["Ils influencent les conclusions", "Ils renforcent la neutralité", "Ils n'ont aucun impact", "Ils sont souhaitables"],
+            answer: "Ils influencent les conclusions"
+          },
+          { 
+            question: "Pourquoi l'éthique est-elle centrale dans la recherche médicale ?",
+            options: ["Pour protéger les sujets de recherche", "Pour maximiser les profits", "Pour simplifier les expériences", "Pour réduire les coûts"],
+            answer: "Pour protéger les sujets de recherche"
+          },
+          { 
+            question: "Que signifie 'exhaustivité' dans un contexte de recherche ?",
+            options: ["Couvrir tous les aspects pertinents", "Être rapide", "Être peu détaillé", "Ignorer les données secondaires"],
+            answer: "Couvrir tous les aspects pertinents"
+          },
+          { 
+            question: "Comment interpréter une étude longitudinale ?",
+            options: ["En analysant des données sur une longue période", "En étudiant un instant précis", "En se basant sur des hypothèses", "En excluant certaines variables"],
+            answer: "En analysant des données sur une longue période"
+          }
+        ]
+      }
     }
-];
+  
+  ];
 
 
 
@@ -612,6 +1154,20 @@ function filterContent() {
 }
 
 
+
+// script.js
+
+function logout() {
+    // Clear user session data (if applicable)
+    // For example, if you are using localStorage to store user info:
+    localStorage.removeItem('user'); // Adjust the key as necessary
+
+    // Optionally, you can also clear cookies or session storage if used
+    // sessionStorage.clear(); // Uncomment if you want to clear session storage
+
+    // Redirect to the login page or home page after logout
+    window.location.href = 'login.html'; // Change 'login.html' to your login page URL
+}
 
 
 

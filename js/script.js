@@ -1507,8 +1507,8 @@ function loginFunction(){
   const users = JSON.parse(localStorage.getItem("users")) ;
   const email = document.getElementById("userName").value;
   const password = document.getElementById("password").value;
-
-
+  
+  
   const userActuel = users.find((user) => user.email === email && user.password === password );
   const userActuelEmail = users.find((user) => user.email === email );
   
@@ -1518,7 +1518,7 @@ function loginFunction(){
     }
     else {
       localStorage.setItem("userActuel", JSON.stringify(userActuel));
-      userLevels();
+
       window.location.href = "userActuel.html";
     }
     
@@ -1532,7 +1532,7 @@ function loginFunction(){
       const createAccount = confirm(
         "This email doesn't exist. Would you like to create a new account with this email and password?"
       );
-
+      
       if (createAccount) {
         addUser(email, password);
       } else {

@@ -65,7 +65,8 @@
 
 //     },
 // ]
-const quizQuestions = [
+
+let quizQuestions = [
   // Niveau A1
   {
     level: "A1",
@@ -802,6 +803,7 @@ const quizQuestions = [
       ]
     }
   }
+
 
 
 ];

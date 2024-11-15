@@ -676,31 +676,40 @@ const quizQuestions = [
     categories: {
       grammaire: [
         { 
+
           id:91,
           question: "Complétez : 'Il affirme que, tout bien considéré, il _____ accepter les conditions proposées.'",
           options: ["pourrait", "peut", "pouvait", "avait pu"],
           answer: "pourrait"
         },
         { 
+
           id: 92,
+
           question: "Complétez : 'Il eut fallu que nous _____ avant de procéder.'",
           options: ["en discutions", "en discutons", "en avons discuté", "discutions"],
           answer: "en discutions"
         },
         { 
+
           id: 93,
+
           question: "Complétez : 'À supposer qu’il _____ là, que feriez-vous ?'",
           options: ["fût", "sera", "est", "soit"],
           answer: "fût"
         },
         { 
+
           id: 94,
+
           question: "Complétez : 'Eût-il eu connaissance de ces faits, il n’_____ pas accepté.'",
           options: ["aurait", "aura", "avait", "a"],
           answer: "aurait"
         },
         { 
+
           id: 95,
+
           question: "Complétez : 'Elle aurait préféré qu'il _____ plus tôt.'",
           options: ["partît", "partait", "partirait", "est parti"],
           answer: "partît"
@@ -708,31 +717,41 @@ const quizQuestions = [
       ],
       vocabulaire: [
         { 
+
           id: 96,
+
           question: "Que signifie 'contingent' dans le contexte d’une analyse ?",
           options: ["Dépendant des circonstances", "Évident", "Indépendant", "Immuable"],
           answer: "Dépendant des circonstances"
         },
         { 
+
           id: 97,
+
           question: "Quel est le synonyme de 'omniscient' ?",
           options: ["Tout-puissant", "Ignorant", "Perspicace", "Savant"],
           answer: "Savant"
         },
         { 
+
           id: 98,
+
           question: "Que signifie 'périssable' ?",
           options: ["Qui se détériore", "Qui est éternel", "Qui est flexible", "Qui est artificiel"],
           answer: "Qui se détériore"
         },
         { 
+
           id: 99,
+
           question: "Quel est le synonyme de 'disparate' ?",
           options: ["Hétérogène", "Similaire", "Stable", "Constamment"],
           answer: "Hétérogène"
         },
         { 
+
           id: 100,
+
           question: "Que signifie 'incisif' ?",
           options: ["Pénétrant", "Léger", "Confus", "Silencieux"],
           answer: "Pénétrant"
@@ -740,31 +759,42 @@ const quizQuestions = [
       ],
       comprehension: [
         { 
+
           id: 101,
+
+
           question: "Pourquoi la méthodologie est-elle cruciale dans une étude scientifique ?",
           options: ["Elle garantit la validité des résultats", "Elle accélère le travail", "Elle réduit les coûts", "Elle simplifie la compréhension"],
           answer: "Elle garantit la validité des résultats"
         },
         { 
+
           id: 102,
+
           question: "Quel rôle jouent les biais dans une analyse critique ?",
           options: ["Ils influencent les conclusions", "Ils renforcent la neutralité", "Ils n'ont aucun impact", "Ils sont souhaitables"],
           answer: "Ils influencent les conclusions"
         },
         { 
+
           id: 103,
+
           question: "Pourquoi l'éthique est-elle centrale dans la recherche médicale ?",
           options: ["Pour protéger les sujets de recherche", "Pour maximiser les profits", "Pour simplifier les expériences", "Pour réduire les coûts"],
           answer: "Pour protéger les sujets de recherche"
         },
         { 
+
           id: 104,
+
           question: "Que signifie 'exhaustivité' dans un contexte de recherche ?",
           options: ["Couvrir tous les aspects pertinents", "Être rapide", "Être peu détaillé", "Ignorer les données secondaires"],
           answer: "Couvrir tous les aspects pertinents"
         },
         { 
+
           id: 105,
+
           question: "Comment interpréter une étude longitudinale ?",
           options: ["En analysant des données sur une longue période", "En étudiant un instant précis", "En se basant sur des hypothèses", "En excluant certaines variables"],
           answer: "En analysant des données sur une longue période"
@@ -773,8 +803,8 @@ const quizQuestions = [
     }
   }
 
-];
 
+];
 
 // Fonction pour initialiser les questions
 function initializeQuestions() {
@@ -785,6 +815,130 @@ function initializeQuestions() {
       quizQuestions = JSON.parse(savedQuestions);
   }
 }
+
+// function addUser(name, password) {
+//   const users = JSON.parse(localStorage.getItem("users")) || [];
+//   const user = {
+//     name: name,
+//     password: password,
+//     status: "user",
+//     levels: {
+//       A1: {
+//         categories: {
+//           grammaire: { validation: false, attempts: 0, time: 0 },
+//           vocabulaire: { validation: false, attempts: 0, time: 0 },
+//           comprehension: { validation: false, attempts: 0, time: 0 },
+//         },
+//       },
+//       A2: {
+//         categories: {
+//           grammaire: { validation: false, attempts: 0, time: 0 },
+//           vocabulaire: { validation: false, attempts: 0, time: 0 },
+//           comprehension: { validation: false, attempts: 0, time: 0 },
+//         },
+//       },
+//       B1: {
+//         categories: {
+//           grammaire: { validation: false, attempts: 0, time: 0 },
+//           vocabulaire: { validation: false, attempts: 0, time: 0 },
+//           comprehension: { validation: false, attempts: 0, time: 0 },
+//         },
+//       },
+//       B2: {
+//         categories: {
+//           grammaire: { validation: false, attempts: 0, time: 0 },
+//           vocabulaire: { validation: false, attempts: 0, time: 0 },
+//           comprehension: { validation: false, attempts: 0, time: 0 },
+//         },
+//       },
+//       C1: {
+//         categories: {
+//           grammaire: { validation: false, attempts: 0, time: 0 },
+//           vocabulaire: { validation: false, attempts: 0, time: 0 },
+//           comprehension: { validation: false, attempts: 0, time: 0 },
+//         },
+//       },
+//       C2: {
+//         categories: {
+//           grammaire: { validation: false, attempts: 0, time: 0 },
+//           vocabulaire: { validation: false, attempts: 0, time: 0 },
+//           comprehension: { validation: false, attempts: 0, time: 0 },
+//         },
+//       },
+//     },
+//   };
+//   users.push(user);
+//   localStorage.setItem("users", JSON.stringify(users));
+// }
+
+let questionsObjet = [
+  {
+    question:
+      "Quel mot complète la phrase suivante : 'Il est important de ____ pour rester en bonne santé.'",
+    title: "Grammaire et Lexique",
+    options: ["manger", "jouer", "dormir", "courir"],
+    answer: "dormir",
+  },
+  {
+    question: "Choisissez le synonyme de 'joyeux'.",
+    title: "Lexique",
+    options: ["triste", "content", "furieux", "jaloux"],
+    answer: "content",
+  },
+  {
+    question:
+      "Complétez avec la bonne préposition : 'Je vais ____ école en voiture.'",
+    title: "Grammaire",
+    options: ["au", "à l'", "à la", "dans l'"],
+    answer: "à l'",
+  },
+  {
+    question: "Quel mot est l’intrus ?",
+    title: "Vocabulaire",
+    options: ["pomme", "orange", "raisin", "chaise"],
+    answer: "chaise",
+  },
+  {
+    question:
+      "Comment conjuguer correctement le verbe dans la phrase : 'Nous ____ au cinéma hier soir.'",
+    title: "Conjugaison",
+    options: ["allons", "irions", "sommes allés", "irons"],
+    answer: "sommes allés",
+  },
+  {
+    question: "Quelle est la bonne orthographe ?",
+    title: "Orthographe",
+    options: ["apparament", "apparemment", "aparrement", "apperemment"],
+    answer: "apparemment",
+  },
+  {
+    question:
+      "Quel pronom convient dans cette phrase : '____ avons fini notre travail.'",
+    title: "Grammaire",
+    options: ["Vous", "Ils", "Nous", "Elles"],
+    answer: "Nous",
+  },
+  {
+    question:
+      "Complétez avec le mot qui convient : 'Elle a acheté un cadeau ____ son frère.'",
+    title: "Grammaire",
+    options: ["pour", "à", "avec", "chez"],
+    answer: "pour",
+  },
+  {
+    question: "Quel est l’antonyme de 'clair' ?",
+    title: "Lexique",
+    options: ["léger", "sombre", "lumineux", "chaud"],
+    answer: "sombre",
+  },
+  {
+    question:
+      "Complétez avec le verbe correct : 'Les enfants ____ dans le parc tous les jours.'",
+    title: "Conjugaison",
+    options: ["joue", "jouons", "jouent", "jouer"],
+    answer: "jouent",
+  },
+];
 
 
 function satrtQuizzLevel(level,categorie){
@@ -797,7 +951,6 @@ function satrtQuizzLevel(level,categorie){
   const selectedLevel = quizQuestions.find(quiz => quiz.level === level);
   const selectedCategorie = selectedLevel.categories[categorie]
 
-  console.log(selectedCategorie);
   
   const quizContainer = document.getElementById("quiz");
   quizContainer.classList.remove("hidden");
@@ -1335,42 +1488,59 @@ function validatePassword(password) {
 
 
 
-
-function loginFunction(){
+function addAdmin(){
   const users = JSON.parse(localStorage.getItem("users")) || [];
-  const email = document.getElementById("userName").value;
-  const password = document.getElementById("password").value;
-
-
   if (users.length === 0) {
     const admin = {
       email: "admin@gmail.com",
-      password: "admin1234",
+      password: "Admin1234!",
       status: "admin",
       levels :{}
     };
     users.push(admin);
     localStorage.setItem("users", JSON.stringify(users));
-  } 
-  else{
-    const userActuel = users.find((user) => user.email === email && user.password === password );
-    const userActuelEmail = users.find((user) => user.email === email );
+  }
 
-    if (userActuel) {
+}
+function loginFunction(){
+  const users = JSON.parse(localStorage.getItem("users")) ;
+  const email = document.getElementById("userName").value;
+  const password = document.getElementById("password").value;
+
+
+  const userActuel = users.find((user) => user.email === email && user.password === password );
+  const userActuelEmail = users.find((user) => user.email === email );
+  
+  if (userActuel) {
+    if (userActuel.status === "admin") {
+      window.location.href = 'admin.html'; 
+    }
+    else {
       localStorage.setItem("userActuel", JSON.stringify(userActuel));
       userLevels();
       window.location.href = "userActuel.html";
-
     }
-    else {
-      if(userActuelEmail){
-        alert("Mot de passe incorrect");
-      }
-      else{
-        addUser(email,password);
-      }
-    }
+    
   }
+  else {
+    if(userActuelEmail){
+      alert("Mot de passe incorrect");
+    }
+    else{
+      
+      const createAccount = confirm(
+        "This email doesn't exist. Would you like to create a new account with this email and password?"
+      );
+
+      if (createAccount) {
+        addUser(email, password);
+      } else {
+        alert("Please fill out the form again.");
+      }
+    }
+
+      
+    }
 }
 
 function addUser(){
@@ -1444,6 +1614,7 @@ function addUser(){
   window.location.href = "userActuel.html";
   userLevels();
 
+
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -1451,21 +1622,11 @@ document.addEventListener("DOMContentLoaded", function() {
   if (window.location.pathname === '/userActuel.html') {
     userLevels();
   }
+  if (window.location.pathname === '/index.html') {
+    addAdmin();
+  }
 });
 
 
-function userLevels(){
-  console.log("User Lavels");
-  const userActuel = JSON.parse(localStorage.getItem("userActuel"));
-  
-
-  const levelA1Grammar = userActuel.levels.A1.grammaire.validation;
-  const levelA1Vocab = userActuel.levels.A1.vocabulaire.validation;
-
-  const levelA1Comp = userActuel.levels.A1.comprehension.validation;
-
-
-
-}
 
 

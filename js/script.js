@@ -326,7 +326,15 @@ let quizQuestions = [
 
 ];
 
-
+// Fonction pour initialiser les questions
+function initializeQuestions() {
+  const savedQuestions = localStorage.getItem('quizQuestions');
+  if (!savedQuestions) {
+      localStorage.setItem('quizQuestions', JSON.stringify(quizQuestions));
+  } else {
+      quizQuestions = JSON.parse(savedQuestions);
+  }
+}
 
 // function addUser(name, password) {
 //   const users = JSON.parse(localStorage.getItem("users")) || [];

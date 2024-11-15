@@ -944,21 +944,20 @@ let questionsObjet = [
 
 
 function satrtQuizzLevel(level,categorie){
-  userscore = 0
+
   const userSection = document.getElementById("userSection");
   userSection.classList.add("hidden");
 
   let shuffledQuestions;
 
   const selectedLevel = quizQuestions.find(quiz => quiz.level === level);
-  const selectedCategorie = selectedLevel.categories[categorie]
+  const selectedCategorie = selectedLevel.categories[categorie];
 
   
   const quizContainer = document.getElementById("quiz");
   quizContainer.classList.remove("hidden");
   quizContainer.innerHTML = "";
 
-  localStorage.setItem(`score`,userscore); 
   questionsObjet = selectedCategorie;
   shuffledQuestions = shuffle(questionsObjet) ;
   shuffledQuestions.forEach((q, index) => {
@@ -1129,6 +1128,7 @@ function ButtonNextQuestion(i, isTimer = false) {
     id.classList.add("border-green-500");
     userscore += 1;
     localStorage.setItem(`score`, userscore);
+    
   } else {
     const allOptionValue = document.getElementsByClassName("OptionValue");
 
@@ -1176,7 +1176,7 @@ function displayQuestion() {
       question.classList.add("hidden");
     });
     question[c].classList.remove("hidden");
-    // startTimer(c);
+
     c++;
   } else {
     c = 0;
@@ -1366,6 +1366,7 @@ function startTimer(i) {
 }
 
 function displayQuestion() {
+
   const submitAnswer = document.getElementsByClassName("Submit");
   for (let j = 0; j < submitAnswer.length; j++) {
     submitAnswer[j].disabled = true;
@@ -1485,8 +1486,6 @@ function validatePassword(password) {
   const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   return passwordPattern.test(password);
 }
-
-
 
 
 
@@ -1621,9 +1620,9 @@ function addUser(){
 
 document.addEventListener("DOMContentLoaded", function() {
  
-  if (window.location.pathname === '/userActuel.html') {
-    userLevels();
-  }
+  // if (window.location.pathname === '/userActuel.html') {
+  //   userLevels();
+  // }
   if (window.location.pathname === '/index.html') {
     addAdmin();
   }

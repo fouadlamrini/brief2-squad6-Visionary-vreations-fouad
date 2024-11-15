@@ -264,6 +264,7 @@ let quizQuestions = [
   }
 ];
 
+
 // Fonction pour initialiser les questions
 function initializeQuestions() {
   const savedQuestions = localStorage.getItem('quizQuestions');
@@ -273,6 +274,7 @@ function initializeQuestions() {
       quizQuestions = JSON.parse(savedQuestions);
   }
 }
+
 
 function satrtQuizzLevel(level,categorie){
   userscore = 0
@@ -749,12 +751,8 @@ function displayQuestion() {
 
 // filtrage par level et categorie: fouad
 
-document
-  .getElementById("level-filter")
-  .addEventListener("change", filterContent);
-document
-  .getElementById("category-filter")
-  .addEventListener("change", filterContent);
+// document.getElementById("level-filter").addEventListener("change", filterContent);
+// document.getElementById("category-filter").addEventListener("change", filterContent);
 
 function filterContent() {
   const selectedLevel = document.getElementById("level-filter").value;
@@ -813,20 +811,150 @@ function logout() {
 
 
 
+function validateEmail(email) {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailPattern.test(email);
+}
+function validatePassword(password) {
+  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  return passwordPattern.test(password);
+}
 
 
 
 
 
 
+function loginFunction(){
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const email = document.getElementById("userName").value;
+  const password = document.getElementById("password").value;
+
+
+  if (users.length === 0) {
+    const admin = {
+      email: "admin@gmail.com",
+      password: "admin1234",
+      status: "admin",
+      levels :{}
+    };
+    users.push(admin);
+    localStorage.setItem("users", JSON.stringify(users));
+  } 
+  else{
+    const userActuel = users.find((user) => user.email === email && user.password === password );
+    const userActuelEmail = users.find((user) => user.email === email );
+
+    if (userActuel) {
+      localStorage.setItem("userActuel", JSON.stringify(userActuel));
+      userLevels();
+      window.location.href = "userActuel.html";
+
+    }
+    else {
+      if(userActuelEmail){
+        alert("Mot de passe incorrect");
+      }
+      else{
+        addUser(email,password);
+      }
+    }
+  }
+}
+
+function addUser(){
+  const users = JSON.parse(localStorage.getItem("users"));
+  const email = document.getElementById("userName").value;
+  const password = document.getElementById("password").value;
+  if (!validateEmail(email)) {
+    alert("L'email n'est pas valide.");
+    return false;
+  }
+  
+  if (!validatePassword(password)) {
+    alert("Le mot de passe n'est pas valide.");
+    return false;
+  }
+  
+  const user = {
+    email: email,
+    password: password,
+    status: "user",
+    levels: {
+      A1: {
+        categories: {
+          grammaire: { validation: false, attempts: 0, time: 0 },
+          vocabulaire: { validation: false, attempts: 0, time: 0 },
+          comprehension: { validation: false, attempts: 0, time: 0 },
+        },
+      },
+      A2: {
+        categories: {
+          grammaire: { validation: false, attempts: 0, time: 0 },
+          vocabulaire: { validation: false, attempts: 0, time: 0 },
+          comprehension: { validation: false, attempts: 0, time: 0 },
+        },
+      },
+      B1: {
+        categories: {
+          grammaire: { validation: false, attempts: 0, time: 0 },
+          vocabulaire: { validation: false, attempts: 0, time: 0 },
+          comprehension: { validation: false, attempts: 0, time: 0 },
+        },
+      },
+      B2: {
+        categories: {
+          grammaire: { validation: false, attempts: 0, time: 0 },
+          vocabulaire: { validation: false, attempts: 0, time: 0 },
+          comprehension: { validation: false, attempts: 0, time: 0 },
+        },
+      },
+      C1: {
+      categories: {
+        grammaire: { validation: false, attempts: 0, time: 0 },
+        vocabulaire: { validation: false, attempts: 0, time: 0 },
+        comprehension: { validation: false, attempts: 0, time: 0 },
+      },
+    },
+    C2: {
+      categories: {
+        grammaire: { validation: false, attempts: 0, time: 0 },
+        vocabulaire: { validation: false, attempts: 0, time: 0 },
+        comprehension: { validation: false, attempts: 0, time: 0 },
+      },
+    },
+  },
+  };
+
+  users.push(user);
+  localStorage.setItem("users", JSON.stringify(users));
+  const userActuel = users.find((user) => user.email === email && user.password === password );
+  localStorage.setItem("userActuel", JSON.stringify(userActuel));
+  window.location.href = "userActuel.html";
+  userLevels();
+
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+ 
+  if (window.location.pathname === '/userActuel.html') {
+    userLevels();
+  }
+});
+
+
+function userLevels(){
+  console.log("User Lavels");
+  const userActuel = JSON.parse(localStorage.getItem("userActuel"));
+  
+
+  const levelA1Grammar = userActuel.levels.A1.grammaire.validation;
+  const levelA1Vocab = userActuel.levels.A1.vocabulaire.validation;
+
+  const levelA1Comp = userActuel.levels.A1.comprehension.validation;
 
 
 
-
-
-
-
-
-
+}
 
 

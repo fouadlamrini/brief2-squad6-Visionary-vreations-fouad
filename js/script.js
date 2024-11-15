@@ -462,7 +462,7 @@ let questionsObjet = [
 
 
 function satrtQuizzLevel(level,categorie){
-  userscore = 0
+  userActuelScore = 0
   const userSection = document.getElementById("userSection");
   userSection.classList.add("hidden");
 
@@ -476,7 +476,7 @@ function satrtQuizzLevel(level,categorie){
   quizContainer.classList.remove("hidden");
   quizContainer.innerHTML = "";
 
-  localStorage.setItem(`score`,userscore); 
+  localStorage.setItem(`score`,userActuelScore); 
   questionsObjet = selectedCategorie;
   shuffledQuestions = shuffle(questionsObjet) ;
   shuffledQuestions.forEach((q, index) => {
@@ -1148,5 +1148,19 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+function userLevels(){
+  const userActuel = JSON.parse(localStorage.getItem("userActuel"));
+  const Grammar = userActuel.levels.A1.categories.grammaire.validation;
+  const Voc = userActuel.levels.A1.categories.grammaire.validation;
+  const Com = userActuel.levels.A1.categories.grammaire.validation;
 
+  if(Grammar === true && Voc === true && Com === true){
+    const disabeledLevel = document.getElementById("A1Voc");
+    disabeledLevel.classList.remove("opacity-50");
+    disabeledLevel.classList.remove("pointer-events-none");
+    disabeledLevel.classList.add("cursor-pointer");
+
+  }
+
+}
 

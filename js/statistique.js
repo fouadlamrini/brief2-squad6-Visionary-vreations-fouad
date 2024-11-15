@@ -1,68 +1,133 @@
-
-const users = {
-    'user_1': {
-        username: 'Ahmed',
-        level: 'A1',
-        score: 10,
-        attempts: {
-            A1: { count: 2 },
-            A2: { count: 0 },
-            B1: { count: 0 },
-            B2: { count: 0 },
-            C1: { count: 0 },
-            C2: { count: 0 }
-        }
+const user = {
+    name: "fouad",
+    password:"fouad123" ,
+    status: "user",
+    levels: {
+      A1: {
+        categories: {
+          grammaire: { validation: true, attempts: 1, time: 0 },
+          vocabulaire: { validation: true, attempts: 0, time: 0 },
+          comprehension: { validation: true, attempts: 0, time: 0 },
+        },
+      },
+      A2: {
+        categories: {
+          grammaire: { validation: false, attempts: 0, time: 0 },
+          vocabulaire: { validation: true, attempts: 0, time: 0 },
+          comprehension: { validation: true, attempts: 0, time: 0 },
+        },
+      },
+      B1: {
+        categories: {
+          grammaire: { validation: false, attempts: 0, time: 0 },
+          vocabulaire: { validation: false, attempts: 0, time: 0 },
+          comprehension: { validation: false, attempts: 0, time: 0 },
+        },
+      },
+      B2: {
+        categories: {
+          grammaire: { validation: false, attempts: 0, time: 0 },
+          vocabulaire: { validation: false, attempts: 0, time: 0 },
+          comprehension: { validation: true, attempts: 0, time: 0 },
+        },
+      },
+      C1: {
+        categories: {
+          grammaire: { validation: true, attempts: 0, time: 0 },
+          vocabulaire: { validation: false, attempts: 0, time: 0 },
+          comprehension: { validation: false, attempts: 0, time: 0 },
+        },
+      },
+      C2: {
+        categories: {
+          grammaire: { validation: false, attempts: 0, time: 0 },
+          vocabulaire: { validation: false, attempts: 0, time: 0 },
+          comprehension: { validation: false, attempts: 0, time: 0 },
+        },
+      },
     },
-    'user_2': {
-        username: 'Sarah',
-        level: 'B1',
-        score: 7,
-        attempts: {
-            A1: { count: 3 },
-            A2: { count: 2 },
-            B1: { count: 1 },
-            B2: { count: 0 },
-            C1: { count: 0 },
-            C2: { count: 0 }
-        }   
-    },
-    'user_3': {
-        username: 'muhamed',
-        level: 'C1',
-        score: 10,
-        attempts: {
-            A1: { count: 3 },
-            A2: { count: 3 },
-            B1: { count: 2 },
-            B2: { count: 1 },
-            C1: { count: 2 },
-            C2: { count: 0 }
-        }
-    }
-};
-
+  };
 
 function initializeDefaultData() {
-    Object.entries(users).forEach(([key, value]) => {
-        if (!localStorage.getItem(key)) {
-            localStorage.setItem(key, JSON.stringify(value));
-        }
-    });
+    if (!localStorage.getItem('users')) {
+        const initialUsers = {
+            'user1': JSON.parse(JSON.stringify(user))
+        };
+        localStorage.setItem('users', JSON.stringify(initialUsers));
+    }
+    watchAndUpdateValidation();
 }
 
+function watchAndUpdateValidation() {
+    const users = JSON.parse(localStorage.getItem('users'));
+    if (users && users.user1) {
+       
+        users.user1.levels.A1.categories.grammaire.validation = user.levels.A1.categories.grammaire.validation;
+        users.user1.levels.A1.categories.vocabulaire.validation = user.levels.A1.categories.vocabulaire.validation;
+        users.user1.levels.A1.categories.comprehension.validation = user.levels.A1.categories.comprehension.validation;
+        
+        
+        users.user1.levels.A2.categories.grammaire.validation = user.levels.A2.categories.grammaire.validation;
+        users.user1.levels.A2.categories.vocabulaire.validation = user.levels.A2.categories.vocabulaire.validation;
+        users.user1.levels.A2.categories.comprehension.validation = user.levels.A2.categories.comprehension.validation;
+      
+        users.user1.levels.B1.categories.grammaire.validation = user.levels.B1.categories.grammaire.validation;
+        users.user1.levels.B1.categories.vocabulaire.validation = user.levels.B1.categories.vocabulaire.validation;
+        users.user1.levels.B1.categories.comprehension.validation = user.levels.B1.categories.comprehension.validation;
+        
+        
+        users.user1.levels.B2.categories.grammaire.validation = user.levels.B2.categories.grammaire.validation;
+        users.user1.levels.B2.categories.vocabulaire.validation = user.levels.B2.categories.vocabulaire.validation;
+        users.user1.levels.B2.categories.comprehension.validation = user.levels.B2.categories.comprehension.validation;
+        
+        users.user1.levels.C1.categories.grammaire.validation = user.levels.C1.categories.grammaire.validation;
+        users.user1.levels.C1.categories.vocabulaire.validation = user.levels.C1.categories.vocabulaire.validation;
+        users.user1.levels.C1.categories.comprehension.validation = user.levels.C1.categories.comprehension.validation;
+        
+        
+        users.user1.levels.C2.categories.grammaire.validation = user.levels.C2.categories.grammaire.validation;
+        users.user1.levels.C2.categories.vocabulaire.validation = user.levels.C2.categories.vocabulaire.validation;
+        users.user1.levels.C2.categories.comprehension.validation = user.levels.C2.categories.comprehension.validation;
+
+       
+        Object.entries(user.levels).forEach(([level, levelData]) => {
+            Object.entries(levelData.categories).forEach(([category, categoryData]) => {
+                if (categoryData.validation) {
+                    users.user1.levels[level].categories[category].attempts = 1;
+                }
+            });
+        });
+        
+        localStorage.setItem('users', JSON.stringify(users));
+        updateStatsTable(document.getElementById('levelFilter')?.value || 'all');
+    }
+}
+
+setInterval(watchAndUpdateValidation, 1000);
+
+function updateExistingData() {
+    const users = JSON.parse(localStorage.getItem('users'));
+    if (users && users.user1) {
+        users.user1.levels.A1.categories.grammaire.validation = true;
+        users.user1.levels.A1.categories.vocabulaire.validation = true;
+        users.user1.levels.A1.categories.comprehension.validation = true;
+        
+        users.user1.levels.A1.categories.grammaire.attempts = 1;
+        users.user1.levels.A1.categories.vocabulaire.attempts = 1;
+        users.user1.levels.A1.categories.comprehension.attempts = 1;
+        
+        localStorage.setItem('users', JSON.stringify(users));
+    }
+}
 
 function getUserStats() {
-    const users = {};
-    const keys = Object.keys(localStorage);
-    
-    keys.forEach(key => {
-        if (key.startsWith('user_')) {
-            const userData = JSON.parse(localStorage.getItem(key));
-            users[key] = userData;
-        }
-    });
-    
-    return users;
+    try {
+        const users = JSON.parse(localStorage.getItem('users')) || {};
+        return users;
+    } catch (e) {
+        console.error('Error parsing users data:', e);
+        return {};
+    }
 }
 
 
@@ -75,65 +140,61 @@ function getStatus(progress, attempts) {
     return attempts.count.toString();
 }
 
-function updateStatsTable(filterUser = 'all', filterLevel = 'all') {
+function updateStatsTable(filterLevel = 'all') {
     const tableBody = document.getElementById('statsTableBody');
     const users = getUserStats();
     tableBody.innerHTML = '';
 
+    const levelStats = {};
+
+    
     Object.entries(users).forEach(([userId, userData]) => {
-        if ((filterUser === 'all' || userId === filterUser) &&
-            (filterLevel === 'all' || userData.level === filterLevel)) {
+        Object.entries(userData.levels).forEach(([level, levelData]) => {
+            if (!levelStats[level]) {
+                levelStats[level] = { totalCategories: 0, successCount: 0 };
+            }
             
             
-            const levelAttempts = userData.attempts[userData.level];
-            const categories = ['grammaire', 'vocabulaire', 'comprehension'];
-            
-            categories.forEach(category => {
-                const progress = calculateProgress(userData.score);
-                const row = document.createElement('tr');
-                row.classList.add('border-b');
-                
-                row.innerHTML = `
-                    <td class="p-2">${userData.level} - ${category}</td>
-                    <td class="p-2">${levelAttempts[category]?.count || 0}</td>
-                    <td class="p-2">
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: ${progress}%"></div>
-                        </div>
-                        <span class="text-sm">${progress}%</span>
-                    </td>
-                `;
-                
-                tableBody.appendChild(row);
+            Object.values(levelData.categories).forEach(categoryData => {
+                levelStats[level].totalCategories++;
+                if (categoryData.validation === true) {
+                    levelStats[level].successCount++;
+                }
             });
+        });
+    });
+
+    
+    Object.entries(levelStats).forEach(([level, stats]) => {
+        if (filterLevel === 'all' || level === filterLevel) {
+            const row = document.createElement('tr');
+            row.classList.add('border-b');
+            
+            
+            const successRate = (stats.successCount / stats.totalCategories) * 100;
+            
+            row.innerHTML = `
+                <td class="p-2">${level}</td>
+                <td class="p-2">${stats.totalCategories}</td>
+                <td class="p-2">
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-blue-600 h-2.5 rounded-full" style="width: ${successRate}%"></div>
+                    </div>
+                </td>
+                <td class="p-2">${successRate.toFixed(1)}%</td>
+            `;
+            
+            tableBody.appendChild(row);
         }
     });
 }
 
-
-function updateFilters() {
-    
-    const userFilter = document.getElementById('userFilter');
-    const users = getUserStats();
-    
-    userFilter.innerHTML = '<option value="all">Tous les utilisateurs</option>';
-    Object.entries(users).forEach(([userId, userData]) => {
-        console.log("userData",userData);
-        userFilter.innerHTML += `<option value="${userId}">${userData.username}</option>`;
-    });
-}
-
-
-document.getElementById('userFilter').addEventListener('change', (e) => {
-    updateStatsTable(e.target.value, document.getElementById('levelFilter').value);
-});
-
 document.getElementById('levelFilter').addEventListener('change', (e) => {
-    updateStatsTable(document.getElementById('userFilter').value, e.target.value);
+    updateStatsTable(e.target.value);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
     initializeDefaultData();
-    updateFilters();
+    updateExistingData();
     updateStatsTable();
 }); 

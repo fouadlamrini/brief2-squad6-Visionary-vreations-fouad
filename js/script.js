@@ -228,26 +228,31 @@ let quizQuestions = [
     categories: {
       grammaire: [
         { 
+          id : 18,
           question: "Complétez : 'Il affirme que, tout bien considéré, il _____ accepter les conditions proposées.'",
           options: ["pourrait", "peut", "pouvait", "avait pu"],
           answer: "pourrait"
         },
         { 
+          id : 19,
           question: "Complétez : 'Il eut fallu que nous _____ avant de procéder.'",
           options: ["en discutions", "en discutons", "en avons discuté", "discutions"],
           answer: "en discutions"
         },
         { 
+          id : 20,
           question: "Complétez : 'À supposer qu’il _____ là, que feriez-vous ?'",
           options: ["fût", "sera", "est", "soit"],
           answer: "fût"
         },
         { 
+          id : 21,
           question: "Complétez : 'Eût-il eu connaissance de ces faits, il n’_____ pas accepté.'",
           options: ["aurait", "aura", "avait", "a"],
           answer: "aurait"
         },
         { 
+          id : 22,
           question: "Complétez : 'Elle aurait préféré qu'il _____ plus tôt.'",
           options: ["partît", "partait", "partirait", "est parti"],
           answer: "partît"
@@ -255,21 +260,25 @@ let quizQuestions = [
       ],
       vocabulaire: [
         { 
+          id : 23,
           question: "Que signifie 'contingent' dans le contexte d’une analyse ?",
           options: ["Dépendant des circonstances", "Évident", "Indépendant", "Immuable"],
           answer: "Dépendant des circonstances"
         },
         { 
+          id : 24,
           question: "Quel est le synonyme de 'omniscient' ?",
           options: ["Tout-puissant", "Ignorant", "Perspicace", "Savant"],
           answer: "Savant"
         },
         { 
+          id : 25,
           question: "Que signifie 'périssable' ?",
           options: ["Qui se détériore", "Qui est éternel", "Qui est flexible", "Qui est artificiel"],
           answer: "Qui se détériore"
         },
         { 
+          id : 26,
           question: "Quel est le synonyme de 'disparate' ?",
           options: ["Hétérogène", "Similaire", "Stable", "Constamment"],
           answer: "Hétérogène"
@@ -282,26 +291,31 @@ let quizQuestions = [
       ],
       comprehension: [
         { 
+          id : 27,
           question: "Pourquoi la méthodologie est-elle cruciale dans une étude scientifique ?",
           options: ["Elle garantit la validité des résultats", "Elle accélère le travail", "Elle réduit les coûts", "Elle simplifie la compréhension"],
           answer: "Elle garantit la validité des résultats"
         },
         { 
+          id : 28,
           question: "Quel rôle jouent les biais dans une analyse critique ?",
           options: ["Ils influencent les conclusions", "Ils renforcent la neutralité", "Ils n'ont aucun impact", "Ils sont souhaitables"],
           answer: "Ils influencent les conclusions"
         },
         { 
+          id: 29,
           question: "Pourquoi l'éthique est-elle centrale dans la recherche médicale ?",
           options: ["Pour protéger les sujets de recherche", "Pour maximiser les profits", "Pour simplifier les expériences", "Pour réduire les coûts"],
           answer: "Pour protéger les sujets de recherche"
         },
         { 
+          id : 30,
           question: "Que signifie 'exhaustivité' dans un contexte de recherche ?",
           options: ["Couvrir tous les aspects pertinents", "Être rapide", "Être peu détaillé", "Ignorer les données secondaires"],
           answer: "Couvrir tous les aspects pertinents"
         },
         { 
+          id : 31,
           question: "Comment interpréter une étude longitudinale ?",
           options: ["En analysant des données sur une longue période", "En étudiant un instant précis", "En se basant sur des hypothèses", "En excluant certaines variables"],
           answer: "En analysant des données sur une longue période"
@@ -449,7 +463,6 @@ function satrtQuizzLevel(level,categorie){
   const selectedLevel = quizQuestions.find(quiz => quiz.level === level);
   const selectedCategorie = selectedLevel.categories[categorie]
 
-  console.log(selectedCategorie);
   
   const quizContainer = document.getElementById("quiz");
   quizContainer.classList.remove("hidden");
@@ -987,42 +1000,59 @@ function validatePassword(password) {
 
 
 
-
-function loginFunction(){
+function addAdmin(){
   const users = JSON.parse(localStorage.getItem("users")) || [];
-  const email = document.getElementById("userName").value;
-  const password = document.getElementById("password").value;
-
-
   if (users.length === 0) {
     const admin = {
       email: "admin@gmail.com",
-      password: "admin1234",
+      password: "Admin1234!",
       status: "admin",
       levels :{}
     };
     users.push(admin);
     localStorage.setItem("users", JSON.stringify(users));
-  } 
-  else{
-    const userActuel = users.find((user) => user.email === email && user.password === password );
-    const userActuelEmail = users.find((user) => user.email === email );
+  }
 
-    if (userActuel) {
+}
+function loginFunction(){
+  const users = JSON.parse(localStorage.getItem("users")) ;
+  const email = document.getElementById("userName").value;
+  const password = document.getElementById("password").value;
+
+
+  const userActuel = users.find((user) => user.email === email && user.password === password );
+  const userActuelEmail = users.find((user) => user.email === email );
+  
+  if (userActuel) {
+    if (userActuel.status === "admin") {
+      window.location.href = 'admin.html'; 
+    }
+    else {
       localStorage.setItem("userActuel", JSON.stringify(userActuel));
       userLevels();
       window.location.href = "userActuel.html";
-
     }
-    else {
-      if(userActuelEmail){
-        alert("Mot de passe incorrect");
-      }
-      else{
-        addUser(email,password);
-      }
-    }
+    
   }
+  else {
+    if(userActuelEmail){
+      alert("Mot de passe incorrect");
+    }
+    else{
+      
+      const createAccount = confirm(
+        "This email doesn't exist. Would you like to create a new account with this email and password?"
+      );
+
+      if (createAccount) {
+        addUser(email, password);
+      } else {
+        alert("Please fill out the form again.");
+      }
+    }
+
+      
+    }
 }
 
 function addUser(){
@@ -1096,6 +1126,7 @@ function addUser(){
   window.location.href = "userActuel.html";
   userLevels();
 
+
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -1103,21 +1134,11 @@ document.addEventListener("DOMContentLoaded", function() {
   if (window.location.pathname === '/userActuel.html') {
     userLevels();
   }
+  if (window.location.pathname === '/index.html') {
+    addAdmin();
+  }
 });
 
 
-function userLevels(){
-  console.log("User Lavels");
-  const userActuel = JSON.parse(localStorage.getItem("userActuel"));
-  
-
-  const levelA1Grammar = userActuel.levels.A1.grammaire.validation;
-  const levelA1Vocab = userActuel.levels.A1.vocabulaire.validation;
-
-  const levelA1Comp = userActuel.levels.A1.comprehension.validation;
-
-
-
-}
 
 

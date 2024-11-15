@@ -42,11 +42,10 @@
             </nav>
         </aside>
 
-        <!-- Main Content -->
         <div class="flex-1 p-8">
             <h1 class="text-2xl font-bold mb-6">Statistiques des Utilisateurs</h1>
             
-            <!-- Filtres -->
+            
             <div class="mb-6 flex gap-4">
                 <select id="userFilter" class="border p-2 rounded">
                     <option value="all">Tous les utilisateurs</option>
@@ -62,20 +61,19 @@
                 </select>
             </div>
 
-            <!-- Tableau des statistiques -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <!-- Tableau des statistiques -->    <div class="bg-white rounded-lg shadow-lg p-6">
                 <table class="w-full">
                     <thead>
                         <tr class="border-b-2">
-                            <th class="p-2 text-left">Utilisateur</th>
                             <th class="p-2 text-left">Niveau</th>
-                            <th class="p-2 text-left">Score</th>
-                            <th class="p-2 text-left">attempt</th>
-                            <th class="p-2 text-left">Progression</th>
+                            <th class="p-2 text-left">Tentatives</th>
+                            <th class="p-2 text-left"> Progression</th>
+                            <th class="p-2 text-left">Catégorie </th>
+                            <th class="p-2 text-left"> taux de reussi</th>
                         </tr>
                     </thead>
                     <tbody id="statsTableBody">
-                        <!-- Les données seront insérées ici via JavaScript -->
+                       
                     </tbody>
                 </table>
             </div>

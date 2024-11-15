@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"></script>
-    <script src="tailwinsScript/script.js"></script>
-	<link rel="stylesheet" href="css/style.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <title>Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Tableau de Bord - Résultats</title>
 </head>
 <body class="bg-gray-100">
     <div class="flex min-h-screen">
@@ -17,29 +15,27 @@
             <nav class="mt-5">
                 <ul>
                     <li>
-                        <li>
-                            <a href="admin.html" class="flex items-center p-4 hover:bg-gray-700">
-                                <span class="material-icons">dashboard</span>
-                                <span class="ml-2">Dashboard</span>
-                            </a>
-                        </li>
+                        <a href="admin.html" class="flex items-center p-4 hover:bg-gray-700">
+                            <span class="material-icons">dashboard</span>
+                            <span class="ml-2">Dashboard</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="Résultats.html" class="flex items-center p-4 bg-gray-700 hover:bg-gray-700">
+                        <a href="Résultats.html" class="flex items-center p-4 bg-gray-700">
                             <span class="material-icons">people</span>
-                            <span class="ml-2">Users</span>
+                            <span class="ml-2">Utilisateurs</span>
                         </a>
                     </li>
                     <li>
                         <a href="edite.html" class="flex items-center p-4 hover:bg-gray-700">
                             <span class="material-icons">settings</span>
-                            <span class="ml-2">Settings</span>
+                            <span class="ml-2">Paramètres</span>
                         </a>
                     </li>
                     <li>
                         <a href="#" class="flex items-center p-4 hover:bg-gray-700" onclick="logout()">
                             <span class="material-icons">logout</span>
-                            <span class="ml-2">Logout</span>
+                            <span class="ml-2">Déconnexion</span>
                         </a>
                     </li>
                 </ul>
@@ -48,15 +44,17 @@
 
         <!-- Main Content -->
         <div class="flex-1 p-6">
-            <!-- Question Preview Section -->
-          
-
-          <!-- User Score Tracking Dashboard -->
             <div class="mb-6">
-                <h2 class="text-xl font-bold mb-4">Tableau de Bord des Scores</h2>
-                <div class="flex space-x-4 mb-4">
-                    <input type="text" id="searchUser" placeholder="Rechercher un utilisateur..." class="border border-gray-300 rounded px-3 py-2">
-                    <select id="levelFilter" class="border border-gray-300 rounded px-3 py-2">
+                <h2 class="text-2xl font-bold mb-6">Suivi des Utilisateurs</h2>
+                
+                <!-- Filters -->
+                <div class="flex space-x-4 mb-6">
+                    <input type="text" id="searchUser" 
+                           placeholder="Rechercher un utilisateur..." 
+                           class="border border-gray-300 rounded-lg px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    
+                    <select id="levelFilter" 
+                            class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="all">Tous les niveaux</option>
                         <option value="A1">A1</option>
                         <option value="A2">A2</option>
@@ -64,95 +62,149 @@
                         <option value="B2">B2</option>
                         <option value="C1">C1</option>
                         <option value="C2">C2</option>
-
-                    </select>
-                    <select id="dateFilter" class="border border-gray-300 rounded px-3 py-2">
-                        <option value="latest">Latest</option>
-                        <option value="oldest">Oldest</option>
                     </select>
                 </div>
-                <table class="min-w-full bg-white shadow-md rounded">
-                    <thead>
-                        <tr>
-                            <th class="py-2 px-4 bg-gray-700">Nom d'utilisateur</th>
-                            <th class="py-2 px-4 bg-gray-700">Niveau</th>
-                            <th class="py-2 px-4 bg-gray-700">Score</th>
-                            <th class="py-2 px-4 bg-gray-700">Date de Test</th>
-                        </tr>
-                    </thead>
-                    <tbody id="scoreTable">
-                        <!-- Dynamic content will go here -->
-                    </tbody>
-                </table>
+
+                <!-- Statistics -->
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                    <div class="bg-white rounded-lg p-4 shadow">
+                        <h3 class="text-gray-500 text-sm">Total Utilisateurs</h3>
+                        <p id="totalUsers" class="text-2xl font-bold">0</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-4 shadow">
+                        <h3 class="text-gray-500 text-sm">Moyenne des scores</h3>
+                        <p id="averageScore" class="text-2xl font-bold">0%</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-4 shadow">
+                        <h3 class="text-gray-500 text-sm">Niveau le plus atteint</h3>
+                        <p id="topLevel" class="text-2xl font-bold">-</p>
+                    </div>
+                </div>
+
+                <!-- Users Table -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <table class="min-w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Utilisateur
+                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Niveau Actuel
+                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Score Global
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="scoreTable" class="bg-white divide-y divide-gray-200">
+                            <!-- Dynamic content will go here -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 
-
     <script>
-
-   
-        // Open and close preview modal
-        function openPreview() {
-            document.getElementById('previewModal').classList.remove('hidden');
+        // Fonctions utilitaires
+        function getHighestLevel(levels) {
+            const levelOrder = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+            let highestLevel = 'A1';
+            
+            for (const level of levelOrder) {
+                if (levels[level] && hasPassedAnyCategory(levels[level].categories)) {
+                    highestLevel = level;
+                }
+            }
+            return highestLevel;
         }
-        function closePreview() {
-            document.getElementById('previewModal').classList.add('hidden');
+
+        function hasPassedAnyCategory(categories) {
+            return Object.values(categories).some(cat => cat.validation);
         }
 
-        // Sample data for user scores
-        const scores = [
-            { name: 'Rayan ', level: 'A1', score: 85, date: '2023-11-01' },
-            { name: 'Brahim', level: 'B1', score: 92, date: '2023-10-15' },
-            { name: 'Omar', level: 'C2', score: 78, date: '2023-11-05' }
-        ];
+        function calculateTotalScore(levels) {
+            let totalAttempts = 0;
+            let totalValidated = 0;
 
-        // Function to render score table based on filters
+            Object.values(levels).forEach(level => {
+                Object.values(level.categories).forEach(category => {
+                    if (category.attempts > 0) {
+                        totalAttempts++;
+                        if (category.validation) {
+                            totalValidated++;
+                        }
+                    }
+                });
+            });
+
+            return totalAttempts ? Math.round((totalValidated / totalAttempts) * 100) : 0;
+        }
+
+        function updateStatistics(users) {
+            const regularUsers = users.filter(user => user.status === "user");
+            
+            // Total users
+            document.getElementById('totalUsers').textContent = regularUsers.length;
+
+            // Average score
+            const avgScore = regularUsers.reduce((acc, user) => 
+                acc + calculateTotalScore(user.levels), 0) / regularUsers.length;
+            document.getElementById('averageScore').textContent = 
+                `${Math.round(avgScore || 0)}%`;
+
+            // Top level reached
+            const levels = ['C2', 'C1', 'B2', 'B1', 'A2', 'A1'];
+            const topLevel = levels.find(level => 
+                regularUsers.some(user => getHighestLevel(user.levels) === level)
+            ) || '-';
+            document.getElementById('topLevel').textContent = topLevel;
+        }
+
         function renderScores() {
+            const users = JSON.parse(localStorage.getItem("users")) || [];
             const searchQuery = document.getElementById('searchUser').value.toLowerCase();
             const levelFilter = document.getElementById('levelFilter').value;
-            const dateFilter = document.getElementById('dateFilter').value;
 
-            let filteredScores = scores.filter(score =>
-                score.name.toLowerCase().includes(searchQuery) &&
-                (levelFilter === 'all' || score.level === levelFilter)
+            updateStatistics(users);
+
+            let filteredUsers = users.filter(user => 
+                user.status === "user" && 
+                user.email.toLowerCase().includes(searchQuery) &&
+                (levelFilter === 'all' || getHighestLevel(user.levels) === levelFilter)
             );
 
-            if (dateFilter === 'latest') {
-                filteredScores = filteredScores.sort((a, b) => new Date(b.date) - new Date(a.date));
-            } else {
-                filteredScores = filteredScores.sort((a, b) => new Date(a.date) - new Date(b.date));
-            }
-
-            document.getElementById('scoreTable').innerHTML = filteredScores.map(score => `
-                <tr>
-                    <td class="py-2 px-4">${score.name}</td>
-                    <td class="py-2 px-4">${score.level}</td>
-                    <td class="py-2 px-4">${score.score}</td>
-                    <td class="py-2 px-4">${score.date}</td>
+            document.getElementById('scoreTable').innerHTML = filteredUsers.map(user => `
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <div class="ml-4">
+                                <div class="text-sm font-medium text-gray-900">${user.email}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                            ${getHighestLevel(user.levels)}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${calculateTotalScore(user.levels)}%
+                    </td>
                 </tr>
             `).join('');
         }
 
-        // Event listeners for filters
+        // Event listeners
         document.getElementById('searchUser').addEventListener('input', renderScores);
         document.getElementById('levelFilter').addEventListener('change', renderScores);
-        document.getElementById('dateFilter').addEventListener('change', renderScores);
+        document.addEventListener('DOMContentLoaded', renderScores);
 
-        // Initial render
-        renderScores();
- 
+        function logout() {
+            localStorage.removeItem('userActuel');
+            window.location.href = 'index.html';
+        }
     </script>
-
-  <!-- Material Icons for icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="js/script.js"></script>
-  <script>
-    function logout() {
-        console.log("Logout function called"); // This will log to the console
-        localStorage.removeItem('user'); // Adjust the key as necessary
-        window.location.href = 'index.html'; // Change 'login.html' to your login page URL
-    }
-</script>
 </body>
 </html>

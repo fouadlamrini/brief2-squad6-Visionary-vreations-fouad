@@ -146,7 +146,7 @@
 
     <script>
 
-const quizQuestions = [
+let quizQuestions = [
   // Niveau A1
   {
     level: "A1",
@@ -861,7 +861,7 @@ const quizQuestions = [
 
 // Fonction pour initialiser les questions
 function initializeQuestions() {
-    const savedQuestions = localStorage.getItem('quizQuestions');
+    savedQuestions = localStorage.getItem('quizQuestions');
     if (!savedQuestions) {
         localStorage.setItem('quizQuestions', JSON.stringify(quizQuestions));
     } else {

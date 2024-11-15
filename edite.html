@@ -9,23 +9,21 @@
 	
 	
 
-	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
 	<title>Document</title>
 </head>
 <body class="bg-gray-100">
     <div class="flex min-h-screen">
+        <!-- Sidebar -->
         <aside class="w-64 bg-[#143095] text-white">
             <div class="p-4 text-lg font-semibold text-center">Admin Dashboard</div>
             <nav class="mt-5">
                 <ul>
                     <li>
-                        <li>
-                            <a href="admin.html" class="flex items-center p-4 hover:bg-gray-700">
-                                <span class="material-icons">dashboard</span>
-                                <span class="ml-2">Dashboard</span>
-                            </a>
-                        </li>
-                       </li>
+                        <a href="admin.html" class="flex items-center p-4 hover:bg-gray-700">
+                            <span class="material-icons">dashboard</span>
+                            <span class="ml-2">Dashboard</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="Résultats.html" class="flex items-center p-4 hover:bg-gray-700">
                             <span class="material-icons">people</span>
@@ -48,37 +46,69 @@
             </nav>
         </aside>
 
+        <!-- Main Content -->
         <div class="flex-1 p-8">
-            <!-- Display Questions -->
+            <div class="mb-8">
+                <h1 class="text-2xl font-bold text-gray-800">Questions Management</h1>
+            </div>
+
+            <!-- Questions List -->
             <div id="questionsContainer" class="space-y-4">
                 <!-- Questions will be displayed here -->
             </div>
 
-            <!-- Add/Edit Buttons -->
+            <!-- Add Question Button -->
             <div class="mt-8">
-                <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="openQuestionForm()">Add New Question</button>
+                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="openQuestionForm()">
+                    Add New Question
+                </button>
             </div>
 
-            <!-- Modal for Adding/Editing Questions -->
+            <!-- Question Modal -->
             <div id="questionModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
-                <div class="bg-white rounded-lg p-6 w-96">
+                <div class="bg-white rounded-lg p-6 w-[500px]">
                     <h2 id="modalTitle" class="text-lg font-semibold mb-4">Add/Edit Question</h2>
                     <form id="questionForm">
-                        <textarea id="question" class="border border-gray-300 rounded-lg w-full px-3 py-2 text-gray-700 mb-4" placeholder="Enter your question here"></textarea>
-                        <select id="category" class="border border-gray-300 rounded-lg w-full px-3 py-2 text-gray-700 mb-4">
-                            <option value="Vocabulaire">Vocabulaire</option>
-                            <option value="Grammaire">Grammaire</option>
-                            <option value="Compréhension">Compréhension</option>
-                        </select>
+                        <div class="mb-4">
+                            <textarea id="question" class="border border-gray-300 rounded-lg w-full px-3 py-2 text-gray-700" rows="3" placeholder="Enter your question here"></textarea>
+                        </div>
+
+                        <div class="mb-4">
+                            <select id="level" class="border border-gray-300 rounded-lg w-full px-3 py-2 text-gray-700">
+                                <option value="A1">A1</option>
+                                <option value="A2">A2</option>
+                                <option value="B1">B1</option>
+                                <option value="B2">B2</option>
+                                <option value="C1">C1</option>
+                                <option value="C2">C2</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <select id="category" class="border border-gray-300 rounded-lg w-full px-3 py-2 text-gray-700">
+                                <option value="vocabulaire">Vocabulaire</option>
+                                <option value="grammaire">Grammaire</option>
+                                <option value="comprehension">Compréhension</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <input type="text" id="options" class="border border-gray-300 rounded-lg w-full px-3 py-2 text-gray-700" placeholder="option1, option2, option3, option4">
+                        </div>
+
+                        <div class="mb-4">
+                            <input type="text" id="answer" class="border border-gray-300 rounded-lg w-full px-3 py-2 text-gray-700" placeholder="Correct answer">
+                        </div>
+
                         <div class="flex justify-end space-x-2">
-                            <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded" onclick="closeModal()">Cancel</button>
-                            <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded" onclick="saveQuestion()">Save</button>
+                            <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600" onclick="closeModal()">Cancel</button>
+                            <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="saveQuestion()">Save</button>
                         </div>
                     </form>
                 </div>
             </div>
 
-            <!-- Notification Container -->
+            <!-- Notification -->
             <div id="notification" class="hidden fixed bottom-4 right-4 bg-blue-500 text-white p-4 rounded-lg shadow-lg">
                 <span id="notificationText"></span>
             </div>
@@ -87,103 +117,427 @@
 
 
 
-
     <script>
-        // Initial Sample Questions
-        let questions = [
-            { id: 1, text: "What is the definition of vocabulary?", category: "Vocabulaire", level: "A1" },
-            { id: 2, text: "Explain the basics of grammar rules.", category: "Grammaire", level: "A2" },
-            { id: 3, text: "How do you comprehend a passage?", category: "Compréhension", level: "B1" }
-        ];
+let quizQuestions = [
+    {
+        level: "A1",
+        categories: {
+            grammaire: [
+                {
+                    id: 1,
+                    question: "Complétez la phrase : 'Je _____ un livre.'",
+                    options: ["lis", "lire", "lira", "lu"],
+                    answer: "lis"
+                },
+                {
+                    id: 2,
+                    question: "Quel est le pronom personnel sujet correct ? '_____ parle français.'",
+                    options: ["Je", "Tu", "Il", "Nous"],
+                    answer: "Il"
+                }
+            ],
+            vocabulaire: [
+                {
+                    id: 3,
+                    question: "Quel est le contraire de 'grand' ?",
+                    options: ["petit", "large", "beau", "haut"],
+                    answer: "petit"
+                },
+                {
+                    id: 4,
+                    question: "Quelle est la couleur du ciel ?",
+                    options: ["bleu", "rouge", "vert", "jaune"],
+                    answer: "bleu"
+                }
+            ],
+            comprehension: [
+                {
+                    id: 5,
+                    question: "Marie va à l'école. Où va Marie ?",
+                    options: ["à la maison", "à l'école", "au parc", "au cinéma"],
+                    answer: "à l'école"
+                }
+            ]
+        }
+    },
+    {
+        level: "A2",
+        categories: {
+            grammaire: [
+                {
+                    id: 6,
+                    question: "Choisissez le passé composé correct : 'Il _____ au cinéma.'",
+                    options: ["allé", "est allé", "a allé", "va"],
+                    answer: "est allé"
+                }
+            ],
+            vocabulaire: [
+                {
+                    id: 7,
+                    question: "Quel mot n'appartient pas à la famille des fruits ?",
+                    options: ["pomme", "carotte", "banane", "orange"],
+                    answer: "carotte"
+                }
+            ],
+            comprehension: [
+                {
+                    id: 8,
+                    question: "Pierre aime jouer au football le weekend. Quand Pierre joue-t-il au football ?",
+                    options: ["le matin", "le soir", "le weekend", "la semaine"],
+                    answer: "le weekend"
+                }
+            ]
+        }
+    },
+    {
+        level: "B1",
+        categories: {
+            grammaire: [
+                {
+                    id: 9,
+                    question: "Complétez avec le pronom relatif correct : 'C'est le livre _____ j'ai lu.'",
+                    options: ["que", "qui", "dont", "où"],
+                    answer: "que"
+                }
+            ],
+            vocabulaire: [
+                {
+                    id: 10,
+                    question: "Quel est le synonyme de 'content' ?",
+                    options: ["heureux", "triste", "fatigué", "énervé"],
+                    answer: "heureux"
+                }
+            ],
+            comprehension: [
+                {
+                    id: 11,
+                    question: "Après avoir fini ses études, Marie veut devenir médecin. Quel est le projet de Marie ?",
+                    options: ["être professeur", "être médecin", "être ingénieur", "être avocat"],
+                    answer: "être médecin"
+                }
+            ]
+        }
+    },
+    {
+        level: "B2",
+        categories: {
+            grammaire: [
+                {
+                    id: 12,
+                    question: "Choisissez la bonne forme du subjonctif : 'Il faut que tu _____ à l'heure.'",
+                    options: ["es", "sois", "soit", "être"],
+                    answer: "sois"
+                }
+            ],
+            vocabulaire: [
+                {
+                    id: 13,
+                    question: "Quel est le registre de langue correct pour 'argent' en langage familier ?",
+                    options: ["fric", "monnaie", "devise", "finance"],
+                    answer: "fric"
+                }
+            ],
+            comprehension: [
+                {
+                    id: 14,
+                    question: "Le réchauffement climatique est un problème majeur pour notre planète. De quel type de problème s'agit-il ?",
+                    options: ["économique", "social", "environnemental", "politique"],
+                    answer: "environnemental"
+                }
+            ]
+        }
+    },
+    {
+        level: "C1",
+        categories: {
+            grammaire: [
+                {
+                    id: 15,
+                    question: "Complétez avec le temps correct : 'Si j'_____ plus tôt, je n'aurais pas manqué le train.'",
+                    options: ["étais parti", "serais parti", "partais", "partirais"],
+                    answer: "étais parti"
+                }
+            ],
+            vocabulaire: [
+                {
+                    id: 16,
+                    question: "Quel terme désigne une 'forte augmentation' ?",
+                    options: ["une hausse", "une flambée", "une montée", "une élévation"],
+                    answer: "une flambée"
+                }
+            ],
+            comprehension: [
+                {
+                    id: 17,
+                    question: "Dans un contexte professionnel, que signifie 'être sur le pont' ?",
+                    options: ["être en vacances", "être très occupé", "être absent", "être en pause"],
+                    answer: "être très occupé"
+                }
+            ]
+        }
+    },
+    {
+        level: "C2",
+        categories: {
+            grammaire: [
+                {
+                    id: 18,
+                    question: "Identifiez la proposition qui contient une figure de style :",
+                    options: [
+                        "La vie est belle",
+                        "Le temps dévore tout",
+                        "Il fait beau aujourd'hui",
+                        "Je vais au travail"
+                    ],
+                    answer: "Le temps dévore tout"
+                }
+            ],
+            vocabulaire: [
+                {
+                    id: 19,
+                    question: "Quel est le terme le plus soutenu pour dire 'parler' ?",
+                    options: ["discourir", "causer", "bavarder", "converser"],
+                    answer: "discourir"
+                }
+            ],
+            comprehension: [
+                {
+                    id: 20,
+                    question: "Analysez cette expression : 'Mettre du beurre dans les épinards'. Que signifie-t-elle ?",
+                    options: [
+                        "Cuisiner sainement",
+                        "Améliorer ses finances",
+                        "Faire un régime",
+                        "Manger équilibré"
+                    ],
+                    answer: "Améliorer ses finances"
+                }
+            ]
+        }
+    }
+];
 
-        let editId = null;
+// Fonction pour initialiser les questions
+function initializeQuestions() {
+    const savedQuestions = localStorage.getItem('quizQuestions');
+    if (!savedQuestions) {
+        localStorage.setItem('quizQuestions', JSON.stringify(quizQuestions));
+    } else {
+        quizQuestions = JSON.parse(savedQuestions);
+    }
+}
 
-        // Function to render questions
-        function renderQuestions() {
-            const container = document.getElementById('questionsContainer');
-            container.innerHTML = ''; // Clear the container
-            questions.forEach(question => {
+// Fonction pour afficher les questions
+function renderQuestions() {
+    const container = document.getElementById('questionsContainer');
+    if (!container) return;
+    
+    container.innerHTML = '';
+    
+    quizQuestions.forEach(levelObj => {
+        const level = levelObj.level;
+        Object.entries(levelObj.categories).forEach(([category, questions]) => {
+            questions.forEach(q => {
                 const questionDiv = document.createElement('div');
-                questionDiv.classList.add('bg-white', 'p-4', 'rounded-lg', 'shadow-lg');
+                questionDiv.classList.add('bg-white', 'p-4', 'rounded-lg', 'shadow-lg', 'mb-4');
                 questionDiv.innerHTML = `
-                    <p><strong>Question:</strong> ${question.text}</p>
-                    <p><strong>Category:</strong> ${question.category}</p>
-                    <p><strong>Level:</strong> ${question.level}</p>
-                    <button class="bg-yellow-500 text-white px-4 py-1 rounded mt-2" onclick="editQuestion(${question.id})">Edit</button>
-                    <button class="bg-red-500 text-white px-4 py-1 rounded mt-2 ml-2" onclick="deleteQuestion(${question.id})">Delete</button>
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-lg mb-2">${q.question}</h3>
+                            <div class="grid grid-cols-2 gap-4 mb-2">
+                                <p class="text-sm"><span class="font-medium">Level:</span> ${level}</p>
+                                <p class="text-sm"><span class="font-medium">Category:</span> ${category}</p>
+                            </div>
+                            <p class="text-sm mb-1"><span class="font-medium">Options:</span> ${q.options.join(', ')}</p>
+                            <p class="text-sm"><span class="font-medium">Answer:</span> ${q.answer}</p>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="bg-yellow-500 text-white px-4 py-1 rounded hover:bg-yellow-600" 
+                                    onclick="editQuestion(${q.id})">Edit</button>
+                            <button class="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600" 
+                                    onclick="deleteQuestion(${q.id})">Delete</button>
+                        </div>
+                    </div>
                 `;
                 container.appendChild(questionDiv);
             });
-        }
+        });
+    });
+}
 
-        function openQuestionForm() {
-            document.getElementById('questionForm').reset();
-            document.getElementById('modalTitle').textContent = 'Add New Question';
-            editId = null; // Reset edit ID
-            document.getElementById('questionModal').classList.remove('hidden');
-        }
+// Fonctions de gestion du modal
+function openQuestionForm() {
+    document.getElementById('modalTitle').textContent = 'Add New Question';
+    document.getElementById('questionForm').reset();
+    document.getElementById('questionModal').classList.remove('hidden');
+    window.editingQuestionId = null;
+}
 
-        function editQuestion(id) {
-            editId = id;
-            const question = questions.find(q => q.id === id);
-            document.getElementById('question').value = question.text;
-            document.getElementById('category').value = question.category;
-            document.getElementById('modalTitle').textContent = 'Edit Question';
-            document.getElementById('questionModal').classList.remove('hidden');
-        }
+function closeModal() {
+    document.getElementById('questionModal').classList.add('hidden');
+    document.getElementById('questionForm').reset();
+    window.editingQuestionId = null;
+}
 
-        function deleteQuestion(id) {
-            questions = questions.filter(q => q.id !== id);
-            showNotification("Question deleted successfully");
-            renderQuestions();
-        }
+// Fonction pour sauvegarder/éditer une question
+function saveQuestion() {
+    const questionText = document.getElementById('question').value.trim();
+    const level = document.getElementById('level').value;
+    const category = document.getElementById('category').value;
+    const optionsText = document.getElementById('options').value.trim();
+    const answer = document.getElementById('answer').value.trim();
 
-        function saveQuestion() {
-            const questionText = document.getElementById('question').value;
-            const category = document.getElementById('category').value;
-            const newQuestion = { id: Date.now(), text: questionText, category: category, level: "A1" };
+    if (!questionText || !optionsText || !answer) {
+        showNotification("Veuillez remplir tous les champs", "error");
+        return;
+    }
 
-            if (editId) {
-                const question = questions.find(q => q.id === editId);
-                question.text = questionText;
-                question.category = category;
-                showNotification("Question updated successfully");
-            } else {
-                questions.push(newQuestion);
-                showNotification("Question added successfully");
+    const options = optionsText.split(',').map(opt => opt.trim());
+    
+    const newQuestion = {
+        id: window.editingQuestionId || Date.now(),
+        question: questionText,
+        options: options,
+        answer: answer
+    };
+
+    let levelObj = quizQuestions.find(q => q.level === level);
+    if (!levelObj) {
+        levelObj = {
+            level: level,
+            categories: {
+                grammaire: [],
+                vocabulaire: [],
+                comprehension: []
             }
+        };
+        quizQuestions.push(levelObj);
+    }
 
-            closeModal();
-            renderQuestions();
+    if (window.editingQuestionId) {
+        // Mode édition
+        let questionUpdated = false;
+        quizQuestions.forEach(levelObj => {
+            Object.entries(levelObj.categories).forEach(([cat, questions]) => {
+                const index = questions.findIndex(q => q.id === window.editingQuestionId);
+                if (index !== -1) {
+                    questions.splice(index, 1);
+                    questionUpdated = true;
+                }
+            });
+        });
+        levelObj.categories[category].push(newQuestion);
+        showNotification("Question mise à jour avec succès");
+    } else {
+        // Mode ajout
+        levelObj.categories[category].push(newQuestion);
+        showNotification("Question ajoutée avec succès");
+    }
+
+    closeModal();
+    renderQuestions();
+    saveQuestionsToLocal();
+}
+
+// Fonction pour éditer une question
+function editQuestion(id) {
+    let questionToEdit = null;
+    let questionLevel = '';
+    let questionCategory = '';
+
+    for (let levelObj of quizQuestions) {
+        for (let [category, questions] of Object.entries(levelObj.categories)) {
+            const found = questions.find(q => q.id === id);
+            if (found) {
+                questionToEdit = found;
+                questionLevel = levelObj.level;
+                questionCategory = category;
+                break;
+            }
         }
+        if (questionToEdit) break;
+    }
 
-        function closeModal() {
-            document.getElementById('questionModal').classList.add('hidden');
-        }
+    if (questionToEdit) {
+        document.getElementById('question').value = questionToEdit.question;
+        document.getElementById('level').value = questionLevel;
+        document.getElementById('category').value = questionCategory;
+        document.getElementById('options').value = questionToEdit.options.join(', ');
+        document.getElementById('answer').value = questionToEdit.answer;
+        
+        document.getElementById('modalTitle').textContent = 'Edit Question';
+        document.getElementById('questionModal').classList.remove('hidden');
+        window.editingQuestionId = id;
+    } else {
+        showNotification("Question non trouvée", "error");
+    }
+}
 
-        function showNotification(message) {
-            const notification = document.getElementById('notification');
-            const notificationText = document.getElementById('notificationText');
-            notificationText.textContent = message;
-            notification.classList.remove('hidden');
+// Fonction pour supprimer une question
+function deleteQuestion(id) {
+    if (!confirm('Êtes-vous sûr de vouloir supprimer cette question ?')) {
+        return;
+    }
 
-            setTimeout(() => {
-                notification.classList.add('hidden');
-            }, 3000);
-        }
+    let deleted = false;
+    quizQuestions.forEach(levelObj => {
+        Object.values(levelObj.categories).forEach(questions => {
+            const index = questions.findIndex(q => q.id === id);
+            if (index !== -1) {
+                questions.splice(index, 1);
+                deleted = true;
+            }
+        });
+    });
 
-        // Initial render
+    if (deleted) {
+        showNotification("Question supprimée avec succès");
         renderQuestions();
+        saveQuestionsToLocal();
+    }
+}
 
-        function logout() {
-            console.log("Logout function called");
-            localStorage.removeItem('user');
-            window.location.href = 'index.html';
-        }
-    </script>
-</body>
-</html>
-     
+// Fonction pour afficher les notifications
+function showNotification(message, type = 'success') {
+    const notification = document.getElementById('notification');
+    const notificationText = document.getElementById('notificationText');
+    
+    notification.className = 'fixed bottom-4 right-4 p-4 rounded-lg shadow-lg';
+    notification.classList.add(type === 'success' ? 'bg-blue-500' : 'bg-red-500');
+    
+    notificationText.textContent = message;
+    notification.classList.remove('hidden');
+    
+    setTimeout(() => {
+        notification.classList.add('hidden');
+    }, 3000);
+}
+
+// Fonctions de stockage local
+function saveQuestionsToLocal() {
+    localStorage.setItem('quizQuestions', JSON.stringify(quizQuestions));
+}
+
+function loadQuestionsFromLocal() {
+    const saved = localStorage.getItem('quizQuestions');
+    if (saved) {
+        quizQuestions = JSON.parse(saved);
+    }
+}
+
+// Initialisation
+document.addEventListener('DOMContentLoaded', () => {
+    initializeQuestions();
+    renderQuestions();
+});
+
+// Fonction de déconnexion
+function logout() {
+    localStorage.removeItem('user');
+    window.location.href = 'index.html';
+}
+</script>
+
     <!-- Material Icons for icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="js/script.js"></script>

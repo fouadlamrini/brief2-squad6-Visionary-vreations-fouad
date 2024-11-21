@@ -11,11 +11,12 @@
 <body>
     <section id="userSection" class="w-full">
         <div>
-            <div class=" text-center">
-                <h1 class="text-[#D49286] text-5xl font-bold  w-2/5 mx-auto" >Welcome <span  id="theUserName" class="text-[#143095]"></span> To The Institut Balzac TCF Quiz </h1>
+            <div class="flex text-center mb-16">
+                <h1 class="text-[#D49286] text-5xl font-bold  w-2/5 mx-auto relative " >Welcome <span  id="theUserName" class="text-[#143095]"></span> To The Institut Balzac TCF Quiz </h1>
             </div>
+            <button onclick="userActualLogout()" class="absolute right-0 top-0 text-center w-[10%] border-[#D49286] h-12 rounded-3xl mb-5 text-white font-semibold text-lg bg-[#D49286]">Logout</button>
         </div>
-        <div class="flex gap-16 mx-auto mt-12 justify-center">
+        <!-- <div class="flex gap-16 mx-auto mt-12 justify-center">
             <select name="" id="" class="text-center w-1/4 border-[#D49286] h-12 rounded-3xl mb-5 text-white font-semibold text-lg bg-[#D49286] " >
                 <option value="" class="mx-auto" >All Category</option> 
                 <option value="">Grammaire</option> 
@@ -31,24 +32,24 @@
                 <option value="">C1</option> 
                 <option value="">C2</option>
             </select>
-        </div>
+        </div> -->
         <div class="flex flex-col items-center mx-auto w-4/5 border-2 border-[#143095] p-8 shadow-lg shadow-[#143095] mb-20 ">
             <h1 class="text-center w-1/6 border-2 border-[#D49286] rounded-lg mb-5 text-white font-semibold text-lg bg-[#D49286]">A1</h1>
             <div class="flex gap-28 w-full flex-wrap justify-center">
-                <div id="A1Grammar" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center cursor-pointer" onclick="satrtQuizzLevel('A1','grammaire')">					
+                <div id="A1_grammaire" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center cursor-pointer" onclick="satrtQuizzLevel('A1','grammaire')">					
                     <svg width="150" height="150" viewBox="0 0 201 201" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M106.021 84.7033H108.021V82.7033V47.4092C108.021 22.5722 128.231 2.35034 153.079 2.35034C177.928 2.35034 198.138 22.5722 198.138 47.4092V82.7033C198.138 85.293 197.11 87.7767 195.278 89.608C193.447 91.4392 190.963 92.468 188.374 92.468C185.784 92.468 183.3 91.4392 181.469 89.608C179.638 87.7767 178.609 85.293 178.609 82.7033V47.4092C178.609 33.3157 167.16 21.8798 153.079 21.8798C138.999 21.8798 127.55 33.3157 127.55 47.4092V70.9386V72.9386H129.55H141.315C153.187 72.9386 162.844 82.585 162.844 94.468V176.821C162.844 188.704 153.187 198.35 141.315 198.35H23.6677C11.7952 198.35 2.13831 188.704 2.13831 176.821V94.468C2.13831 82.585 11.7952 72.9386 23.6677 72.9386H56.9618V82.7033V84.7033H58.9618H106.021ZM70.2625 165.509C73.5057 168.752 77.9046 170.574 82.4912 170.574C87.0779 170.574 91.4768 168.752 94.72 165.509C97.9633 162.265 99.7854 157.866 99.7854 153.28C99.7854 148.693 97.9633 144.294 94.72 141.051C91.4768 137.808 87.0779 135.986 82.4912 135.986C77.9046 135.986 73.5057 137.808 70.2625 141.051C67.0192 144.294 65.1971 148.693 65.1971 153.28C65.1971 157.866 67.0192 162.265 70.2625 165.509Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="4"/>
                     </svg>
                     <h1 class="text-white text-4xl opacity-25 font-bold ">Grammaire</h1>
                 </div>
-                <div id="A1Voc" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none" onclick="satrtQuizzLevel('A1','vocabulaire')">					
+                <div id="A1_vocabulaire" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none" onclick="satrtQuizzLevel('A1','vocabulaire')">					
                     <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
 
                     <h1 class="text-white text-4xl opacity-25 font-bold">Vocabulaire</h1>
                 </div>
-                <div id="A1Comp" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none " onclick="satrtQuizzLevel('A1','vocabulaire')">					
+                <div id="A1_comprehension" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none " onclick="satrtQuizzLevel('A1','comprehension')">					
                     <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
@@ -60,20 +61,20 @@
         <div id="A2" class="flex flex-col items-center mx-auto w-4/5 border-2 border-[#143095] p-8 shadow-lg shadow-[#143095] mb-20 opacity-50 cursor-not-allowed">
             <h1 class="text-center w-1/6 border-2 border-[#D49286] rounded-lg mb-5 text-white font-semibold text-lg bg-[#D49286]">A2</h1>
             <div class="flex gap-28 w-full flex-wrap justify-center">
-                <div id="A2Grammar" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none " onclick="satrtQuizzLevel('A2','grammaire')">					
+                <div id="A2_grammaire" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none " onclick="satrtQuizzLevel('A2','grammaire')">					
                                             <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
                     <h1 class="text-white text-4xl opacity-25 font-bold ">Grammaire</h1>
                 </div>
-                <div id="A2Voc" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
+                <div id="A2_vocabulaire" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
                     <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
 
                     <h1 class="text-white text-4xl opacity-25 font-bold">Vocabulaire</h1>
                 </div>
-                <div id="A2Comp" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
+                <div id="A2_comprehension" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
                     <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
@@ -84,20 +85,20 @@
         <div class="flex flex-col items-center mx-auto w-4/5 border-2 border-[#143095] p-8 shadow-lg shadow-[#143095] mb-20 opacity-50 cursor-not-allowed">
             <h1 class="text-center w-1/6 border-2 border-[#D49286] rounded-lg mb-5 text-white font-semibold text-lg bg-[#D49286]">B1</h1>
             <div class="flex gap-28 w-full flex-wrap justify-center">
-                <div id="B1Grammar" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
+                <div id="B1_grammaire" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
                                             <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
                     <h1 class="text-white text-4xl opacity-25 font-bold ">Grammaire</h1>
                 </div>
-                <div id="B1Voc" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
+                <div id="B1_vocabulaire" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
                     <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
 
                     <h1 class="text-white text-4xl opacity-25 font-bold">Vocabulaire</h1>
                 </div>
-                <div id="B1Comp" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
+                <div id="B1_comprehension" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
                     <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
@@ -108,20 +109,20 @@
         <div class="flex flex-col items-center mx-auto w-4/5 border-2 border-[#143095] p-8 shadow-lg shadow-[#143095] mb-20 opacity-50 cursor-not-allowed">
             <h1 class="text-center w-1/6 border-2 border-[#D49286] rounded-lg mb-5 text-white font-semibold text-lg bg-[#D49286]">B2</h1>
             <div class="flex gap-28 w-full flex-wrap justify-center">
-                <div id="B2Grammar" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
+                <div id="B2_grammaire" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
                                             <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
                     <h1 class="text-white text-4xl opacity-25 font-bold ">Grammaire</h1>
                 </div>
-                <div id="B2Voc" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
+                <div id="B2_vocabulaire" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
                     <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
 
                     <h1 class="text-white text-4xl opacity-25 font-bold">Vocabulaire</h1>
                 </div>
-                <div id="B2Comp" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
+                <div id="B2_comprehension" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
                     <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
@@ -132,20 +133,20 @@
         <div class="flex flex-col items-center mx-auto w-4/5 border-2 border-[#143095] p-8 shadow-lg shadow-[#143095] mb-20 opacity-50 cursor-not-allowed">
             <h1 class="text-center w-1/6 border-2 border-[#D49286] rounded-lg mb-5 text-white font-semibold text-lg bg-[#D49286]">C1</h1>
             <div class="flex gap-28 w-full flex-wrap justify-center">
-                <div id="C1Grammar" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
+                <div id="C1_grammaire" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
                                             <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
                     <h1 class="text-white text-4xl opacity-25 font-bold ">Grammaire</h1>
                 </div>
-                <div id="C1Voc" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
+                <div id="C1_vocabulaire" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
                     <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
 
                     <h1 class="text-white text-4xl opacity-25 font-bold">Vocabulaire</h1>
                 </div>
-                <div id="C1Comp" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
+                <div id="C1_comprehension" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
                     <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
@@ -156,20 +157,20 @@
         <div class="flex flex-col items-center mx-auto w-4/5 border-2 border-[#143095] p-8 shadow-lg shadow-[#143095] mb-20 opacity-50 cursor-not-allowed">
             <h1 class="text-center w-1/6 border-2 border-[#D49286] rounded-lg mb-5 text-white font-semibold text-lg bg-[#D49286]">C2</h1>
             <div class="flex gap-28 w-full flex-wrap justify-center">
-                <div id="C2Grammar" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
+                <div id="C2_grammaire" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
                                             <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
                     <h1 class="text-white text-4xl opacity-25 font-bold ">Grammaire</h1>
                 </div>
-                <div id="C2Voc" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
+                <div id="C2_vocabulaire" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
                     <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>
 
                     <h1 class="text-white text-4xl opacity-25 font-bold">Vocabulaire</h1>
                 </div>
-                <div id="C2Comp" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
+                <div id="C2_comprehension" class="h-80 w-1/4 bg-[#143095] rounded-2xl flex flex-col items-center justify-center opacity-50 pointer-events-none ">					
                     <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M154.643 70.5882V73.0882H157.143H171.429C186.282 73.0882 197.5 82.943 197.5 94.1176V176.471C197.5 187.645 186.282 197.5 171.429 197.5H28.5714C13.7181 197.5 2.5 187.645 2.5 176.471V94.1176C2.5 82.943 13.7181 73.0882 28.5714 73.0882H42.8571H45.3571V70.5882V47.0588C45.3571 22.9302 69.3909 2.5 100 2.5C130.609 2.5 154.643 22.9302 154.643 47.0588V70.5882ZM128.571 84.8529H131.071V82.3529V47.0588C131.071 32.257 116.661 21.0294 100 21.0294C83.339 21.0294 68.9286 32.257 68.9286 47.0588V82.3529V84.8529H71.4286H128.571ZM85.2787 165.674C89.2512 168.945 94.5516 170.724 100 170.724C105.448 170.724 110.749 168.945 114.721 165.674C118.707 162.391 121.071 157.823 121.071 152.929C121.071 148.036 118.707 143.468 114.721 140.185C110.749 136.914 105.448 135.135 100 135.135C94.5516 135.135 89.2512 136.914 85.2787 140.185C81.2925 143.468 78.9286 148.036 78.9286 152.929C78.9286 157.823 81.2925 162.391 85.2787 165.674Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="5"/>
                     </svg>

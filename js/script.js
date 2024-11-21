@@ -945,6 +945,22 @@ let questionsObjet = [
 
 function satrtQuizzLevel(level,categorie){
 
+  const counters = {};
+  const key = `cont_${level}_${categorie}`; 
+  const sto = localStorage.getItem(key) || 0;
+  console.log(localStorage.getItem(key));
+  counters[key] = sto;
+  counters[key]++;
+
+
+  localStorage.setItem(key, counters[key]);
+  
+  // console.log(localStorage.getItem(key));
+  // const game = `${counters[key]}`;
+
+  localStorage.setItem("levelActual",level);
+  localStorage.setItem("categorieActual",categorie);
+  localStorage.setItem("scoreActual",0);
   const userSection = document.getElementById("userSection");
   userSection.classList.add("hidden");
 
@@ -1098,101 +1114,111 @@ function ButtonNextQuestion(i, isTimer = false) {
     buttons[j].classList.add("cursor-not-allowed");
   }
   const qChoose = localStorage.getItem(`question${i}`);
-  console.log(qChoose); //text
+  // console.log(qChoose); //text
 
   const qOption = localStorage.getItem(`option${i}_Id`);
-  console.log(qOption); //id
+  // console.log(qOption); //id
 
   const submitAnswer = document.getElementById(`submitAnswer${i}`);
   const nextQuestion = document.getElementById(`nextQuestion${i}`);
-
+  
   submitAnswer.classList.add("hidden");
   nextQuestion.classList.remove("hidden");
-
+  
   const qAnswer = questionsObjet[i].answer;
   const questionContent = questionsObjet[i].question;
+  
 
-  console.log(qAnswer); // text of correct answer
-
+  
   localStorage.setItem(`Corret_Answer${i}`, qAnswer);
   localStorage.setItem(`Question_Content${i}`, questionContent);
-
+  
   const id = document.getElementById(qOption);
-
+  
   if (qChoose === qAnswer) {
-    if (!id.innerHTML.includes("✅")) {
-      id.innerHTML += `<span>✅</span>`;
-    }
-    // id.innerHTML += `<span>✅</span>`;
-    id.classList.remove("border-blue-500");
-    id.classList.add("border-green-500");
     userscore += 1;
-    localStorage.setItem(`score`, userscore);
+    localStorage.setItem('scoreActual', userscore);
     
-  } else {
-    const allOptionValue = document.getElementsByClassName("OptionValue");
-
-    for (let k = 0; k < allOptionValue.length; k++) {
-      if (allOptionValue[k].textContent === qAnswer) {
-        const option = allOptionValue[k].parentElement;
-        const correctOption = option.parentElement;
-        correctOption.classList.remove("border-[#D49286]");
-        correctOption.classList.add("border-green-500");
-        // correctOption.innerHTML += `<span>✅</span>`;
-        if (!correctOption.innerHTML.includes("✅")) {
-          correctOption.innerHTML += `<span>✅</span>`;
-        }
-      }
-    }
-
-    if (isTimer) {
-      id.classList.remove("border-red-500");
-      id.classList.add("border-[#D49286]-500");
-    } else {
-      id.innerHTML += `<span>❌</span>`;
-      id.classList.remove("border-blue-500");
-      id.classList.add("border-red-500");
-    }
   }
+  
+  const userActuelfind = JSON.parse(localStorage.getItem("userActuel"));
+  // console.log(userActuelfind);
+  
+  const allUsers = JSON.parse(localStorage.getItem("users"));
+  const userIndex = allUsers.findIndex((user) => user.email === userActuelfind.email);
+  const userActuel = allUsers[userIndex];
+  // console.log(userActuel);
+  
+  const levelActual = localStorage.getItem("levelActual");
+  const categorieActual = localStorage.getItem("categorieActual");
+
+  const key = `cont_${levelActual}_${categorieActual}`;
+  const sto = localStorage.getItem(key);
+  const levelCont = `cont_${levelActual}_${categorieActual}_${sto}`;
+  console.log(levelCont);
+  const scoreActual = localStorage.getItem('scoreActual');
+  userActuel.games = userActuel.games || {};
+  userActuel.games[levelActual] = userActuel.games[levelActual] || {};
+  userActuel.games[levelActual][categorieActual] = userActuel.games[levelActual][categorieActual] || {};
+  userActuel.games[levelActual][categorieActual][levelCont] = userActuel.games[levelActual][categorieActual][levelCont] || { questions: [] };
+
+  userActuel.games[levelActual][categorieActual][levelCont].questions.push({
+    question: questionContent,
+    option: qChoose,
+    answer: qAnswer,
+  });
+  userActuel.games[levelActual][categorieActual][levelCont].Score = scoreActual;
+
+    localStorage.setItem("userActuel", JSON.stringify(userActuel));
+
+    allUsers[userIndex] = userActuel;
+    localStorage.setItem("users", JSON.stringify(allUsers));
 }
 
 let c = 0;
-function displayQuestion() {
-  const submitAnswer = document.getElementsByClassName("Submit");
-  for (let j = 0; j < submitAnswer.length; j++) {
-    submitAnswer[j].disabled = true;
-    submitAnswer[j].classList.add("cursor-not-allowed");
-  }
-  const buttons = document.getElementsByClassName("answer-button");
-  for (let j = 0; j < buttons.length; j++) {
-    buttons[j].disabled = false;
-    buttons[j].classList.remove("cursor-not-allowed");
-  }
+// function displayQuestion() {
+//   const submitAnswer = document.getElementsByClassName("Submit");
+//   for (let j = 0; j < submitAnswer.length; j++) {
+//     submitAnswer[j].disabled = true;
+//     submitAnswer[j].classList.add("cursor-not-allowed");
+//   }
+//   const buttons = document.getElementsByClassName("answer-button");
+//   for (let j = 0; j < buttons.length; j++) {
+//     buttons[j].disabled = false;
+//     buttons[j].classList.remove("cursor-not-allowed");
+//   }
 
-  const question = document.getElementsByClassName("Questions");
+//   const question = document.getElementsByClassName("Questions");
 
-  if (c < questionsObjet.length) {
-    Array.from(question).forEach((question) => {
-      question.classList.add("hidden");
-    });
-    question[c].classList.remove("hidden");
+//   if (c < questionsObjet.length) {
+//     Array.from(question).forEach((question) => {
+//       question.classList.add("hidden");
+//     });
+//     question[c].classList.remove("hidden");
 
-    c++;
-  } else {
-    c = 0;
-    Array.from(question).forEach((question) => {
-      question.classList.add("hidden");
-    });
+//     c++;
+//   } else {
+//     console.log("c++");
+//     c = 0;
+//     const userSection = document.getElementById("userSection");
+//     userSection.classList.remove("hidden");
+      
+//   const quizContainer = document.getElementById("quiz");
+//   quizContainer.classList.add("hidden");
+//     // Array.from(question).forEach((question) => {
+//     //   question.classList.add("hidden");
+//     // });
 
-    const scoreSection = document.getElementById("scoreSection");
-    scoreSection.classList.remove("hidden");
-    const scoreTitle = document.getElementById("scoreResult");
+//     // const scoreSection = document.getElementById("scoreSection");
+//     // scoreSection.classList.remove("hidden");
+//     // const scoreTitle = document.getElementById("scoreResult");
 
-    const score = localStorage.getItem("score");
-    scoreTitle.innerHTML = `${score}`;
-    seeResult();
-  }
-}
+//     // const score = localStorage.getItem("score");
+//     // scoreTitle.innerHTML = `${score}`;
+//     // seeResult();
+//   }
+  
+// }
 
 function chooseOption(optionId, index, optionValue) {
   localStorage.setItem(`question${index}`, optionValue);
@@ -1336,34 +1362,34 @@ function ResultRapport() {
 
 //------timer
 
-let timerInterval;
+// let timerInterval;
 
-function startTimer(i) {
-  let timeLeft = 20; // Set the time for each question
-  const countdown = document.getElementsByClassName("countdown");
+// function startTimer(i) {
+//   let timeLeft = 20; // Set the time for each question
+//   const countdown = document.getElementsByClassName("countdown");
 
-  function updateTimer() {
-    const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
-    const seconds = String(timeLeft % 60).padStart(2, "0");
-    for (let i = 0; i < countdown.length; i++) {
-      countdown[i].value = `${minutes}:${seconds}`;
-    }
+//   function updateTimer() {
+//     const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
+//     const seconds = String(timeLeft % 60).padStart(2, "0");
+//     for (let i = 0; i < countdown.length; i++) {
+//       countdown[i].value = `${minutes}:${seconds}`;
+//     }
 
-    timeLeft--;
+//     timeLeft--;
 
-    if (timeLeft < 0) {
-      clearInterval(timerInterval);
-      for (let i = 0; i < countdown.length; i++) {
-        countdown[i].value = "00:00";
-      }
-      ButtonNextQuestion(i, true); // Call the function to handle time up
-    }
-  }
+//     if (timeLeft < 0) {
+//       clearInterval(timerInterval);
+//       for (let i = 0; i < countdown.length; i++) {
+//         countdown[i].value = "00:00";
+//       }
+//       ButtonNextQuestion(i, true); // Call the function to handle time up
+//     }
+//   }
 
-  clearInterval(timerInterval);
-  updateTimer();
-  timerInterval = setInterval(updateTimer, 1000);
-}
+//   clearInterval(timerInterval);
+//   updateTimer();
+//   timerInterval = setInterval(updateTimer, 1000);
+// }
 
 function displayQuestion() {
 
@@ -1385,21 +1411,28 @@ function displayQuestion() {
       question.classList.add("hidden");
     });
     question[c].classList.remove("hidden");
-    startTimer(c); // Start the timer for the current question
+    // startTimer(c); // Start the timer for the current question
     c++;
   } else {
+    console.log("c++");
     c = 0;
-    Array.from(question).forEach((question) => {
-      question.classList.add("hidden");
-    });
+    const userSection = document.getElementById("userSection");
+    userSection.classList.remove("hidden");
+      
+    const quizContainer = document.getElementById("quiz");
+    quizContainer.classList.add("hidden");
+    // c = 0;
+    // Array.from(question).forEach((question) => {
+    //   question.classList.add("hidden");
+    // });
 
-    const scoreSection = document.getElementById("scoreSection");
-    scoreSection.classList.remove("hidden");
-    const scoreTitle = document.getElementById("scoreResult");
+    // const scoreSection = document.getElementById("scoreSection");
+    // scoreSection.classList.remove("hidden");
+    // const scoreTitle = document.getElementById("scoreResult");
 
-    const score = localStorage.getItem("score");
-    scoreTitle.innerHTML = `${score}`;
-    seeResult();
+    // const score = localStorage.getItem("score");
+    // scoreTitle.innerHTML = `${score}`;
+    // seeResult();
   }
 }
 
@@ -1460,18 +1493,15 @@ function filterContent() {
 // script.js
 
 function logout() {
-    // Clear user session data (if applicable)
-    // For example, if you are using localStorage to store user info:
-    localStorage.removeItem('user'); // Adjust the key as necessary
-
-    // Optionally, you can also clear cookies or session storage if used
-    // sessionStorage.clear(); // Uncomment if you want to clear session storage
-
-    // Redirect to the login page or home page after logout
-    window.location.href = 'login.html'; // Change 'login.html' to your login page URL
+    localStorage.removeItem('user'); 
+    window.location.href = 'login.html'; 
 }
 
+function userActualLogout(){
+  localStorage.removeItem('userActuel');
+  window.location.href = 'index.html'; 
 
+}
 
 
 
@@ -1517,8 +1547,8 @@ function loginFunction(){
       window.location.href = 'admin.html'; 
     }
     else {
-      localStorage.setItem("userActuel", JSON.stringify(userActuel));
 
+      localStorage.setItem("userActuel", JSON.stringify(userActuel));
       window.location.href = "userActuel.html";
     }
     
@@ -1605,29 +1635,120 @@ function addUser(){
         comprehension: { validation: false, attempts: 0, time: 0 },
       },
     },
-  },
+    },
+    games: {
+    },
   };
 
   users.push(user);
   localStorage.setItem("users", JSON.stringify(users));
-  const userActuel = users.find((user) => user.email === email && user.password === password );
+  const userActuel = JSON.parse(localStorage.getItem("userActuel")) || []; 
+
+  const userActuelfind = users.find((user) => user.email === email && user.password === password );
+  userActuel.push(userActuelfind);
   localStorage.setItem("userActuel", JSON.stringify(userActuel));
   window.location.href = "userActuel.html";
-  userLevels();
-
-
 }
 
 document.addEventListener("DOMContentLoaded", function() {
- 
-  // if (window.location.pathname === '/userActuel.html') {
-  //   userLevels();
-  // }
   if (window.location.pathname === '/index.html') {
     addAdmin();
   }
+  if (window.location.pathname === '/userActuel.html') {
+    addScore();
+    
+  }
 });
 
+function addScore(){
+  const userActuelfind = JSON.parse(localStorage.getItem("userActuel"));
+  const allUsers = JSON.parse(localStorage.getItem("users"));
+  const userIndex = allUsers.findIndex((user) => user.email === userActuelfind.email);
+  const userActuel = allUsers[userIndex];
+
+  const levelActual = localStorage.getItem("levelActual");
+  const categorieActual = localStorage.getItem("categorieActual");
+
+  const key = `cont_${levelActual}_${categorieActual}`;
+  const sto = localStorage.getItem(key);
+  const levelCont = `cont_${levelActual}_${categorieActual}_${sto}`;
+  
+  userActuel.games = userActuel.games || {};
+  userActuel.games[levelActual] = userActuel.games[levelActual] || {};
+  userActuel.games[levelActual][categorieActual] = userActuel.games[levelActual][categorieActual] || {};
+  userActuel.games[levelActual][categorieActual][levelCont] = userActuel.games[levelActual][categorieActual][levelCont] || [];
+
+  const scoreActual = localStorage.getItem("scoreActual");
+  userActuel.games[levelActual][categorieActual][levelCont].Score = scoreActual;
+    localStorage.setItem("userActuel", JSON.stringify(userActuel));
+    allUsers[userIndex] = userActuel;
+    localStorage.setItem("users", JSON.stringify(allUsers));
+    unlockLevels();
+}
+
+function unlockLevels(){
+  const userActuel = JSON.parse(localStorage.getItem("userActuel"));
+  const levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+  const categories = ['grammaire', 'vocabulaire', 'comprehension'];
+
+  if (userActuel.games) {
+    for (const level of levels) {
+      if (userActuel.games[level]) {
+        for (const category of categories) {
+          if (userActuel.games[level][category]) {
+            const categorieData = userActuel.games[level][category];
+            for (const levelCont in categorieData) {
+              const data = categorieData[levelCont];
+              
+              if (data && data.Score == 10) {
+                const currentIndex = categories.indexOf(category);
+                const nextCategory = categories[currentIndex + 1];
+                const key = `${level}_${nextCategory}`;
+                const unlockedTheNextCat = document.getElementById(key);
+                if(category === "comprehension"){
+                  const currentIndex = levels.indexOf(level);
+                  const nextLevel = levels[currentIndex + 1];
+                  const unlockedTheNextlev = document.getElementById(nextLevel);
+                  unlockedTheNextlev.classList.remove("opacity-50");
+                  unlockedTheNextlev.classList.remove("cursor-not-allowed");
+
+                  const firstCat = document.getElementById(`${nextLevel}_grammaire`);
+                  firstCat.classList.remove("opacity-50");
+                  firstCat.classList.remove("pointer-events-none");
+                  firstCat.classList.add("cursor-pointer");
+                  const svg = firstCat.querySelector("svg");
+                  svg.remove();
+                  firstCat.innerHTML =  `
+                  <svg width="150" height="150" viewBox="0 0 201 201" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M106.021 84.7033H108.021V82.7033V47.4092C108.021 22.5722 128.231 2.35034 153.079 2.35034C177.928 2.35034 198.138 22.5722 198.138 47.4092V82.7033C198.138 85.293 197.11 87.7767 195.278 89.608C193.447 91.4392 190.963 92.468 188.374 92.468C185.784 92.468 183.3 91.4392 181.469 89.608C179.638 87.7767 178.609 85.293 178.609 82.7033V47.4092C178.609 33.3157 167.16 21.8798 153.079 21.8798C138.999 21.8798 127.55 33.3157 127.55 47.4092V70.9386V72.9386H129.55H141.315C153.187 72.9386 162.844 82.585 162.844 94.468V176.821C162.844 188.704 153.187 198.35 141.315 198.35H23.6677C11.7952 198.35 2.13831 188.704 2.13831 176.821V94.468C2.13831 82.585 11.7952 72.9386 23.6677 72.9386H56.9618V82.7033V84.7033H58.9618H106.021ZM70.2625 165.509C73.5057 168.752 77.9046 170.574 82.4912 170.574C87.0779 170.574 91.4768 168.752 94.72 165.509C97.9633 162.265 99.7854 157.866 99.7854 153.28C99.7854 148.693 97.9633 144.294 94.72 141.051C91.4768 137.808 87.0779 135.986 82.4912 135.986C77.9046 135.986 73.5057 137.808 70.2625 141.051C67.0192 144.294 65.1971 148.693 65.1971 153.28C65.1971 157.866 67.0192 162.265 70.2625 165.509Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="4"/>
+                  </svg>
+                  ${firstCat.innerHTML} 
+              `;
 
 
+                }else{
+                  unlockedTheNextCat.classList.remove("pointer-events-none");
+                  unlockedTheNextCat.classList.remove("opacity-50");
+                  unlockedTheNextCat.classList.add("cursor-pointer");
+                  const svg = unlockedTheNextCat.querySelector("svg");
+                  svg.remove();
+                  unlockedTheNextCat.innerHTML =  `
+                  <svg width="150" height="150" viewBox="0 0 201 201" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M106.021 84.7033H108.021V82.7033V47.4092C108.021 22.5722 128.231 2.35034 153.079 2.35034C177.928 2.35034 198.138 22.5722 198.138 47.4092V82.7033C198.138 85.293 197.11 87.7767 195.278 89.608C193.447 91.4392 190.963 92.468 188.374 92.468C185.784 92.468 183.3 91.4392 181.469 89.608C179.638 87.7767 178.609 85.293 178.609 82.7033V47.4092C178.609 33.3157 167.16 21.8798 153.079 21.8798C138.999 21.8798 127.55 33.3157 127.55 47.4092V70.9386V72.9386H129.55H141.315C153.187 72.9386 162.844 82.585 162.844 94.468V176.821C162.844 188.704 153.187 198.35 141.315 198.35H23.6677C11.7952 198.35 2.13831 188.704 2.13831 176.821V94.468C2.13831 82.585 11.7952 72.9386 23.6677 72.9386H56.9618V82.7033V84.7033H58.9618H106.021ZM70.2625 165.509C73.5057 168.752 77.9046 170.574 82.4912 170.574C87.0779 170.574 91.4768 168.752 94.72 165.509C97.9633 162.265 99.7854 157.866 99.7854 153.28C99.7854 148.693 97.9633 144.294 94.72 141.051C91.4768 137.808 87.0779 135.986 82.4912 135.986C77.9046 135.986 73.5057 137.808 70.2625 141.051C67.0192 144.294 65.1971 148.693 65.1971 153.28C65.1971 157.866 67.0192 162.265 70.2625 165.509Z" fill="black" fill-opacity="0.25" stroke="#849EFF" stroke-width="4"/>
+                  </svg>
+                  ${unlockedTheNextCat.innerHTML} 
+              `;
+                }
 
+            
+
+
+              }
+
+            }
+          }
+        }
+      }
+    }
+  }
+}

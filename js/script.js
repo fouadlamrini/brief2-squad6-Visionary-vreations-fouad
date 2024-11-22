@@ -1643,11 +1643,10 @@ function addUser(){
 
   users.push(user);
   localStorage.setItem("users", JSON.stringify(users));
-  const userActuel = JSON.parse(localStorage.getItem("userActuel")) || []; 
 
   const userActuelfind = users.find((user) => user.email === email && user.password === password );
-  userActuel.push(userActuelfind);
-  localStorage.setItem("userActuel", JSON.stringify(userActuel));
+
+  localStorage.setItem("userActuel", JSON.stringify(userActuelfind));
   window.location.href = "userActuel.html";
 }
 
@@ -1663,15 +1662,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function addScore(){
   const userActuelfind = JSON.parse(localStorage.getItem("userActuel"));
-  
-  console.log("userActuelfind : ",userActuelfind);
-
   const allUsers = JSON.parse(localStorage.getItem("users"));
-  console.log("allUsers :",allUsers);
   const userIndex = allUsers.findIndex((user) => user.email === userActuelfind.email);
-
-  console.log("userIndex :",userIndex);
-
   const userActuel = allUsers[userIndex];
   
   const levelActual = localStorage.getItem("levelActual");
@@ -1700,15 +1692,30 @@ function unlockLevels(){
   const categories = ['grammaire', 'vocabulaire', 'comprehension'];
 
   if (userActuel.games) {
+    console.log("levels",userActuel.levels);
     for (const level of levels) {
       if (userActuel.games[level]) {
+        
         for (const category of categories) {
           if (userActuel.games[level][category]) {
             const categorieData = userActuel.games[level][category];
             for (const levelCont in categorieData) {
               const data = categorieData[levelCont];
-              
+
+
+              const users = JSON.parse(localStorage.getItem("users"));
+              const userIndex = users.findIndex((user) => user.email === userActuel.email);
+
+
               if (data && data.Score == 10) {
+
+
+                userActuel.levels[level].categories[category].validation = true ;
+                localStorage.setItem("userActuel", JSON.stringify(userActuel));
+
+                users[userIndex] = userActuel;
+                localStorage.setItem("users", JSON.stringify(users));
+
                 const currentIndex = categories.indexOf(category);
                 const nextCategory = categories[currentIndex + 1];
                 const key = `${level}_${nextCategory}`;

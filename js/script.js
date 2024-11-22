@@ -948,7 +948,17 @@ function satrtQuizzLevel(level,categorie){
   const counters = {};
   const key = `cont_${level}_${categorie}`; 
   const sto = localStorage.getItem(key) || 0;
-  console.log(localStorage.getItem(key));
+
+  const users = JSON.parse(localStorage.getItem("users"));
+  const userActuel = JSON.parse(localStorage.getItem("userActuel"));
+  const userIndex = users.findIndex((user) => user.email === userActuel.email);
+  
+  userActuel.levels[level].categories[categorie].attempts = sto;
+
+  localStorage.setItem("userActuel", JSON.stringify(userActuel));
+  users[userIndex] = userActuel;
+  localStorage.setItem("users", JSON.stringify(users));
+
   counters[key] = sto;
   counters[key]++;
 
@@ -968,6 +978,7 @@ function satrtQuizzLevel(level,categorie){
 
   const selectedLevel = quizQuestions.find(quiz => quiz.level === level);
   const selectedCategorie = selectedLevel.categories[categorie];
+  console.log("selectedCategorie ;",selectedCategorie);
 
   
   const quizContainer = document.getElementById("quiz");

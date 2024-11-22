@@ -1661,7 +1661,7 @@ function addUser(){
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  if (window.location.pathname.endsWith('index.html')) {
+  if (window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('-Gestion-Administrateur-Back-Office/')) {
     addAdmin();
   }
   if (window.location.pathname.endsWith('userActuel.html')) {

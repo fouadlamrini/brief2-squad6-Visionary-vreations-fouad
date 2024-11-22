@@ -1661,10 +1661,10 @@ function addUser(){
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  if (window.location.pathname === '/index.html') {
+  if (window.location.pathname.endsWith('index.html')) {
     addAdmin();
   }
-  if (window.location.pathname === '/userActuel.html') {
+  if (window.location.pathname.endsWith('userActuel.html')) {
     addScore();
     
   }

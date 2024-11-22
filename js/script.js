@@ -978,7 +978,6 @@ function satrtQuizzLevel(level,categorie){
 
   const selectedLevel = quizQuestions.find(quiz => quiz.level === level);
   const selectedCategorie = selectedLevel.categories[categorie];
-  console.log("selectedCategorie ;",selectedCategorie);
 
   
   const quizContainer = document.getElementById("quiz");
@@ -1166,7 +1165,7 @@ function ButtonNextQuestion(i) {
   const key = `cont_${levelActual}_${categorieActual}`;
   const sto = localStorage.getItem(key);
   const levelCont = `cont_${levelActual}_${categorieActual}_${sto}`;
-  console.log(levelCont);
+
   const scoreActual = localStorage.getItem('scoreActual');
   userActuel.games = userActuel.games || {};
   userActuel.games[levelActual] = userActuel.games[levelActual] || {};
@@ -1181,7 +1180,7 @@ function ButtonNextQuestion(i) {
   userActuel.games[levelActual][categorieActual][levelCont].Score = scoreActual;
 
     localStorage.setItem("userActuel", JSON.stringify(userActuel));
-    console.log(userActuel);
+
     allUsers[userIndex] = userActuel;
     localStorage.setItem("users", JSON.stringify(allUsers));
 }
@@ -1703,7 +1702,6 @@ function unlockLevels(){
   const categories = ['grammaire', 'vocabulaire', 'comprehension'];
 
   if (userActuel.games) {
-    console.log("levels",userActuel.levels);
     for (const level of levels) {
       if (userActuel.games[level]) {
         

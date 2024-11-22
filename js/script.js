@@ -78,60 +78,60 @@ let quizQuestions = [
           options: ["lis", "lire", "lira", "lu"],
           answer: "lis"
         },
-        // { 
-        //   id:2,
-        //   question: "Complétez la phrase : 'Il _____ beaucoup de devoirs.'",
-        //   options: ["a", "est", "ont", "sont"],
-        //   answer: "a"
-        // },
-        // { 
-        //   id:3,
-        //   question: "Complétez la phrase : 'Nous _____ à l'école.'",
-        //   options: ["allons", "allée", "aller", "irons"],
-        //   answer: "allons"
-        // },
-        // { 
-        //   id:4,
-        //   question: "Complétez la phrase : 'Tu _____ un animal.'",
-        //   options: ["as", "a", "es", "ont"],
-        //   answer: "as"
-        // },
-        // { 
-        //   id:5,
-        //   question: "Complétez la phrase : 'Elle _____ un livre.'",
-        //   options: ["lit", "lire", "lit", "lis"],
-        //   answer: "lit"
-        // },
-        // { 
-        //   id:6,
-        //   question: "Complétez la phrase : 'Nous _____ du pain.'",
-        //   options: ["mangeons", "mange", "manger", "mangent"],
-        //   answer: "mangeons"
-        // },
-        // { 
-        //   id:7,
-        //   question: "Complétez la phrase : 'Je _____ au parc.'",
-        //   options: ["vais", "va", "aller", "allé"],
-        //   answer: "vais"
-        // },
-        // { 
-        //   id:8,
-        //   question: "Complétez la phrase : 'Ils _____ dans une grande maison.'",
-        //   options: ["vivent", "vivent", "vivre", "vivraient"],
-        //   answer: "vivent"
-        // },
-        // { 
-        //   id:9,
-        //   question: "Complétez la phrase : 'Elle _____ dans le jardin.'",
-        //   options: ["court", "court", "courir", "cours"],
-        //   answer: "court"
-        // },
-        // { 
-        //   id:10,
-        //   question: "Complétez la phrase : 'Nous ______ des jeux.'",
-        //   options: ["jouons", "joue", "jouer", "jouerons"],
-        //   answer: "jouons"
-        // }
+        { 
+          id:2,
+          question: "Complétez la phrase : 'Il _____ beaucoup de devoirs.'",
+          options: ["a", "est", "ont", "sont"],
+          answer: "a"
+        },
+        { 
+          id:3,
+          question: "Complétez la phrase : 'Nous _____ à l'école.'",
+          options: ["allons", "allée", "aller", "irons"],
+          answer: "allons"
+        },
+        { 
+          id:4,
+          question: "Complétez la phrase : 'Tu _____ un animal.'",
+          options: ["as", "a", "es", "ont"],
+          answer: "as"
+        },
+        { 
+          id:5,
+          question: "Complétez la phrase : 'Elle _____ un livre.'",
+          options: ["lit", "lire", "lit", "lis"],
+          answer: "lit"
+        },
+        { 
+          id:6,
+          question: "Complétez la phrase : 'Nous _____ du pain.'",
+          options: ["mangeons", "mange", "manger", "mangent"],
+          answer: "mangeons"
+        },
+        { 
+          id:7,
+          question: "Complétez la phrase : 'Je _____ au parc.'",
+          options: ["vais", "va", "aller", "allé"],
+          answer: "vais"
+        },
+        { 
+          id:8,
+          question: "Complétez la phrase : 'Ils _____ dans une grande maison.'",
+          options: ["vivent", "vivent", "vivre", "vivraient"],
+          answer: "vivent"
+        },
+        { 
+          id:9,
+          question: "Complétez la phrase : 'Elle _____ dans le jardin.'",
+          options: ["court", "court", "courir", "cours"],
+          answer: "court"
+        },
+        { 
+          id:10,
+          question: "Complétez la phrase : 'Nous ______ des jeux.'",
+          options: ["jouons", "joue", "jouer", "jouerons"],
+          answer: "jouons"
+        }
       ],
       vocabulaire: [
         { 
@@ -1708,7 +1708,7 @@ function unlockLevels(){
             for (const levelCont in categorieData) {
               const data = categorieData[levelCont];
               
-              if (data && data.Score == 1) {
+              if (data && data.Score == 10) {
                 const currentIndex = categories.indexOf(category);
                 const nextCategory = categories[currentIndex + 1];
                 const key = `${level}_${nextCategory}`;

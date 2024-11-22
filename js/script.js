@@ -1551,7 +1551,7 @@ function loginFunction(){
   const password = document.getElementById("password").value;
   
   
-  const userActuel = users.find((user) => user.email === email && user.password === password );
+  const userActuel = users.find((user) => user.email === email && user.password === password ) || {};
   const userActuelEmail = users.find((user) => user.email === email );
   
   if (userActuel) {

@@ -78,60 +78,60 @@ let quizQuestions = [
           options: ["lis", "lire", "lira", "lu"],
           answer: "lis"
         },
-        { 
-          id:2,
-          question: "Complétez la phrase : 'Il _____ beaucoup de devoirs.'",
-          options: ["a", "est", "ont", "sont"],
-          answer: "a"
-        },
-        { 
-          id:3,
-          question: "Complétez la phrase : 'Nous _____ à l'école.'",
-          options: ["allons", "allée", "aller", "irons"],
-          answer: "allons"
-        },
-        { 
-          id:4,
-          question: "Complétez la phrase : 'Tu _____ un animal.'",
-          options: ["as", "a", "es", "ont"],
-          answer: "as"
-        },
-        { 
-          id:5,
-          question: "Complétez la phrase : 'Elle _____ un livre.'",
-          options: ["lit", "lire", "lit", "lis"],
-          answer: "lit"
-        },
-        { 
-          id:6,
-          question: "Complétez la phrase : 'Nous _____ du pain.'",
-          options: ["mangeons", "mange", "manger", "mangent"],
-          answer: "mangeons"
-        },
-        { 
-          id:7,
-          question: "Complétez la phrase : 'Je _____ au parc.'",
-          options: ["vais", "va", "aller", "allé"],
-          answer: "vais"
-        },
-        { 
-          id:8,
-          question: "Complétez la phrase : 'Ils _____ dans une grande maison.'",
-          options: ["vivent", "vivent", "vivre", "vivraient"],
-          answer: "vivent"
-        },
-        { 
-          id:9,
-          question: "Complétez la phrase : 'Elle _____ dans le jardin.'",
-          options: ["court", "court", "courir", "cours"],
-          answer: "court"
-        },
-        { 
-          id:10,
-          question: "Complétez la phrase : 'Nous ______ des jeux.'",
-          options: ["jouons", "joue", "jouer", "jouerons"],
-          answer: "jouons"
-        }
+        // { 
+        //   id:2,
+        //   question: "Complétez la phrase : 'Il _____ beaucoup de devoirs.'",
+        //   options: ["a", "est", "ont", "sont"],
+        //   answer: "a"
+        // },
+        // { 
+        //   id:3,
+        //   question: "Complétez la phrase : 'Nous _____ à l'école.'",
+        //   options: ["allons", "allée", "aller", "irons"],
+        //   answer: "allons"
+        // },
+        // { 
+        //   id:4,
+        //   question: "Complétez la phrase : 'Tu _____ un animal.'",
+        //   options: ["as", "a", "es", "ont"],
+        //   answer: "as"
+        // },
+        // { 
+        //   id:5,
+        //   question: "Complétez la phrase : 'Elle _____ un livre.'",
+        //   options: ["lit", "lire", "lit", "lis"],
+        //   answer: "lit"
+        // },
+        // { 
+        //   id:6,
+        //   question: "Complétez la phrase : 'Nous _____ du pain.'",
+        //   options: ["mangeons", "mange", "manger", "mangent"],
+        //   answer: "mangeons"
+        // },
+        // { 
+        //   id:7,
+        //   question: "Complétez la phrase : 'Je _____ au parc.'",
+        //   options: ["vais", "va", "aller", "allé"],
+        //   answer: "vais"
+        // },
+        // { 
+        //   id:8,
+        //   question: "Complétez la phrase : 'Ils _____ dans une grande maison.'",
+        //   options: ["vivent", "vivent", "vivre", "vivraient"],
+        //   answer: "vivent"
+        // },
+        // { 
+        //   id:9,
+        //   question: "Complétez la phrase : 'Elle _____ dans le jardin.'",
+        //   options: ["court", "court", "courir", "cours"],
+        //   answer: "court"
+        // },
+        // { 
+        //   id:10,
+        //   question: "Complétez la phrase : 'Nous ______ des jeux.'",
+        //   options: ["jouons", "joue", "jouer", "jouerons"],
+        //   answer: "jouons"
+        // }
       ],
       vocabulaire: [
         { 
@@ -1019,7 +1019,7 @@ function satrtQuizzLevel(level,categorie){
       quizContainer.appendChild(questionOptions);
       
   });
-  displayQuestion()
+  displayQuestion();
 
 }
 
@@ -1038,76 +1038,76 @@ function shuffle(arr) {
 
 let userscore = 0;
 
-function startQuiz() {
-  for (let i = 0; i < questionsObjet.length; i++) {
-    localStorage.removeItem(`question${i}`);
-  }
-  userscore = 0;
-  const userSection = document.getElementById("userSection");
-  userSection.classList.add("hidden");
-  const scoreSection = document.getElementById("scoreSection");
-  scoreSection.classList.add("hidden");
+// function startQuiz() {
+//   for (let i = 0; i < questionsObjet.length; i++) {
+//     localStorage.removeItem(`question${i}`);
+//   }
+//   userscore = 0;
+//   const userSection = document.getElementById("userSection");
+//   userSection.classList.add("hidden");
+//   const scoreSection = document.getElementById("scoreSection");
+//   scoreSection.classList.add("hidden");
 
-  const shuffledQuestions = shuffle(questionsObjet);
-  const quizContainer = document.getElementById("quiz");
+//   const shuffledQuestions = shuffle(questionsObjet);
+//   const quizContainer = document.getElementById("quiz");
 
-  localStorage.setItem(`score`, userscore);
+//   localStorage.setItem(`score`, userscore);
 
-  quizContainer.innerHTML = "";
+//   quizContainer.innerHTML = "";
 
-  shuffledQuestions.forEach((q, index) => {
-    const questionOptions = document.createElement("div");
-    questionOptions.classList.add(
-      "Questions",
-      "flex",
-      "absolute",
-      "top-1/3",
-      "w-full"
-    );
+//   shuffledQuestions.forEach((q, index) => {
+//     const questionOptions = document.createElement("div");
+//     questionOptions.classList.add(
+//       "Questions",
+//       "flex",
+//       "absolute",
+//       "top-1/3",
+//       "w-full"
+//     );
 
-    const questionElement = document.createElement("div");
-    questionElement.classList.add("px-16", "w-full");
+//     const questionElement = document.createElement("div");
+//     questionElement.classList.add("px-16", "w-full");
 
-    const titleContainer = document.createElement("div");
-    titleContainer.classList.add("h-32");
-    titleContainer.innerHTML = `<h1 class="text-[#D49286] text-5xl font-bold">${q.title}</h1>`;
-    questionElement.appendChild(titleContainer);
+//     const titleContainer = document.createElement("div");
+//     titleContainer.classList.add("h-32");
+//     titleContainer.innerHTML = `<h1 class="text-[#D49286] text-5xl font-bold">${q.title}</h1>`;
+//     questionElement.appendChild(titleContainer);
 
-    const questionContainer = document.createElement("div");
+//     const questionContainer = document.createElement("div");
 
-    questionContainer.innerHTML = `
-        <div class="flex justify-between items-center h-16 ">
-            <h2 class="text-[#D49286] text-xl" >Question ${index + 1} of ${
-      questionsObjet.length
-    }</h2>
-            <input type="time" class="bg-transparent countdown">
-        </div>
-        <p class="text-2xl font-bold">
-            Choisissez la bonne réponse : <br> 
-            "${q.question}"
-        </p>
-        `;
-    questionElement.appendChild(questionContainer);
+//     questionContainer.innerHTML = `
+//         <div class="flex justify-between items-center h-16 ">
+//             <h2 class="text-[#D49286] text-xl" >Question ${index + 1} of ${
+//       questionsObjet.length
+//     }</h2>
+//             <input type="time" class="bg-transparent countdown">
+//         </div>
+//         <p class="text-2xl font-bold">
+//             Choisissez la bonne réponse : <br> 
+//             "${q.question}"
+//         </p>
+//         `;
+//     questionElement.appendChild(questionContainer);
 
-    const optionsElement = document.createElement("div");
-    optionsElement.classList.add("text-center", "w-full", "mt-3", "relative");
-    optionsElement.innerHTML = `
-            <button id='option0${index}' onclick="chooseOption('option0${index}','${index}','${q.options[0]}')" class="flex justify-between items-center answer-button border-2 border-[#D49286] h-12 w-4/5 rounded-lg text-left font-bold text-base px-5 mb-5" ><nav>A.<span class='OptionValue'>${q.options[0]}</span></nav></button>
-            <button id='option1${index}' onclick="chooseOption('option1${index}','${index}','${q.options[1]}')" class="flex justify-between items-center answer-button border-2 border-[#D49286] h-12 w-4/5 rounded-lg text-left font-bold text-base px-5 mb-5" ><nav>B.<span class='OptionValue'>${q.options[1]}</span></nav></button>
-            <button id='option2${index}' onclick="chooseOption('option2${index}','${index}','${q.options[2]}')" class="flex justify-between items-center answer-button border-2 border-[#D49286] h-12 w-4/5 rounded-lg text-left font-bold text-base px-5 mb-5" ><nav>C.<span class='OptionValue'>${q.options[2]}</span></nav></button>
-            <button id='option3${index}' onclick="chooseOption('option3${index}','${index}','${q.options[3]}')" class="flex justify-between items-center answer-button border-2 border-[#D49286] h-12 w-4/5 rounded-lg text-left font-bold text-base px-5 mb-5" ><nav>D.<span class='OptionValue'>${q.options[3]}</span></nav></button>
-            <button id="submitAnswer${index}" onclick="ButtonNextQuestion('${index}')" class="Submit border-2 border-[#D49286] h-12 w-3/5 rounded-3xl mb-5 text-white font-semibold text-lg bg-[#D49286] absolute left-[5rem] -bottom-20" >Submit Answer</button>
-            <button id="nextQuestion${index}" onclick="displayQuestion()" class="border-2 border-[#D49286] h-12 w-3/5 rounded-3xl mb-5 text-white font-semibold text-lg bg-[#D49286] absolute left-[5rem] -bottom-20 hidden" >Next Question</button>
-        `;
+//     const optionsElement = document.createElement("div");
+//     optionsElement.classList.add("text-center", "w-full", "mt-3", "relative");
+//     optionsElement.innerHTML = `
+//             <button id='option0${index}' onclick="chooseOption('option0${index}','${index}','${q.options[0]}')" class="flex justify-between items-center answer-button border-2 border-[#D49286] h-12 w-4/5 rounded-lg text-left font-bold text-base px-5 mb-5" ><nav>A.<span class='OptionValue'>${q.options[0]}</span></nav></button>
+//             <button id='option1${index}' onclick="chooseOption('option1${index}','${index}','${q.options[1]}')" class="flex justify-between items-center answer-button border-2 border-[#D49286] h-12 w-4/5 rounded-lg text-left font-bold text-base px-5 mb-5" ><nav>B.<span class='OptionValue'>${q.options[1]}</span></nav></button>
+//             <button id='option2${index}' onclick="chooseOption('option2${index}','${index}','${q.options[2]}')" class="flex justify-between items-center answer-button border-2 border-[#D49286] h-12 w-4/5 rounded-lg text-left font-bold text-base px-5 mb-5" ><nav>C.<span class='OptionValue'>${q.options[2]}</span></nav></button>
+//             <button id='option3${index}' onclick="chooseOption('option3${index}','${index}','${q.options[3]}')" class="flex justify-between items-center answer-button border-2 border-[#D49286] h-12 w-4/5 rounded-lg text-left font-bold text-base px-5 mb-5" ><nav>D.<span class='OptionValue'>${q.options[3]}</span></nav></button>
+//             <button id="submitAnswer${index}" onclick="ButtonNextQuestion('${index}')" class="Submit border-2 border-[#D49286] h-12 w-3/5 rounded-3xl mb-5 text-white font-semibold text-lg bg-[#D49286] absolute left-[5rem] -bottom-20" >Submit Answer</button>
+//             <button id="nextQuestion${index}" onclick="displayQuestion()" class="border-2 border-[#D49286] h-12 w-3/5 rounded-3xl mb-5 text-white font-semibold text-lg bg-[#D49286] absolute left-[5rem] -bottom-20 hidden" >Next Question</button>
+//         `;
 
-    questionOptions.appendChild(questionElement);
-    questionOptions.appendChild(optionsElement);
-    quizContainer.appendChild(questionOptions);
-  });
-  displayQuestion();
-}
+//     questionOptions.appendChild(questionElement);
+//     questionOptions.appendChild(optionsElement);
+//     quizContainer.appendChild(questionOptions);
+//   });
+//   // displayQuestion();
+// }
 
-function ButtonNextQuestion(i, isTimer = false) {
+function ButtonNextQuestion(i) {
   const buttons = document.getElementsByClassName("answer-button");
   for (let j = 0; j < buttons.length; j++) {
     buttons[j].disabled = true;
@@ -1133,7 +1133,7 @@ function ButtonNextQuestion(i, isTimer = false) {
   localStorage.setItem(`Corret_Answer${i}`, qAnswer);
   localStorage.setItem(`Question_Content${i}`, questionContent);
   
-  const id = document.getElementById(qOption);
+  // const id = document.getElementById(qOption);
   
   if (qChoose === qAnswer) {
     userscore += 1;
@@ -1170,7 +1170,7 @@ function ButtonNextQuestion(i, isTimer = false) {
   userActuel.games[levelActual][categorieActual][levelCont].Score = scoreActual;
 
     localStorage.setItem("userActuel", JSON.stringify(userActuel));
-
+    console.log(userActuel);
     allUsers[userIndex] = userActuel;
     localStorage.setItem("users", JSON.stringify(allUsers));
 }
@@ -1414,13 +1414,14 @@ function displayQuestion() {
     // startTimer(c); // Start the timer for the current question
     c++;
   } else {
-    console.log("c++");
     c = 0;
     const userSection = document.getElementById("userSection");
     userSection.classList.remove("hidden");
       
     const quizContainer = document.getElementById("quiz");
     quizContainer.classList.add("hidden");
+    window.location.href = 'userActuel.html'; 
+
     // c = 0;
     // Array.from(question).forEach((question) => {
     //   question.classList.add("hidden");
@@ -1662,10 +1663,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function addScore(){
   const userActuelfind = JSON.parse(localStorage.getItem("userActuel"));
-  const allUsers = JSON.parse(localStorage.getItem("users"));
-  const userIndex = allUsers.findIndex((user) => user.email === userActuelfind.email);
-  const userActuel = allUsers[userIndex];
+  
+  console.log("userActuelfind : ",userActuelfind);
 
+  const allUsers = JSON.parse(localStorage.getItem("users"));
+  console.log("allUsers :",allUsers);
+  const userIndex = allUsers.findIndex((user) => user.email === userActuelfind.email);
+
+  console.log("userIndex :",userIndex);
+
+  const userActuel = allUsers[userIndex];
+  
   const levelActual = localStorage.getItem("levelActual");
   const categorieActual = localStorage.getItem("categorieActual");
 
@@ -1700,7 +1708,7 @@ function unlockLevels(){
             for (const levelCont in categorieData) {
               const data = categorieData[levelCont];
               
-              if (data && data.Score == 10) {
+              if (data && data.Score == 1) {
                 const currentIndex = categories.indexOf(category);
                 const nextCategory = categories[currentIndex + 1];
                 const key = `${level}_${nextCategory}`;
